@@ -56,7 +56,6 @@ function Coupon() {
     if (data && data.length > 0) {
       console.log(data[0]);
     }
-
     setloading(false);
   };
 
