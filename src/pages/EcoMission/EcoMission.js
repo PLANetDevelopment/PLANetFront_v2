@@ -3,7 +3,7 @@ import axios from "axios";
 import Footer from "../../components/Footer/Footer";
 import EcoStyle from "./Eco.module.css";
 import HistorySample from "../../components/History/HistoryBackHome";
-import { format } from "date-fns";
+import { format, isSameMonth } from "date-fns";
 import { FiShare } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
 import { Modal } from "../../components/EcoMissionPart/EcoModal";
@@ -49,7 +49,9 @@ const EcoMission = () => {
       name: data.todayMission.name,
     });
 
-    let isClear = data.missions.find((m) => m.name === data.todayMission.name);
+    let isClear =
+      data.missions.find((m) => m.name === data.todayMission.name) &&
+      isSameMonth(new Date(), date);
     setClear(isClear);
     setloading(false);
   };
