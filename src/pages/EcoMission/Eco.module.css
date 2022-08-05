@@ -19,21 +19,21 @@
 
 /*이전 버튼*/
 .backBtn {
-    position: absolute;
-    margin-top: 10%;
-    margin-left: 7%;
-    margin-bottom: 0;
-    z-index: 1;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 7%;
+  margin-bottom: 0;
+  z-index: 1;
 }
 
 .title {
-    position: absolute;
-    font-size: 18px;
-    font-family: Pretendard;
-    width: 100%;
-    text-align: center;
-    margin-top: 10%;
-    margin-bottom: 0;
+  position: absolute;
+  font-size: 18px;
+  font-family: Pretendard;
+  width: 100%;
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 0;
 }
 
 .title .select_month_button {
@@ -45,10 +45,10 @@
 }
 
 .title_icon {
-    position: absolute;
-    margin-top: 10%;
-    margin-left: 88%;
-    margin-bottom: 0;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 88%;
+  margin-bottom: 0;
 }
 
 .title_icon svg {
@@ -118,7 +118,7 @@
   text-align: center;
 }
 
-.mission_box .mission_box_input input {
+.mission_box .mission_box_input div {
   border: 0;
   outline: 0;
   background-color: transparent;
@@ -141,15 +141,23 @@
   font-family: Pretendard;
   display: block;
   margin: 0 auto;
-  width: 62px;
+  padding: 9px 15px;
   height: 37px;
   font-size: 16px;
   color: #ffffff;
-  background-color: rgba(0, 201, 130, 1);
+
   border-radius: 13px;
   border: 0;
   margin-top: 32px;
   cursor: pointer;
+}
+
+.mission_clear {
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.mission_yet {
+  background-color: rgba(0, 201, 130, 1);
 }
 
 .mission_box2 {
