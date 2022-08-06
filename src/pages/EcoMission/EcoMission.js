@@ -49,9 +49,12 @@ const EcoMission = () => {
       name: data.todayMission.name,
     });
 
-    let isClear =
-      data.missions.find((m) => m.name === data.todayMission.name) &&
-      isSameMonth(new Date(), date);
+    let isClear = false;
+    if (isSameMonth(new Date(), date)) {
+      isClear = data.missions.find((m) => m.name === data.todayMission.name);
+    } else {
+      isClear = true;
+    }
     setClear(isClear);
     setloading(false);
   };

@@ -56,7 +56,6 @@ function Home({ activeHome }) {
 
   const [position2, setposition2] = useState(0);
 
-
   const currentDate = new Date();
   const userId = window.localStorage.getItem("userId");
   const queryClient = useQueryClient();
@@ -78,11 +77,6 @@ function Home({ activeHome }) {
     }
   }, [queryClient, results]);
   console.log(message);
-  console.log(ecoPercentage);
-  console.log(userName);
-  console.log(income);
-  console.log(expenditure);
-
 
   useEffect(() => {
     if (results.status === "success") {
@@ -104,7 +98,6 @@ function Home({ activeHome }) {
     setIsModalOpen2(false);
     setUserName(text);
   };
-
 
   if (ecoPercentage >= 0 && ecoPercentage < 25) {
     lottieOptions.animationData = low;
@@ -133,7 +126,7 @@ function Home({ activeHome }) {
         <section className={homeStyle.profiles}>
           <div className={homeStyle.main}>
             <div className={homeStyle.nickname}>
-              {!loading ? userName : "행성 1234호"}
+              {!loading ? userName : "ㅤㅤㅤㅤㅤㅤ"}
               <FiEdit3
                 className={homeStyle.icon}
                 alt="닉네임 변경"
@@ -151,18 +144,21 @@ function Home({ activeHome }) {
             </div>
 
             <div>
-              <AiOutlineQuestionCircle
-                className={homeStyle.question}
+              <div
+                className={homeStyle.question_container}
                 onClick={(e) => openModal(e)}
-              />
+              >
+                <AiOutlineQuestionCircle className={homeStyle.question} />
+              </div>
+
               <div className={homeStyle.planet}>
                 {income === 0 && expenditure === 0 ? (
                   <div>
-                    {" "}
                     <img alt="만들어지지 않은 행성" src={zero} />
                     <p>
-                      아직 행성이 만들어지지 않았어요! <br /> 지금 바로 가계부를
-                      작성해보세요{" "}
+                      {results.status === "loading"
+                        ? "행성을 탐색하는 중..."
+                        : "아직 행성이 만들어지지 않았어요!\n지금 바로 가계부를 작성해보세요"}
                     </p>
                   </div>
                 ) : (
@@ -204,9 +200,7 @@ function Home({ activeHome }) {
             </div>
           </div>
           {/* <Link to="/StatisticsView" className={activeHome}> */}
-          <IoIosArrowForward
-            className={homeStyle.history}
-          ></IoIosArrowForward>
+          <IoIosArrowForward className={homeStyle.history}></IoIosArrowForward>
           {/* </Link> */}
           <div className={homeStyle.income}>
             수입 <h1>{!loading ? income.toLocaleString() : 0}원</h1>
@@ -260,9 +254,9 @@ Home.defaultProps = {
 };
 
 const message = {
-  "userName": "2000호",
-  "totalIncomeMonth": 0,
-  "totalExpenditureMonth": 0,
-  "ecoPercentage": 0.0,
-  "noEcoPercentage": 100.0
-}
+  userName: "2000호",
+  totalIncomeMonth: 0,
+  totalExpenditureMonth: 0,
+  ecoPercentage: 0.0,
+  noEcoPercentage: 100.0,
+};

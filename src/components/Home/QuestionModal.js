@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 import Lottie from "react-lottie";
-import high from "../../planet/1-2.json"
+import high from "../../planet/1-2.json";
 import highmid from "../../planet/1-2.json";
 import low from "../../planet/4-2.json";
 import mid from "../../planet/3-2.json";
@@ -40,15 +40,32 @@ const modalData = [
 ];
 
 export function QuestionModal() {
+  const [modal, setModal] = useState(true);
+  const [position, setPosition] = useState(2);
+  const onClickHandler = (e) => {
+    setPosition(e.clientX);
+    console.log(e.clientX);
+    setModal(!modal);
+  };
+
   return (
-    <ModalWrapper>
+    <ModalWrapper position={position}>
       <p className="coment">
         나의 행성은 어떤 상태일까요?{" "}
         <AiOutlineQuestionCircle
           className="question"
-        // onClick={(e) => openModal(e)}
+          onClick={(e) => onClickHandler(e)}
         />
       </p>
+      {modal && (
+        <div className="question-info">
+          <span className="question-green-text">
+            친 · 반환경 소비 횟수에 따라
+          </span>
+          <br />
+          행성의 색상이 변화합니다
+        </div>
+      )}
       <Sliders dots={true} index={0}>
         {modalData.map((data, index) => {
           return (
@@ -87,6 +104,36 @@ const ModalWrapper = styled.div`
     cursor: pointer;
     margin-left: 5px;
     top: 2px;
+  }
+
+  .question-info {
+    font-size: 12px;
+    position: absolute;
+    right: 10%;
+    z-index: 10;
+    background: rgba(86, 100, 121, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    line-height: 140%;
+    padding: 9px;
+  }
+
+  .question-info::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    // left: 0;
+    left: calc(70vw - ${(props) => props.position}px);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom-color: rgba(86, 100, 121, 0.3);
+    border-top: 0;
+    margin-left: -20px;
+    margin-top: -15px;
+  }
+  .question-green-text {
+    color: rgb(var(--green));
   }
 
   .lottie {

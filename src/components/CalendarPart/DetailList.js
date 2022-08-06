@@ -13,6 +13,7 @@ function DetailList({ value }) {
   let date = value;
   const queryClient = useQueryClient();
 
+  const [loading, setLoading] = useState(true);
   const [totalList, setTotalList] = useState([]);
   const [detailList, setDetailList] = useState([]);
   const [totalMoney, setTotalMoney] = useState(0);
@@ -29,15 +30,20 @@ function DetailList({ value }) {
 
   const setData = (data) => {
     let moneySum = 0;
+    let totalTemp = [];
+    let detailTemp = [];
 
-    let totalTemp = Object.keys(data.totalMoney).map((key) => {
-      moneySum += data.totalMoney[key];
-      return { name: key, value: data.totalMoney[key] };
-    });
+    if (data.totalMoney !== undefined && data.totalDetails !== undefined) {
+      totalTemp = Object.keys(data.totalMoney).map((key) => {
+        moneySum += data.totalMoney[key];
+        return { name: key, value: data.totalMoney[key] };
+      });
 
-    let detailTemp = Object.keys(data.totalDetails).map((key) => {
-      return { name: key, value: data.totalDetails[key] };
-    });
+      detailTemp = Object.keys(data.totalDetails).map((key) => {
+        return { name: key, value: data.totalDetails[key] };
+      });
+      setLoading(false);
+    }
 
     setTotalList(totalTemp);
     setDetailList(detailTemp);
@@ -99,6 +105,21 @@ function DetailList({ value }) {
 
     return <div className="item-list">{renderList}</div>;
   };
+
+  if (loading)
+    return (
+      <div
+        className="diary"
+        style={{
+          width: "100vw",
+          color: "#636E75",
+          textAlign: "center",
+          marginTop: "40vh",
+        }}
+      >
+        로딩중...
+      </div>
+    );
 
   return (
     <StyledDetailBlock>
