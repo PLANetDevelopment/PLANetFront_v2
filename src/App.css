@@ -152,7 +152,8 @@ section {
 body {
   line-height: 1;
   background-repeat: repeat;
-  background-image: url("./main_bg.png");
+  background-color: #141b27;
+  /* background-image: url("./main_bg.png"); */
 }
 ol,
 ul {

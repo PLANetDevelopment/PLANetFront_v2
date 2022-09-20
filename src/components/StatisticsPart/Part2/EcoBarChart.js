@@ -52,7 +52,7 @@ function EcoBarChart({ barData, name }) {
       backgroundColor:
         data.tag !== "더보기" ? (name === "eco" ? EcoExpendColor[index] : NEcoExpendColor[index]) : "#C7D2E8", // 각 막대 색
       borderRadius: 13,
-      borderSkipped: "middle"
+      borderSkipped: barData.length >= 3 ? "middle" : "middle" + "start",
     };
   });
 
@@ -82,7 +82,7 @@ function EcoBarChart({ barData, name }) {
     animation: {
       duration: 0
     },
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: false
   };
 

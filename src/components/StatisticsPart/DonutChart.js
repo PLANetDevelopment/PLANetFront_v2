@@ -62,7 +62,7 @@ const DonutChart = ({ percentage, nowNoneEcoCount, nowEcoCount }) => {
           }}
           onClick={(event, index) => {
             // 클릭하면 인덱스(친/반환경) 변경
-            if (percentage > 0) {
+            if (percentage >= 0) {
               setSelected(index);
             }
           }}

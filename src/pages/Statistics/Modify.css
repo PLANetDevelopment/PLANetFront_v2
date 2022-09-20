@@ -211,9 +211,17 @@
   font-weight: 700;
   font-size: 18px;
   padding: 10px 0;
+  /*수정*/
+  margin-left: 6%;
+  margin-top: -2%;
 }
 
 #modal-root .type-container.wrap0 {
   margin-top: 10vh;
   height: 30vh;
+}
+
+/*date price modal...*/
+#modal-root .modify-modal-date{
+margin-left: 10%;
 }

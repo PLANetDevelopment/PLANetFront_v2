@@ -2,358 +2,327 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
 /*전체 화면*/
+
 .contents {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 90vw;
-  height: calc(100vh - 70px);
-  margin: 0 5vw 70px 5vw;
-  /* overflow-y: scroll; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90vw;
+    height: calc(100vh - 70px);
+    margin: 0 5vw 70px 5vw;
+    /* overflow-y: scroll; */
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
-  color: #a1a4a9;
+    width: 24px;
+    height: 24px;
+    color: #a1a4a9;
 }
 
 .logo {
-  width: 90.87px;
-  height: 15.95px;
-  margin-bottom: 4px;
+    width: 90.87px;
+    height: 15.95px;
+    margin-bottom: 4px;
 }
 
+
 /*상단 로고 세트*/
+
 .menu {
-  position: relative;
-  z-index: 4;
-  width: 94%;
-  margin: 8% 3%;
-  height: 24px;
+    position: relative;
+    z-index: 4;
+    width: 94%;
+    margin: 8% 3%;
+    height: 24px;
 }
 
 .menu a:nth-child(1) {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .menu a:nth-of-type(2) {
-  position: absolute;
-  right: 13%;
+    position: absolute;
+    right: 13%;
 }
 
 .menu a:nth-of-type(3) {
-  position: absolute;
-  margin-left: 20px;
-  right: 0;
+    position: absolute;
+    margin-left: 20px;
+    right: 0;
 }
 
+
 /*닉네임, 행성*/
+
 .profiles {
-  position: relative;
-  width: 100%;
-  height: 40%;
+    position: relative;
+    width: 100%;
+    height: 45%;
 }
 
 .nickname {
-  color: white;
-  position: absolute;
-  width: 146px;
-  height: 24px;
-  left: 3%;
-  cursor: pointer;
-  z-index: 4;
-  font-family: Pretendard;
-  font-size: 19px;
-  font-weight: 600;
+    color: white;
+    position: absolute;
+    width: 146px;
+    left: 3%;
+    cursor: pointer;
+    z-index: 4;
+    font-family: Pretendard;
+    font-size: 19px;
+    font-weight: 600;
 }
 
 .nickname .icon {
-  width: 18px;
-  height: 18px;
-  margin-left: 10px;
-  margin-bottom: -3px;
-  opacity: 0.8;
+    width: 18px;
+    height: 18px;
+    margin-left: 3%;
+    margin-bottom: -1%;
+    opacity: 0.8;
 }
 
 .planet {
-  position: absolute;
-  top: 30px;
-  width: 270px;
-  height: 270px;
-
-  margin-left: calc(50% - 135px);
-
-  border: none;
-  border-radius: 50%;
-  z-index: 0;
+    position: absolute;
+    top: 15%;
+    width: 68%;
+    width: 68%;
+    margin-left: calc(50% - 35%);
+    border: none;
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .planet img {
-  position: absolute;
-  top: 30px;
-  width: 200px;
-  height: 200px;
-
-  margin-left: 30px;
-
-  border: none;
-  border-radius: 50%;
-  z-index: 0;
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .planet p {
-  position: absolute;
-  white-space: pre;
-  height: 40px;
-  left: 45px;
-  top: 110px;
-
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 155%;
-  /* or 20px */
-
-  text-align: center;
-
-  color: #ffffff;
-
-  opacity: 0.5;
+    position: relative;
+    white-space: pre;
+    top: 110px;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 155%;
+    /* or 20px */
+    text-align: center;
+    color: #ffffff;
+    opacity: 0.5;
 }
 
 .question_container {
-  position: absolute;
-  padding: 10px;
-  right: 50px;
-  top: 40px;
+    position: absolute;
+    padding: 10px;
+    right: 13%;
+    top: 13%;
+    z-index: 10;
 }
 
 .question {
-  width: 18px;
-  height: 18px;
-
-  opacity: 0.4;
-  color: #ffffff;
-  cursor: pointer;
-  z-index: 1;
+    width: 18px;
+    height: 18px;
+    opacity: 0.4;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1;
 }
 
-/*월간 내역*/
-.monthly {
-  position: relative;
-  width: 100%;
-  height: 140px;
-  top: 25px;
 
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.08);
-  border-radius: 13px;
+/*월간 내역*/
+
+.monthly {
+    position: relative;
+    width: 100%;
+    height: 20%;
+    top: 2.5%;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.08);
+    border-radius: 13px;
 }
 
 .month {
-  position: absolute;
-  width: 39px;
-  height: 23px;
-  left: 21px;
-  top: 20px;
-
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 23px;
-  /* identical to box height */
-
-  color: #ffffff;
+    position: absolute;
+    width: 50px;
+    left: 4%;
+    top: 15%;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 23px;
+    /* identical to box height */
+    color: #ffffff;
 }
 
 .history {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  right: 22px;
-  top: 19px;
-
-  display: flex;
-
-  opacity: 0.4;
-  color: #ffffff;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 4%;
+    top: 13%;
+    display: flex;
+    opacity: 0.4;
+    color: #ffffff;
 }
 
 .income {
-  position: relative;
-  width: 100%;
-  height: 23.13px;
-  left: 26px;
-  top: 60px;
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 18px;
-
-  /* light grey */
-  color: #b4b6b8;
+    position: absolute;
+    width: 100%;
+    left: 6.5%;
+    top: 46%;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 32px;
+    /* light grey */
+    color: #b4b6b8;
 }
 
 .income h1 {
-  position: relative;
-  height: 16px;
-  top: -20px;
-  right: 52px;
-
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 100%;
-  /* identical to box height, or 16px */
-
-  display: flex;
-  align-items: center;
-
-  /* white */
-
-  color: #ffffff;
-  justify-content: flex-end;
+    position: absolute;
+    height: 16px;
+    top: 15%;
+    right: 13%;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 100%;
+    /* identical to box height, or 16px */
+    display: flex;
+    align-items: center;
+    /* white */
+    color: #ffffff;
+    justify-content: flex-end;
 }
 
 .expend {
-  position: absolute;
-  width: 100%;
-  height: 22.66px;
-  left: 26px;
-  top: 100px;
-
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 18px;
-
-  /* light grey */
-
-  color: #b4b6b8;
+    position: absolute;
+    width: 100%;
+    left: 6.5%;
+    top: 72%;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 18px;
+    /* light grey */
+    color: #b4b6b8;
 }
 
 .expend h1 {
-  position: relative;
-  height: 16px;
-  top: -20px;
-  right: 52px;
-
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 100%;
-  /* identical to box height, or 16px */
-
-  display: flex;
-  align-items: center;
-
-  /* white */
-
-  color: #ffffff;
-  justify-content: flex-end;
+    position: absolute;
+    height: 16px;
+    top: 0%;
+    right: 13%;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 100%;
+    /* identical to box height, or 16px */
+    display: flex;
+    align-items: center;
+    /* white */
+    color: #ffffff;
+    justify-content: flex-end;
 }
 
+
 /* etc */
+
 .etc {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-
-  position: relative;
-
-  height: 95px;
-
-  width: 100%;
-  top: 40px;
-  /* overflow-x: scroll; */
-
-  /* -ms-overflow-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    height: 15%;
+    width: 100%;
+    top: 4.5%;
+    /* overflow-x: scroll; */
+    /* -ms-overflow-style: none;
   /* IE and Edge */
-  /*scrollbar-width: none;
+    /*scrollbar-width: none;
 }
 .etc::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari, Opera*/
 }
 
+
 /*etc의 상자, 글씨, 버튼*/
+
 div.box {
-  position: relative;
-  width: 48%;
-  height: 95px;
-  left: 0px;
-  top: 0px;
-
-  /* Inside Auto Layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.08);
-  border-radius: 13px;
+    position: relative;
+    width: 48%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.08);
+    border-radius: 13px;
 }
 
 .etc div:nth-of-type(1) {
-  margin-right: 4%;
+    margin-right: 4%;
 }
 
 p.box_text {
-  position: absolute;
-  width: 65px;
-  height: 42px;
-  left: 15px;
-  top: 13px;
-
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 21px;
-  /* or 140% */
-
-  color: #ffffff;
+    position: absolute;
+    width: 65px;
+    height: 42px;
+    left: 8%;
+    top: 12%;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 140%;
+    /* or 140% */
+    color: #ffffff;
 }
 
 .btn {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  right: 12px;
-  top: 12px;
-
-  display: flex;
-
-  opacity: 0.4;
-  color: #ffffff;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 4%;
+    top: 12%;
+    display: flex;
+    opacity: 0.4;
+    color: #ffffff;
 }
 
 .floating {
-  position: fixed;
-  width: 55px;
-  height: 55px;
-  right: 5vw;
-  bottom: 85px;
-  color: #00c982;
-  background-color: #00c982;
-  border-radius: 100px;
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    right: 5vw;
+    bottom: 11%;
+    color: #00c982;
+    background-color: #00c982;
+    border-radius: 100px;
+    z-index: 10;
 }
 
 .floating .plus {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  top: 12.5px;
-  left: 12.5px;
-  color: white;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 12.5px;
+    left: 12.5px;
+    color: white;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }

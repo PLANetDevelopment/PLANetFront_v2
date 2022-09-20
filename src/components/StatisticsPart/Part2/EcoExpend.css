@@ -1,108 +1,109 @@
 .statistics-box {
-  font-family: Pretendard;
-  position: relative;
-  width: 100%;
-  background-color: #141b27;
-  padding-bottom: 18px;
+    font-family: Pretendard;
+    position: relative;
+    width: 100%;
+    background-color: #141b27;
+    padding-bottom: 18px;
 }
 
 .statistics-box .drop-box {
-  margin-bottom: 32px;
-  margin-left: 18px;
-  margin-top: 18px;
+    margin-bottom: 32px;
+    margin-left: 18px;
+    margin-top: 18px;
 }
 
 .statistics-box .day-box {
-  margin-bottom: 32px;
-  margin-top: 17px;
+    margin-bottom: 32px;
+    margin-top: 17px;
 }
 
 .statistics-box .day-box p {
-  font-family: Pretendard;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 16px;
-  margin-left: 21px;
+    font-family: Pretendard;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 16px;
+    margin-left: 21px;
 }
 
 .statistics-box .day-box .day-breakdown-box {
-  width: 100%;
+    width: 100%;
 }
 
 .statistics-box .day-box .day-breakdown-box h1 {
-  font-family: Pretendard;
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  color: #ffffff;
-  padding-top: 15px;
-  margin-left: 5px;
+    font-family: Pretendard;
+    position: relative;
+    display: inline;
+    font-size: 15px;
+    color: #ffffff;
+    padding-top: 15px;
+    margin-left: 5px;
 }
 
 .statistics-box .day-box .day-breakdown-box h2 {
-  font-family: Pretendard;
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  color: #ffffff;
-  padding-top: 15px;
-  margin-right: 30px;
-  float: right;
+    font-family: Pretendard;
+    position: relative;
+    display: inline;
+    font-size: 15px;
+    color: #ffffff;
+    padding-top: 15px;
+    margin-right: 30px;
+    float: right;
 }
 
 .statistics-box .day-box .day-breakdown-box h2:nth-last-child(1) {
-  font-family: Pretendard;
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  color: #b4b6b8;
-  padding-top: 5px;
-  margin-right: 10px;
-  float: right;
+    font-family: Pretendard;
+    position: relative;
+    display: inline;
+    font-size: 15px;
+    color: #ffffff;
+    padding-top: 5px;
+    margin-right: 10px;
+    float: right;
 }
 
 .statistics-box .day-box .day-breakdown-box p:nth-child(1) {
-  font-family: Pretendard;
-  font-size: 11px;
-  color: #566479;
-  margin-top: 3.12px;
-  margin-left: 30px;
+    font-family: Pretendard;
+    font-size: 11px;
+    color: #566479;
+    margin-top: 3.12px;
+    margin-left: 30px;
 }
 
 .statistics-box .day-box .day-breakdown-box span {
-  font-family: Pretendard;
-  font-size: 11px;
-  color: #566479;
-  margin-top: 3.12px;
-  margin-right: 30px;
-  float: right;
+    font-family: Pretendard;
+    font-size: 11px;
+    color: #566479;
+    margin-top: 3.12px;
+    margin-right: 30px;
+    float: right;
 }
 
 .statistics-box .day-box .day-breakdown-box .day-breakdown-box-icon {
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  color: #434952;
-  margin-left: 30px;
-  line-height: 52px;
-  word-spacing: 5px;
+    position: relative;
+    display: inline;
+    font-size: 15px;
+    color: #434952;
+    margin-left: 30px;
+    line-height: 52px;
+    word-spacing: 5px;
 }
+
 
 /*Part 2*/
 
 .more {
-  position: relative;
-  height: 52px;
-  padding-top: 7px;
-  font-family: Pretendard;
-  margin-bottom: 12px;
-  cursor: pointer;
-  margin: 0px 20px;
-  font-size: 20px;
-  margin-bottom: 60px;
-
-  color: #ffffff;
+    position: relative;
+    height: 52px;
+    padding-top: 7px;
+    font-family: Pretendard;
+    margin-bottom: 12px;
+    cursor: pointer;
+    margin: 0px 20px;
+    font-size: 20px;
+    margin-bottom: 60px;
+    color: #ffffff;
 }
+
 .more h1 {
-  padding-left: 5px;
+    padding-left: 5px;
 }

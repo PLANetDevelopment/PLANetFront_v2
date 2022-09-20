@@ -71,12 +71,20 @@ function DatePrice({ income, propDate, propPrice, sendData }) {
           background={"#202632"}
         >
           <p className="modify-modal-title">날짜</p>
-          <DateHeader getDate={date} sendDate={(date) => setDate(date)} />
-          <Calendar
-            selectedValue={date}
-            currentValue={date}
-            onChange={(date) => setDate(date)}
-          />
+          
+          <div className="modify-modal-date">
+
+            <div className="modify-modal-calendar">
+            <DateHeader getDate={date} sendDate={(date) => setDate(date)} />
+            <Calendar
+              selectedValue={date}
+              currentValue={date}
+              onChange={(date) => setDate(date)}
+            />
+            </div>
+            
+          </div>
+
         </Modal>
       )}
 
