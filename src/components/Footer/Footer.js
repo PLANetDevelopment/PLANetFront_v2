@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { RiHomeLine } from "react-icons/ri";
 import { FiCalendar, FiTrendingUp, FiGift } from "react-icons/fi";
 import styles from "../Footer/Footer.module.css";
-import { Icon } from "@iconify/react";
 
 function Footer({ activeMenu }) {
   return (
@@ -45,9 +44,9 @@ function Footer({ activeMenu }) {
         style={activeMenu === "diary" ? { pointerEvents: "none" } : null}
         className={activeMenu === "diary" ? styles.focused : styles.link}
       >
-        <Icon icon="uil:diary" className={styles.icon} />
+        <img className={styles.icon_img} src="img/talk.png" alt="talk"></img>
         <p className={activeMenu === "diary" ? styles.text : styles.text2}>
-          일기
+          별별톡
         </p>
       </Link>
       <Link

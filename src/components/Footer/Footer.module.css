@@ -39,6 +39,11 @@
   height: 20px;
 }
 
+.icon_img {
+  width: 20px;
+  height: 20px;
+}
+
 .focused {
   color: white;
   text-decoration: none;
@@ -47,6 +52,10 @@
 .focused:hover {
   background-color: rgba(0, 0, 0, 0.15);
   text-decoration: none;
+}
+
+.focused img {
+  filter: brightness(0) invert(1);
 }
 
 .text {

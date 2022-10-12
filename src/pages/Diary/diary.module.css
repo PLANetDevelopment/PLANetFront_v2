@@ -1,0 +1,706 @@
+@charset 'utf-8';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  color: #ffffff;
+  background-color: #141b27;
+  font-family: Pretendard;
+}
+
+/*검색어 이전 버튼*/
+.searchBackBtn {
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+/*상단 검색창 및 프로필*/
+.topbar {
+    float: left;
+    position: relative;
+    width: 76%;
+    height: 36px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 8px;
+    outline: none;
+    margin-top: 8%;
+    left: 6%;
+    padding: 10px;
+    font-family: Pretendard;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.topbar img {
+    position: relative;
+    top: -6%;
+    width: 20.4px;
+    height: 20px;
+    background-color: transparent;
+}
+
+.topbar input {
+    position: absolute;
+    top: 0%;
+    width: 90%;
+    height: 36px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 8px;
+    outline: none;
+    padding: 10px;
+    font-family: Pretendard;
+    color: rgba(255, 255, 255, 1);
+    background-color: transparent;
+    opacity: 30%;
+}
+
+.topbar input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 1);
+    opacity: 1; /* Firefox */
+    font-family: Pretendard;
+    font-size: 15px;
+}
+
+.topbar input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 1) !important;
+    font-family: Pretendard;
+    font-size: 15px;
+}
+
+.topbar input::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(255, 255, 255, 1);;
+    font-family: Pretendard;
+    font-size: 15px;
+}
+
+.topbar2 {
+    float: left;
+    position: relative;
+    width: 76%;
+    height: 36px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 8px;
+    outline: none;
+    margin-top: 8%;
+    left: 16%;
+    padding: 10px;
+    font-family: Pretendard;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.topbar2 img {
+    position: relative;
+    top: -6%;
+    width: 20.4px;
+    height: 20px;
+    background-color: transparent;
+}
+
+.topbar2 input {
+    position: absolute;
+    top: 0%;
+    width: 90%;
+    height: 36px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 8px;
+    outline: none;
+    padding: 10px;
+    font-family: Pretendard;
+    color: rgba(255, 255, 255, 1);
+    background-color: transparent;
+    opacity: 30%;
+}
+
+.topbar2 input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 1);
+    opacity: 1; /* Firefox */
+    font-family: Pretendard;
+    font-size: 15px;
+}
+
+.topbar2 input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 1) !important;
+    font-family: Pretendard;
+    font-size: 15px;
+}
+
+.topbar2 input::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(255, 255, 255, 1);;
+    font-family: Pretendard;
+    font-size: 15px;
+}
+
+.profile {
+    float: right;
+    margin-top: 9%;
+    margin-right: 6%;
+}
+
+/*drop box*/
+.drop_box_dimm {
+    color: #90949b;
+    background: rgba(86, 100, 121, 0.2);
+}
+
+.drop_box_selected {
+    color: rgb(var(--navy));
+    background-color: #00c982;
+}
+
+.drop_box {
+    position: relative;
+    left: 6%;
+    margin: 3.3% 0% 3.6% 0%;
+    font-family: Pretendard;
+}
+  
+.drop_box button {
+    font-family: Pretendard;
+    font-size: 13px;
+    font-weight: 600;
+    /* width: 20%; */
+    border-radius: 40.94px;
+    margin-right: 2.2%;
+    padding: 2% 2.8%;
+    position: relative;
+    text-align: center;
+    border: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/*border line*/
+.border_line {
+    background-color: #212937;
+    width: 100%;
+    height: 1px;
+}
+
+.border_deepline {
+    position: relative;
+    background-color: #0E1624;
+    width: 100%;
+    height: 8px;
+}
+
+/*게시글*/
+.post_box {
+    width: 100%;
+    margin: 4% 6%;
+    position: relative;
+}
+
+.post_box img{
+    float: left;
+}
+
+.post_box .star_img{
+    float: right;
+    margin-top: 1%;
+    margin-right: 12%;
+}
+
+.post_box h1{
+    float: left;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 2%;
+}
+
+.post_box p{
+    float: left;
+    font-family: Pretendard;
+    font-size: 11px;
+    font-weight: 400;
+    color: #AEAEAE;
+    margin: 2.5% 0%;
+}
+
+.img_box{
+    position: relative;
+    margin: 0 auto;
+    width: 88%;
+    height: 25%;
+    border-radius: 8px;
+    background-color: #212937;
+}
+
+.img_box img{
+    position: relative;
+    margin: 0 auto;
+    left: 48%;
+    top: 45%
+}
+
+.text_box{
+    width: 88%;
+    margin: 4% 6%;
+    position: relative;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.54px;
+}
+
+.react_box {
+    width: 100%;
+    margin: 0% 6%;
+    position: relative;
+}
+
+.react_box img{
+    float: left;
+}
+
+.react_box h1{
+    float: left;
+    font-family: Pretendard;
+    color: #AEAEAE;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0% 4.5% 4% 2.5%;
+}
+
+/*글쓰기 버튼*/
+.writing {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    right: 4vw;
+    bottom: 13%;
+    color: #00c982;
+    background-color: #00c982;
+    border-radius: 100px;
+    z-index: 10;
+}
+
+.writing .pencil {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    top: 12.5px;
+    left: 12.5px;
+    color: white;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/*글쓰기 페이지 css*/
+.backBtn {
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 7%;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.title {
+    position: absolute;
+    font-size: 18px;
+    font-family: Pretendard;
+    width: 100%;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 0;
+}
+
+.category {
+    margin: 0 auto;
+    position: relative;
+    width: 90%;
+}
+
+.category p{
+    font-family: Pretendard;
+    color: rgba(255, 255, 255, 1);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.inquiry {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 15%;
+    bottom: 15%;
+    position: fixed;
+    width: 100%;
+}
+
+.time_info_box {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 16px;
+}
+
+.time_info_box h1 {
+    font-size: 14px;
+    font-family: Pretendard;
+    font-weight: 600;
+    margin-bottom: 4%;
+    opacity: 60%;
+}
+
+.time_info_box p {
+    font-size: 14px;
+    font-family: Pretendard;
+    line-height: 20px;
+}
+
+.time_info_box h4 {
+    font-size: 12px;
+    font-family: Pretendard;
+    line-height: 18px;
+    color: #566479;
+}
+
+.line_box {
+  background-color: #000b21;
+  width: 100%;
+  height: 8px;
+  margin: 5% 0%;
+}
+
+.inquiry_submit_btn {
+    width: 100%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    left: 0;
+    bottom: 3%;
+}
+
+.inquiry_submit_btn button {
+    font-family: Pretendard;
+    font-size: 16px;
+    width: 90%;
+    height: 52px;
+    border-radius: 30px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    border: 0;
+    color: #141B27;
+    cursor: pointer;
+}
+
+.time_info_box input {
+    position: relative;
+    width: 100%;
+    height: 49px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: Pretendard;
+    background-color: #2a313c;
+    border: 0;
+    outline: 0;
+    padding-left: 14px;
+    color: white;
+}
+
+.time_info_box textarea {
+    position: relative;
+    width: 100%;
+    height: 157px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: Pretendard;
+    background-color: #2a313c;
+    border: 0;
+    outline: 0;
+    padding-top: 14px;
+    padding-left: 14px;
+    color: white;
+    resize: none;
+}
+
+.time_info_box input::placeholder textarea::placeholder {
+    /*글자색 안바뀜 왜?*/
+    fill: #ffffff;
+    color: #ffffff;
+    font-family: Pretendard;
+    font-size: 14px;
+}
+
+.time_info_box ::-ms-input-placeholder ::-ms-textarea-placeholder {
+    /*글자색 안바뀜 왜?*/
+    fill: #ffffff;
+    color: #ffffff;
+    font-family: Pretendard;
+    font-size: 14px;
+}
+
+/*최근 검색어*/
+.recent {
+    position: relative;
+    margin: 0 auto;
+    width: 88%;
+    height: 12%;
+    padding-top: 5%;
+    padding-bottom: 3%;
+    background-color: transparent;
+}
+
+.recent h1{
+    float: left;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.recent p{
+    float: right;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 50%;
+}
+
+.recent .recent_box{
+    margin: 0% auto;
+    width: 96%;
+    height: 70%;
+    background-color: transparent;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.recent .recent_box p{
+    font-family: Pretendard;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+/*인기 게시글(리스트)*/
+.post_list{
+    position: relative;
+    margin: 0 auto;
+    width: 88%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: transparent;
+}
+
+.post_list h1{
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/*월간 내역*/
+
+.monthly {
+    position: relative;
+    width: 100%;
+    height: 20%;
+    top: 2.5%;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.08);
+    border-radius: 13px;
+}
+
+.month {
+    position: absolute;
+    width: 50px;
+    left: 4%;
+    top: 15%;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 23px;
+    /* identical to box height */
+    color: #ffffff;
+}
+
+.history {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 4%;
+    top: 13%;
+    display: flex;
+    opacity: 0.4;
+    color: #ffffff;
+}
+
+.income {
+    position: absolute;
+    width: 100%;
+    left: 6.5%;
+    top: 46%;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 32px;
+    /* light grey */
+    color: #b4b6b8;
+}
+
+.income h1 {
+    position: absolute;
+    height: 16px;
+    top: 15%;
+    right: 13%;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 100%;
+    /* identical to box height, or 16px */
+    display: flex;
+    align-items: center;
+    /* white */
+    color: #ffffff;
+    justify-content: flex-end;
+}
+
+.expend {
+    position: absolute;
+    width: 100%;
+    left: 6.5%;
+    top: 72%;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 18px;
+    /* light grey */
+    color: #b4b6b8;
+}
+
+.expend h1 {
+    position: absolute;
+    height: 16px;
+    top: 0%;
+    right: 13%;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 100%;
+    /* identical to box height, or 16px */
+    display: flex;
+    align-items: center;
+    /* white */
+    color: #ffffff;
+    justify-content: flex-end;
+}
+
+
+/* etc */
+
+.etc {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    height: 15%;
+    width: 100%;
+    top: 4.5%;
+    /* overflow-x: scroll; */
+    /* -ms-overflow-style: none;
+  /* IE and Edge */
+    /*scrollbar-width: none;
+}
+.etc::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera*/
+}
+
+
+/*etc의 상자, 글씨, 버튼*/
+
+div.box {
+    position: relative;
+    width: 48%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.08);
+    border-radius: 13px;
+}
+
+.etc div:nth-of-type(1) {
+    margin-right: 4%;
+}
+
+p.box_text {
+    position: absolute;
+    width: 65px;
+    height: 42px;
+    left: 8%;
+    top: 12%;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 140%;
+    /* or 140% */
+    color: #ffffff;
+}
+
+.btn {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 4%;
+    top: 12%;
+    display: flex;
+    opacity: 0.4;
+    color: #ffffff;
+}
+
+.floating {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    right: 5vw;
+    bottom: 11%;
+    color: #00c982;
+    background-color: #00c982;
+    border-radius: 100px;
+    z-index: 10;
+}
+
+.floating .plus {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 12.5px;
+    left: 12.5px;
+    color: white;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}

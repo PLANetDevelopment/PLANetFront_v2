@@ -36,6 +36,9 @@ import Login from "./pages/Login/Login";
 
 import EcoCategory from "./pages/Statistics/Part2/EcoCategory";
 
+import WritingPage from "./pages/Diary/WritingPage";
+import SearchPost from "./pages/Diary/SearchPost";
+
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -77,6 +80,9 @@ function App() {
         <Route path="/inquiry" element={<Inquiry />} />
         <Route path="/inquiryForm" element={<InquiryForm />} />
         <Route path="/inquiryList" element={<InquiryList />} />
+
+        <Route path="/writingPage" element={<WritingPage />} />
+        <Route path="/searchPost" element={<SearchPost />} />
       </Routes>
     </QueryClientProvider>
   );
