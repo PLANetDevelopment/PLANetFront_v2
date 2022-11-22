@@ -101,6 +101,7 @@ function MyPage() {
         <div className={ MypageStyle.drop_box }>
             <p>회원탈퇴</p>
         </div>
+        
         <Footer activeMenu="home">
             <div>홈</div>
         </Footer>

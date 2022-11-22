@@ -38,6 +38,7 @@ import EcoCategory from "./pages/Statistics/Part2/EcoCategory";
 
 import WritingPage from "./pages/Diary/WritingPage";
 import SearchPost from "./pages/Diary/SearchPost";
+import PostView from "./components/DiaryPart/PostView";
 
 function App() {
   const queryClient = new QueryClient({
@@ -83,6 +84,7 @@ function App() {
 
         <Route path="/writingPage" element={<WritingPage />} />
         <Route path="/searchPost" element={<SearchPost />} />
+        <Route path="/postView" element={<PostView />} />
       </Routes>
     </QueryClientProvider>
   );

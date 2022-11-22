@@ -1,26 +1,59 @@
 .uploader-wrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.img-wrapper{
-    margin: 5px 0 37px 0;
+.uploader-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+label {
+    cursor: pointer;
+    font-size: 1em;
+ }
+
+.img-upload {
+    display: flex;
+    width: 84px;
+    height: 84px;
+    border-radius: 13px;
+    background: #212937;
+    margin-right: 10px;
+    align-items: center;
+    justify-content : center;
+}
+
+.img-upload svg{
+    width: 21.96px;
+    height: 21.96px;
+    color: #ffffff;
+    opacity: 40%;
+}
+
+.input-img{
     width: 84px;
     height: 84px;
     border: 0;
     outline: 0;
     border-radius: 13px;
+    /*input 없애기*/
+    display: none;
 }
 
 .img-wrapper img {
     width: 84px;
     height: 84px;
     border-radius: 13px;
+    margin-right: 10px;
 }
 
-.img-spinner{
-    width: 84px;
-    height: 84px;
+/* carousel 구현 */
+.slide-window {
+    display: flex;
+    flex-direction: row;
+    
+    overflow: hidden;
 }
 
 .imgLoadingAnim {
@@ -41,6 +74,10 @@
  
     animation: Rotate 0.8s infinite linear;
     z-index: 100;
+ }
+
+ .upload-button {
+    
  }
   
  @keyframes Rotate {

@@ -4,7 +4,6 @@ import InquiryStyle from './Inquiry.module.css';
 import HistorySample from '../../components/History/HistoryBack';
 import Uploader from "../../components/InquiryPart/Uploader";
 import Popup from '../../components/InquiryPart/Popup';
-import Inquiry from './Inquiry';
 
 const InquiryForm = ({ onCreate }) => {
   const [state, setState] = useState({

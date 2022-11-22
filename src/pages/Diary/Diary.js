@@ -78,7 +78,7 @@ function Diary() {
         </div>
 
         <div className={DiaryStyle.border_line}></div>
-
+        
         <Post></Post>
 
         <Link to="/WritingPage">

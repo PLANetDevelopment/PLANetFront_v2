@@ -1,12 +1,19 @@
 import React from "react";
 
 import DiaryStyle from "../../pages/Diary/diary.module.css";
+import { useNavigate } from "react-router-dom";
 
 //게시글 컴포넌트
 function Post() {
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate('/PostView'); //게시물 보기
+  };
+
   return (
     <>
-      <div className={DiaryStyle.post_box}>
+      <div className={DiaryStyle.post_box} onClick={onClick}>
         <img src="img/profile.png" alt="profile"></img>
         <h1>닉네임</h1>
         <p>∙  6시간 전</p>

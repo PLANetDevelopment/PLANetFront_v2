@@ -17,6 +17,17 @@
   font-family: Pretendard;
 }
 
+.title_icon {
+    margin-top: 10%;
+    margin-left: 88%;
+}
+
+.title_icon svg {
+    width: 22px;
+    height: 22px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
 /*검색어 이전 버튼*/
 .searchBackBtn {
     position: absolute;
@@ -184,6 +195,11 @@
     border: 0;
     cursor: pointer;
     z-index: 1;
+}
+
+.drop_box_category {
+    color: #00C982;
+    background-color: rgba(86, 100, 121, 0.2);
 }
 
 /*border line*/
@@ -499,11 +515,11 @@
 
 /*인기 게시글(리스트)*/
 .post_list{
+    font-family: Pretendard;
     position: relative;
     margin: 0 auto;
     width: 88%;
     padding-top: 5%;
-    padding-bottom: 5%;
     background-color: transparent;
 }
 
@@ -513,176 +529,66 @@
     font-weight: 600;
 }
 
-/*월간 내역*/
-
-.monthly {
+/*인기 게시글 컴포넌트*/
+.postList{
+    font-family: Pretendard;
     position: relative;
-    width: 100%;
-    height: 20%;
-    top: 2.5%;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.08);
-    border-radius: 13px;
+    margin: 0 auto;
+    width: 88%;
+    background-color: transparent;
+    margin-top: 5%;
 }
 
-.month {
-    position: absolute;
-    width: 50px;
-    left: 4%;
-    top: 15%;
+.postList p{
     font-family: Pretendard;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.2rem;
-    line-height: 23px;
-    /* identical to box height */
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    font-weight: 400;
 }
 
-.history {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    right: 4%;
-    top: 13%;
-    display: flex;
-    opacity: 0.4;
-    color: #ffffff;
-}
-
-.income {
-    position: absolute;
-    width: 100%;
-    left: 6.5%;
-    top: 46%;
+.postList h1{
+    float: left;
+    width: 68%;
     font-family: Pretendard;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 32px;
-    /* light grey */
-    color: #b4b6b8;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    line-height: 20px;
 }
 
-.income h1 {
-    position: absolute;
-    height: 16px;
-    top: 15%;
-    right: 13%;
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.1rem;
-    line-height: 100%;
-    /* identical to box height, or 16px */
-    display: flex;
-    align-items: center;
-    /* white */
-    color: #ffffff;
-    justify-content: flex-end;
-}
-
-.expend {
-    position: absolute;
-    width: 100%;
-    left: 6.5%;
-    top: 72%;
-    font-family: Pretendard;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 18px;
-    /* light grey */
-    color: #b4b6b8;
-}
-
-.expend h1 {
-    position: absolute;
-    height: 16px;
-    top: 0%;
-    right: 13%;
-    font-family: "Pretendard";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.1rem;
-    line-height: 100%;
-    /* identical to box height, or 16px */
-    display: flex;
-    align-items: center;
-    /* white */
-    color: #ffffff;
-    justify-content: flex-end;
-}
-
-
-/* etc */
-
-.etc {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+.postList img{
     position: relative;
-    height: 15%;
-    width: 100%;
-    top: 4.5%;
-    /* overflow-x: scroll; */
-    /* -ms-overflow-style: none;
-  /* IE and Edge */
-    /*scrollbar-width: none;
-}
-.etc::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, Opera*/
+    float: right;
+    top: -15%;
 }
 
-
-/*etc의 상자, 글씨, 버튼*/
-
-div.box {
-    position: relative;
-    width: 48%;
-    height: 100%;
-    left: 0%;
-    top: 0%;
-    /* Inside Auto Layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.08);
-    border-radius: 13px;
-}
-
-.etc div:nth-of-type(1) {
-    margin-right: 4%;
-}
-
-p.box_text {
-    position: absolute;
-    width: 65px;
-    height: 42px;
-    left: 8%;
-    top: 12%;
+.post_view_box {
     font-family: Pretendard;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1rem;
-    line-height: 140%;
-    /* or 140% */
-    color: #ffffff;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    background-color: transparent;
 }
 
-.btn {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    right: 4%;
-    top: 12%;
-    display: flex;
-    opacity: 0.4;
-    color: #ffffff;
+.post_view_box p{
+    float: left;
+    font-family: Pretendard;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    font-weight: 400;
 }
 
+.post_view_box img{
+    margin-top: 0.3%;
+    float: left;
+    margin-left: 18.75px;
+    margin-right: 6.75px;
+    width: 10px;
+    height: 10px;
+}
+
+/*글쓰기 버튼*/
 .floating {
     position: fixed;
     width: 55px;

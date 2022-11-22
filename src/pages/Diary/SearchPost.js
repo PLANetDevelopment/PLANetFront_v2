@@ -40,6 +40,7 @@ function SearchPost() {
         </div>
 
         <PostList></PostList>
+        <PostList></PostList>
 
       </div>
     </>
