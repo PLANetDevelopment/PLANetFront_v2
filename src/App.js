@@ -73,7 +73,7 @@ function App() {
         <Route path="/informationPage" element={<InformationPage />} />
         <Route path="/coupon" element={<Coupon />} />
         <Route path="/couponJoin" element={<CouponJoin />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/ecocategory/detail" element={<Detail />} />
         <Route path="/inquiry" element={<Inquiry />} />
         <Route path="/inquiryForm" element={<InquiryForm />} />
         <Route path="/inquiryList" element={<InquiryList />} />
