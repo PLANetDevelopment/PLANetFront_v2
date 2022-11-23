@@ -2,26 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./EcoExpend.css";
 import { useQueryClient } from "react-query";
+import { emoji } from "../../../assets/emoji";
 
 const EcoExpendColor = ["#00C982", "#1466FE", "#083FA5", "#728EC6"];
 const NEcoExpendColor = ["#8593B1", "#667492", "#475572", "#303B51"];
-
-const emoji = {
-  급여: "💰",
-  용돈: "👛",
-  식비: "🌭",
-  교통: "🚗",
-  문화생활: "🎬",
-  생필품: "✏️",
-  마트: "🛒",
-  교육: "📚",
-  통신: "📱",
-  "의료/건강": "🏥",
-  "경조사/회비": "💵",
-  가전: "🛏",
-  공과금: "🧾",
-  기타: "💬",
-};
 
 function EcoExpend(props) {
   const queryClient = useQueryClient();
@@ -99,7 +83,7 @@ function EcoExpend(props) {
             <Link
               to="/EcoCategory"
               state={{
-                name: "eco",
+                name: "ecoG",
               }}
             >
               <div className="more">
@@ -128,7 +112,7 @@ function EcoExpend(props) {
             <Link
               to="/EcoCategory"
               state={{
-                name: "neco",
+                name: "ecoR",
               }}
             >
               <div className="more">
