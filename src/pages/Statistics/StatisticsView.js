@@ -45,7 +45,6 @@ function StatisticsView() {
   const [detailDtoList, setDetailDtoList] = useState([]);
   const [selectOption, setSelectOptions] = useState("all");
 
-  const nowMFormat = "M";
   const userId = window.localStorage.getItem("userId");
 
   const wayEmoji = (way) =>

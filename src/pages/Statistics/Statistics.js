@@ -22,23 +22,23 @@ const containerStyle = {
   height: "30%",
 };
 
-const fetchData = async (userId, currentMonth) => {
-  let date = isSameMonth(currentMonth, new Date())
-    ? currentMonth
-    : endOfMonth(currentMonth);
-  const response = await axios.get(
-    `https://xn--lj2bx51av9j.xn--yq5b.xn--3e0b707e:8080/api/statistics/${format(
-      date,
-      "yyyy"
-    )}/${format(date, "M")}/${format(date, "d")}`,
-    { headers: { userId: userId } }
-  );
-  const data = await response.data;
+const fetchData = async (userId, currentDate) => {
+  // let date = isSameMonth(currentDate, new Date())
+  //   ? currentDate
+  //   : endOfMonth(currentDate);
+  // const response = await axios.get(
+  //   `https://xn--lj2bx51av9j.xn--yq5b.xn--3e0b707e:8080/api/statistics/${format(
+  //     date,
+  //     "yyyy"
+  //   )}/${format(date, "M")}/${format(date, "d")}`,
+  //   { headers: { userId: userId } }
+  // );
+  // const data = await response.data;
   return data;
 };
 
 function StatisticsMain() {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [position, setposition] = useState(0);
   const [message, setMessage] = useState(0);
@@ -61,7 +61,7 @@ function StatisticsMain() {
 
   const results = useQuery({
     queryKey: "statisticsData",
-    queryFn: () => fetchData(userId, currentMonth),
+    queryFn: () => fetchData(userId, currentDate),
     enabled: !!userId,
     staleTime: 1000 * 5 * 60, // 5분
     cacheTime: Infinity, // 제한 없음
@@ -74,7 +74,7 @@ function StatisticsMain() {
   });
 
   const onchangeDate = (date) => {
-    setCurrentMonth(date);
+    setCurrentDate(date);
     fetchStat.mutate(date);
   };
   const openModal = (e) => {
@@ -111,7 +111,7 @@ function StatisticsMain() {
     }
   }, [results.status]);
 
-  if (results.status === "loading")
+  if (results.status === "loading" || results.status === "error")
     return (
       <div
         style={{
@@ -121,31 +121,20 @@ function StatisticsMain() {
           marginTop: "40vh",
         }}
       >
-        로딩중...
-      </div>
-    );
-  if (results.status === "error")
-    return (
-      <div
-        style={{
-          width: "100vw",
-          color: "#636E75",
-          textAlign: "center",
-          marginTop: "40vh",
-        }}
-      >
-        문제가 발생했습니다. 잠시 후에 다시 시도해주세요.
+        {results.status === "loading"
+          ? "로딩중..."
+          : "문제가 발생했습니다. 잠시 후에 다시 시도해주세요."}
       </div>
     );
 
   return (
     <div className="statistic-main">
-      <DateHeader getDate={currentMonth} sendDate={onchangeDate} />
+      <DateHeader getDate={currentDate} sendDate={onchangeDate} />
       <div className="stat-main-contents">
         {/* <Link to="/StatisticsView"> */}
         <div className="month-box">
           <div className="month-breakdown">
-            <p>{format(currentMonth, nowMFormat)}월 내역</p>
+            <p>{format(currentDate, nowMFormat)}월 내역</p>
             <IoIosArrowForward className="box-icon" />
           </div>
 
@@ -194,11 +183,11 @@ function StatisticsMain() {
           </h2>
 
           {message.ecoCount !== undefined && (
-            <LineGraph dataset={message.ecoCount}></LineGraph>
+            <LineGraph dataset={message.ecoCount} />
           )}
         </div>
 
-        <div className="line-box"></div>
+        <div className="line-box" />
 
         <div className="chart-graph-box">
           <h1>{userName}님의 지출은 건강한가요?</h1>
@@ -218,12 +207,13 @@ function StatisticsMain() {
             />
           </div>
         </div>
-        <div className="line-box"></div>
+        <div className="line-box" />
 
         <Link
           to="/EcoCategory"
           state={{
-            name: "eco",
+            name: "ecoG",
+            month: currentDate,
           }}
         >
           <div className="expend-box">
@@ -232,7 +222,7 @@ function StatisticsMain() {
           </div>
         </Link>
         <div className="chart">
-          <EcoBarChart barData={ecoTagCounts} name="eco"></EcoBarChart>
+          <EcoBarChart barData={ecoTagCounts} name="eco" />
         </div>
         {ecoTagCounts.length < 2 ? (
           <div className="statistics-box">
@@ -250,15 +240,16 @@ function StatisticsMain() {
             </p>
           </div>
         ) : (
-          <Eco name="eco"></Eco>
+          <Eco name="eco" />
         )}
 
-        <div className="line-box"></div>
+        <div className="line-box" />
 
         <Link
           to="/EcoCategory"
           state={{
-            name: "neco",
+            name: "ecoR",
+            month: currentDate,
           }}
         >
           <div className="expend-box">
@@ -267,7 +258,7 @@ function StatisticsMain() {
           </div>
         </Link>
         <div className="chart">
-          <EcoBarChart barData={noEcoTagCounts} name="neco"></EcoBarChart>
+          <EcoBarChart barData={noEcoTagCounts} name="neco" />
         </div>
         {noEcoTagCounts.length < 2 ? (
           <div className="statistics-box">
@@ -285,7 +276,7 @@ function StatisticsMain() {
             </p>
           </div>
         ) : (
-          <Eco name="neco"></Eco>
+          <Eco name="neco" />
         )}
       </div>
       <Footer activeMenu="statistics">

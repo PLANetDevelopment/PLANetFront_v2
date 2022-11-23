@@ -76,7 +76,6 @@ function Home({ activeHome }) {
       setEcoPercentage(message.ecoPercentage);
     }
   }, [queryClient, results]);
-  console.log(message);
 
   useEffect(() => {
     if (results.status === "success") {
@@ -108,7 +107,7 @@ function Home({ activeHome }) {
   } else {
     lottieOptions.animationData = high;
   }
-  // if (results.status === "loading") return <div>loading...</div>;
+
   return (
     <>
       <div className={homeStyle.contents}>
