@@ -5,12 +5,12 @@ import "./Statistics.css";
 import { IoIosArrowForward } from "react-icons/io";
 import DonutChart from "../../components/StatisticsPart/DonutChart";
 import LineGraph from "../../components/StatisticsPart/LineGraph";
-import Eco from "../../components/StatisticsPart/Part2/EcoExpend";
+import Eco from "../../components/StatisticsPart/EcoExpend";
 
 import DateHeader from "../../components/DateHeader";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 
-import { EcoBarChart } from "../../components/StatisticsPart/Part2/EcoBarChart";
+import { EcoBarChart } from "../../components/StatisticsPart/EcoBarChart";
 import { InfoModal } from "../../components/Modal/Modal";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
@@ -122,24 +122,24 @@ function StatisticsMain() {
     <div className="statistic-main">
       <DateHeader getDate={currentDate} sendDate={onchangeDate} />
       <div className="stat-main-contents">
-        {/* <Link to="/StatisticsView"> */}
-        <div className="month-box">
-          <div className="month-breakdown">
-            <p>{format(currentDate, nowMFormat)}월 내역</p>
-            <IoIosArrowForward className="box-icon" />
-          </div>
+        <Link to="/StatisticsView">
+          <div className="month-box">
+            <div className="month-breakdown">
+              <p>{format(currentDate, nowMFormat)}월 내역</p>
+              <IoIosArrowForward className="box-icon" />
+            </div>
 
-          <div className="month-breakdown">
-            <p>수입</p>
-            <h1>{incomeTotal.toLocaleString()}원</h1>
-          </div>
+            <div className="month-breakdown">
+              <p>수입</p>
+              <h1>{incomeTotal.toLocaleString()}원</h1>
+            </div>
 
-          <div className="month-breakdown">
-            <p>지출</p>
-            <h1>{expenditureTotal.toLocaleString()}원</h1>
+            <div className="month-breakdown">
+              <p>지출</p>
+              <h1>{expenditureTotal.toLocaleString()}원</h1>
+            </div>
           </div>
-        </div>
-        {/* </Link> */}
+        </Link>
 
         <div className="line-box" />
 

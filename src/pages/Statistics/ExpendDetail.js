@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { format, parseISO } from "date-fns";
 import ko from "date-fns/locale/ko";
-import "./Category.css";
+import "./ExpendDetail.css";
 import axios from "axios";
 import { IoIosArrowForward } from "react-icons/io";
 import { useQueryClient, useQuery } from "react-query";

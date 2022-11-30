@@ -160,39 +160,36 @@
 /*세부내역 css*/
 
 .static-detail-container {
-  margin-top: 70px;
   width: 100%;
-  background-color: rgb(var(--navy));
 }
 
 .detail-box {
   position: relative;
+  margin-top: 70px;
   width: 100%;
-  background-color: #141b27;
-  padding-top: 24px;
-  padding-bottom: 23.5px;
+
+  padding: 24px 16px;
 }
 
-.detail-box .income-box {
+.detail-box .inex-box {
   position: relative;
   background-color: rgba(255, 255, 255, 0.05);
-  width: 80%;
-  height: 49px;
+
+  height: 58px;
   border-radius: 13px;
-  margin: 0 auto;
-  padding-top: 16px;
-  margin-bottom: 12px;
+  padding: 20px;
+  margin-bottom: 8px;
   cursor: pointer;
 }
 
-.detail-box .income-box p {
+.detail-box .inex-box p {
   display: inline;
   font-size: 14px;
-  margin-left: 21px;
+
   color: #b4b6b8;
 }
 
-.detail-box .income-box h1 {
+.detail-box .inex-box h1 {
   position: relative;
   display: inline;
   font-size: 16px;
@@ -200,7 +197,7 @@
   float: right;
 }
 
-.detail-box .income-box .detail-icon {
+.detail-box .inex-box .detail-icon {
   position: relative;
   display: inline;
   color: rgba(255, 255, 255, 0.4);
@@ -208,7 +205,7 @@
   height: 20px;
   float: right;
   margin-left: 5px;
-  margin-right: 20px;
+
   top: -3px;
   cursor: pointer;
 }
@@ -250,7 +247,17 @@
   color: #ffffff;
 }
 
-.statistics-box {
+/*여기서부터 옵션 컨테이너*/
+.statistics-option-box {
+  width: 100%;
+  padding: 24px 16px;
+}
+
+.statistics-option-box .selectBoxWrapper {
+  padding: 14px 0;
+}
+
+/* .statistics-box {
   position: relative;
   width: 100%;
   background-color: #141b27;
@@ -283,7 +290,7 @@
 
 .statistics-box .stat-detail-money {
   margin-left: auto;
-}
+} */
 
 /*StatisticsIncomeView.css*/
 .detail-box .income-detail-box {

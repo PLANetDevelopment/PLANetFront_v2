@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./EcoExpend.css";
 import { useQueryClient } from "react-query";
-import { emoji } from "../../../assets/emoji";
+import { emoji } from "../../assets/emoji";
 
 const EcoExpendColor = ["#00C982", "#1466FE", "#083FA5", "#728EC6"];
 const NEcoExpendColor = ["#8593B1", "#667492", "#475572", "#303B51"];
@@ -35,7 +35,10 @@ function EcoExpend({ name }) {
       if (name === "eco") {
         for (let i = 0; i < ecoTagCounts.length - 1 && i < 4; i++) {
           renderExpendList.push(
-            <div className="expend-list-item">
+            <div
+              className="expend-list-item"
+              key={ecoTagCounts[i][1] + emoji[ecoTagCounts[i][0]]}
+            >
               <div
                 className="day-breakdown-box-icon"
                 style={{ color: EcoExpendColor[i] }}
@@ -52,7 +55,10 @@ function EcoExpend({ name }) {
       } else {
         for (let i = 0; i < noEcoTagCounts.length - 1 && i < 4; i++) {
           renderExpendList.push(
-            <div className="expend-list-item">
+            <div
+              className="expend-list-item"
+              key={noEcoTagCounts[i][1] + emoji[noEcoTagCounts[i][0]]}
+            >
               <div
                 className="day-breakdown-box-icon"
                 style={{ color: NEcoExpendColor[i] }}

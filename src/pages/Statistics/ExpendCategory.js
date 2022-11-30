@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useQueryClient, useQuery } from "react-query";
 import { IoIosArrowForward } from "react-icons/io";
-import { emoji } from "../../../assets/emoji";
+import { emoji } from "../../assets/emoji";
 import "./ExpendCategory.css";
 
 const fetchData = async (userId, ecoData, currentMonth) => {

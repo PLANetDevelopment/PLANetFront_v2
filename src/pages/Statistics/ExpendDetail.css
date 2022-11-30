@@ -34,59 +34,6 @@
   text-align: center;
 }
 
-.category-category {
-  padding-top: 70px;
-  padding-left: 16px;
-  font-size: 12px;
-  opacity: 0.5;
-  margin-bottom: 14px;
-}
-
-.category-box {
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.025);
-  width: calc(100% - 32px);
-  border-radius: 13px;
-  margin: 0 auto;
-  padding: 20px 0;
-  margin-bottom: 8px;
-  cursor: pointer;
-}
-
-.category-box p {
-  display: inline;
-  font-size: 15px;
-  margin-left: 21px;
-  margin-top: 2px;
-  float: left;
-}
-
-.category-box h1 {
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  float: right;
-}
-
-.category-box h2 {
-  display: inline;
-  font-size: 15px;
-  margin-left: 3px;
-}
-
-.category-box .detail-icon {
-  position: relative;
-  display: inline;
-  color: rgba(255, 255, 255, 0.4);
-  width: 20px;
-  height: 20px;
-  float: right;
-  margin-left: 5px;
-  margin-right: 20px;
-  top: -3px;
-  cursor: pointer;
-}
-
 .detailType {
   position: relative;
   padding: 60px 16px 0 16px;

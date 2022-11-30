@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { format, parseISO, isSameMonth, endOfMonth } from "date-fns";
+import { format } from "date-fns";
 import "./Statistics.css";
 import { IoIosArrowForward } from "react-icons/io";
-import ko from "date-fns/locale/ko";
+
 import DateHeader from "../../components/DateHeader";
-import { DetailMemo, StatisticsWays } from "./StatisticsWays";
 import "../../components/StatisticsPart/Dropbox.module.css";
-import styled from "styled-components";
+
 import axios from "axios";
 import { useQueryClient, useQuery, useMutation } from "react-query";
+import InExItem from "../../components/StatisticsPart/InExItem";
 
 const OPTIONS = [
   { value: "all", name: "전체" },
@@ -18,85 +18,34 @@ const OPTIONS = [
 ];
 
 const fetchData = async (userId, currentMonth) => {
-  let date = isSameMonth(currentMonth, new Date())
-    ? currentMonth
-    : endOfMonth(currentMonth);
-  const response = await axios.get(
-    `https://xn--lj2bx51av9j.xn--yq5b.xn--3e0b707e:8080/api/statistics/total/${format(
-      date,
-      "yyyy"
-    )}/${format(date, "M")}`,
-    { headers: { userId: userId } }
-  );
-  const data = await response.data;
+  // let date = isSameMonth(currentMonth, new Date())
+  //   ? currentMonth
+  //   : endOfMonth(currentMonth);
+  // const response = await axios.get(
+  //   `https://xn--lj2bx51av9j.xn--yq5b.xn--3e0b707e:8080/api/statistics/total/${format(
+  //     date,
+  //     "yyyy"
+  //   )}/${format(date, "M")}`,
+  //   { headers: { userId: userId } }
+  // );
+  // const data = await response.data;
   return data;
 };
 
 function StatisticsView() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [message, setMessage] = useState({});
+
   const [totalMonthIncome, setTotalMonthIncome] = useState(0);
   const [totalMonthExpenditure, setTotalMonthExpenditure] = useState(0);
   const [inMore, setInMore] = useState(true);
   const [exMore, setExMore] = useState(true);
   const [inDif, setInDif] = useState(0);
   const [exDif, setExDif] = useState(0);
-  const [loading, setloading] = useState(true);
+
   const [detailDtoList, setDetailDtoList] = useState([]);
   const [selectOption, setSelectOptions] = useState("all");
 
   const userId = window.localStorage.getItem("userId");
-
-  const wayEmoji = (way) =>
-    way === "은행" ? "🏦" : way === "카드" ? "💳" : "💵";
-  const DropBox2 = (props) => {
-    const handleChange = (e) => {
-      // event handler
-      console.log(e.target.value);
-      setSelectOptions(e.target.value);
-      console.log(selectOption);
-      console.dir(e);
-    };
-    return (
-      <div className="SelectBoxWrapper">
-        <select onChange={handleChange} value={selectOption}>
-          {props.options.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-              defaultValue={props.defaultValue === option.value}
-            >
-              {option.name}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
-  };
-
-  // const fetchData = async () => {
-  //   const response = await fetch(
-  //     `/statistics/2022/3`,
-  //     //${format(new Date(), "M")}
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //       },
-  //     }
-  //   );
-  //   const data = await response.json();
-  //   setMessage(data);
-  //   setDetailDtoList(data.detailDtoList);
-  // };
-
-  // useEffect(() => {
-  //   // fetchData();
-  //   setMessage(data);
-  //   setDetailDtoList(data.detailDtoList);
-  //   // setloading(false);
-  // }, []);
 
   const queryClient = useQueryClient();
 
@@ -114,16 +63,10 @@ function StatisticsView() {
     onError: (error) => console.error(),
   });
 
-  const onchangeDate = (date) => {
-    setCurrentMonth(date);
-    fetchStat.mutate(date);
-  };
-
   useEffect(() => {
     if (results.status === "success") {
       const messages = queryClient.getQueryData("statisticsViewData");
 
-      setMessage(messages);
       setTotalMonthIncome(messages.totalMonthIncome);
       setTotalMonthExpenditure(messages.totalMonthExpenditure);
       setInMore(messages.inMore);
@@ -134,38 +77,37 @@ function StatisticsView() {
     }
   }, [queryClient, results]);
 
-  useEffect(() => {
-    if (results.status === "success") {
-      setloading(false);
-    }
-  }, [results.status]);
+  const handleChange = (e) => {
+    setSelectOptions(e.target.value);
+  };
 
-  if (results.status === "loading")
+  const onchangeDate = (date) => {
+    setCurrentMonth(date);
+    fetchStat.mutate(date);
+  };
+
+  const filterItems = (value) => {
+    switch (selectOption) {
+      case "all":
+        return value;
+      case "income":
+        return value.income === true;
+      case "expend":
+        return value.income === false;
+      default:
+        return value;
+    }
+  };
+
+  if ((results.status !== "success") | (results.status === "error"))
     return (
-      <div
-        style={{
-          width: "100vw",
-          color: "#636E75",
-          textAlign: "center",
-          marginTop: "40vh",
-        }}
-      >
-        로딩중...
+      <div style={errorStyle}>
+        {results.status === "loading"
+          ? "로딩중..."
+          : "문제가 발생했습니다. 잠시 후에 다시 시도해주세요."}
       </div>
     );
-  if (results.status === "error")
-    return (
-      <div
-        style={{
-          width: "100vw",
-          color: "#636E75",
-          textAlign: "center",
-          marginTop: "40vh",
-        }}
-      >
-        문제가 발생했습니다. 잠시 후에 다시 시도해주세요.
-      </div>
-    );
+
   return (
     <div className="static-detail-container">
       <DateHeader
@@ -180,10 +122,8 @@ function StatisticsView() {
             currentMonth,
             "M"
           )}`}
-          state={{ name: "income" }}
-          style={{ textDecoration: "none" }}
         >
-          <div className="income-box">
+          <div className="inex-box">
             <p>수입</p>
             <IoIosArrowForward className="detail-icon" />
             <h1>{totalMonthIncome}원</h1>
@@ -194,184 +134,59 @@ function StatisticsView() {
             currentMonth,
             "M"
           )}`}
-          state={{ name: "expenditure" }}
-          style={{ textDecoration: "none" }}
         >
-          <div className="income-box">
+          <div className="inex-box">
             <p>지출</p>
             <IoIosArrowForward className="detail-icon" />
             <h1>{totalMonthExpenditure}원</h1>
           </div>
         </Link>
+
         <div className="balloon">
           <p>지난달 이맘때보다</p>
           <h1>
             약{" "}
             <b style={{ color: "#00C982" }}>
-              {inDif}원 {inMore ? "더" : "덜"}
+              {inDif.toLocaleString()}원 {inMore ? "더" : "덜"}
             </b>{" "}
             들어오고
           </h1>
           <h1>
             약{" "}
             <b style={{ color: "#00C982" }}>
-              {exDif}원 {exMore ? "더" : "덜"}
+              {exDif.toLocaleString()}원 {exMore ? "더" : "덜"}
             </b>{" "}
             썼어요
           </h1>
         </div>
       </div>
 
-      <div className="line-box"></div>
+      <div className="line-box" />
 
-      <div className="statistics-box">
-        <div className="drop-box">
-          <DropBox2 options={OPTIONS} defaultValue="all" />
+      <div className="statistics-option-box">
+        <div className="selectBoxWrapper">
+          <select onChange={handleChange} value={selectOption}>
+            {OPTIONS.map((option) => (
+              <option
+                key={option.value}
+                value={option.value}
+                defaultValue={"all" === option.value}
+              >
+                {option.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         {detailDtoList.map((data) => {
-          return (
-            <>
-              {data.detailDtoList.map((value) => {
-                let ecoCnt = 0;
-                value.ecoList !== null &&
-                  value.ecoList.forEach((value) => {
-                    if (value.eco === "G") {
-                      ecoCnt += 1;
-                    } else if (value.eco === "R") {
-                      ecoCnt -= 1;
-                    }
-                  });
-                return (
-                  <>
-                    {/* <p className="statistic-detail-list date">
-                      { format(parseISO(data.date), "d일 EEEE", { locale: ko })}
-                      {selectOption === "all" ? format(parseISO(data.date), "d일 EEEE", { locale: ko }) : (selectOption === "income" ? (value.income === true && format(parseISO(data.date), "d일 EEEE", { locale: ko })) : (value.income === false && format(parseISO(data.date), "d일 EEEE", { locale: ko })))
-                      }
-                    </p> */}
-
-                    <Link
-                      className="detail-link"
-                      to={`/statisticsModify`}
-                      style={{ textDecoration: "none" }}
-                      state={{
-                        item: value,
-                        date: parseISO(data.date),
-                      }}
-                    >
-                      {selectOption === "all" ? (
-                        value.income === true ? (
-                          <StyledDetailPageBlock>
-                            <div>
-                              <p className="statistic-detail-list date">
-                                {format(parseISO(data.date), "d일 EEEE", {
-                                  locale: ko,
-                                })}
-                              </p>
-                              <div
-                                key={value.id}
-                                className="statistic-detail-list"
-                              >
-                                <span
-                                  role="img"
-                                  aria-label="something"
-                                  className="stat-detail-icon"
-                                >
-                                  {wayEmoji(value.way)}
-                                </span>
-                                <p className="stat-detail-type">
-                                  {value.memo === null
-                                    ? value.type
-                                    : value.memo}
-                                </p>
-                                <p className="stat-detail-money">
-                                  {value.income ? "+" : "-"}
-                                  {value.cost.toLocaleString()}원
-                                </p>
-                              </div>
-                            </div>
-                          </StyledDetailPageBlock>
-                        ) : (
-                          <StyledDetailPageBlock>
-                            <div>
-                              <p className="statistic-detail-list date">
-                                {format(parseISO(data.date), "d일 EEEE", {
-                                  locale: ko,
-                                })}
-                              </p>
-                              <div
-                                className="statistic-detail-list"
-                                key={value.id}
-                              >
-                                <div className="stat-detail-icon">
-                                  {wayEmoji(value.way)}
-                                </div>
-                                <DetailMemo item={value} ecoCnt={ecoCnt} />
-                              </div>
-                            </div>
-                          </StyledDetailPageBlock>
-                        )
-                      ) : selectOption === "income" ? (
-                        <StyledDetailPageBlock>
-                          {value.income === true && (
-                            <div>
-                              <p className="statistic-detail-list date">
-                                {format(parseISO(data.date), "d일 EEEE", {
-                                  locale: ko,
-                                })}
-                              </p>
-                              <div
-                                key={value.id}
-                                className="statistic-detail-list"
-                              >
-                                <span
-                                  role="img"
-                                  aria-label="something"
-                                  className="stat-detail-icon"
-                                >
-                                  {wayEmoji(value.way)}
-                                </span>
-                                <p className="stat-detail-type">
-                                  {value.memo === null
-                                    ? value.type
-                                    : value.memo}
-                                </p>
-                                <p className="stat-detail-money">
-                                  {value.income ? "+" : "-"}
-                                  {value.cost.toLocaleString()}원
-                                </p>
-                              </div>
-                            </div>
-                          )}
-                        </StyledDetailPageBlock>
-                      ) : (
-                        <StyledDetailPageBlock>
-                          {value.income === false && (
-                            <div>
-                              <p className="statistic-detail-list date">
-                                {format(parseISO(data.date), "d일 EEEE", {
-                                  locale: ko,
-                                })}
-                              </p>
-                              <div
-                                className="statistic-detail-list"
-                                key={value.id}
-                              >
-                                <div className="stat-detail-icon">
-                                  {wayEmoji(value.way)}
-                                </div>
-                                <DetailMemo item={value} ecoCnt={ecoCnt} />
-                              </div>
-                            </div>
-                          )}
-                        </StyledDetailPageBlock>
-                      )}
-                    </Link>
-                  </>
-                );
-              })}
-            </>
-          );
+          let filteredItem = data.detailDtoList.filter(filterItems);
+          if (filteredItem.length > 0)
+            return (
+              <div key={filteredItem[0].type + filteredItem[0].cost}>
+                <InExItem date={data.date} items={filteredItem} />
+              </div>
+            );
+          else return null;
         })}
       </div>
     </div>
@@ -391,8 +206,15 @@ StatisticsView.defaultProps = {
     detailDtoList: [],
   },
 };
+
+const errorStyle = {
+  width: "100vw",
+  color: "#636E75",
+  textAlign: "center",
+  marginTop: "40vh",
+};
 const data = {
-  totalMonthIncome: 880,
+  totalMonthIncome: 884,
   totalMonthExpenditure: 92000,
   inMore: true,
   exMore: true,
@@ -400,246 +222,95 @@ const data = {
   exDif: 92000,
   detailDtoList: [
     {
-      date: "2022-03-04",
+      date: "2022-04-26",
       detailDtoList: [
         {
-          type: "생필품",
-          way: "은행",
-          cost: 32000,
-          memo: "츄파츕스 사먹음",
-          ecoList: [
-            {
-              eco: "G",
-              ecoDetail: "중고거래/나눔/기부",
-              etcMemo: null,
-            },
-            {
-              eco: "G",
-              ecoDetail: "비건식당 방문",
-              etcMemo: null,
-            },
-            {
-              eco: "R",
-              ecoDetail: "식자재 낭비",
-              etcMemo: null,
-            },
-          ],
+          id: 1,
+          way: "현금",
+          type: "경조사/회비",
+          cost: 92503,
+          memo: "여기는 수입이구요",
+          ecoList: null,
           income: true,
         },
-      ],
-    },
-    {
-      date: "2022-03-20",
-      detailDtoList: [
         {
-          type: "마트",
-          way: "현금",
-          cost: 53000,
-          memo: "츄파츕스 사먹음",
-          ecoList: [
-            {
-              eco: "G",
-              ecoDetail: "중고거래/나눔/기부",
-              etcMemo: null,
-            },
-            {
-              eco: "G",
-              ecoDetail: "비건식당 방문",
-              etcMemo: null,
-            },
-            {
-              eco: "R",
-              ecoDetail: "식자재 낭비",
-              etcMemo: null,
-            },
-          ],
-          income: false,
-        },
-      ],
-    },
-    {
-      date: "2022-03-23",
-      detailDtoList: [
-        {
-          type: "경조사/회비",
+          id: 2,
           way: "은행",
-          cost: 7000,
-          memo: "츄파츕스 사먹음",
+          type: "월급",
+          cost: 1726000,
+          memo: null,
+          ecoList: null,
+          income: true,
+        },
+        {
+          id: 13,
+          way: "카드",
+          type: "생필품",
+          cost: 4990,
+          memo: "비누",
           ecoList: [
             {
               eco: "G",
-              ecoDetail: "중고거래/나눔/기부",
+              ecoDetail: "친환경 제품 구매",
               etcMemo: null,
+            },
+            {
+              eco: "N",
+              ecoDetail: "기타",
+              etcMemo: "평생 쓰는 물건 잃어버려서 재구매",
             },
             {
               eco: "G",
               ecoDetail: "비건식당 방문",
               etcMemo: null,
             },
+          ],
+          income: false,
+        },
+        {
+          id: 14,
+          way: "카드",
+          type: "가전",
+          cost: 50000,
+          memo: "가스레인지",
+          ecoList: null,
+          income: false,
+        },
+      ],
+    },
+    {
+      date: "2022-04-27",
+      detailDtoList: [
+        {
+          id: 15,
+          way: "은행",
+          type: "생필품",
+          cost: 92503,
+          memo: "텀블러",
+          ecoList: [
             {
               eco: "R",
-              ecoDetail: "식자재 낭비",
+              ecoDetail: "친환경 제품 구매",
               etcMemo: null,
+            },
+            {
+              eco: "N",
+              ecoDetail: "기타",
+              etcMemo: "평생 쓰는 물건 잃어버려서 재구매",
             },
           ],
           income: false,
         },
+        // {
+        //   id: 16,
+        //   way: "카드",
+        //   type: "식비",
+        //   cost: 92503,
+        //   memo: "학식",
+        //   ecoList: null,
+        //   income: true,
+        // },
       ],
     },
   ],
 };
-
-const StyledDetailPageBlock = styled.div`
-  background-color: rgb(var(--navy));
-  width: 100vw;
-  .detail-page {
-    padding-bottom: 70px;
-    background-color: rgb(var(--navy));
-  }
-  .detail-info-block {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    color: white;
-    margin-bottom: 60px;
-  }
-
-  .selected-date {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 30px 0;
-  }
-  .forward-arrow {
-    color: white;
-    transform: rotate(180deg);
-    width: 18px;
-    height: 18px;
-    margin-right: 10px;
-  }
-  .detail-info {
-    display: flex;
-    flex-direction: row;
-    line-height: 16px;
-    margin-bottom: 20px;
-  }
-
-  .detail-type {
-    font-weight: 500;
-    font-size: 18px;
-  }
-  .detail-cost {
-    top: 15px;
-    position: relative;
-  }
-
-  .detail-cost:after {
-    position: absolute;
-    content: "";
-    width: 100vw;
-    height: 0;
-    left: -5%;
-    border-bottom: 12px solid #000b21;
-    opacity: 0.7;
-  }
-
-  .detail-info .detail-cost-label {
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 16px;
-    color: #ffffff;
-    opacity: 0.5;
-    margin-left: 1%;
-  }
-
-  .detail-info .detail-cost-value {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 16px;
-    color: white;
-    margin-left: auto;
-  }
-  .detail-info .detail-cost-value.none {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: rgb(var(--mid-gray));
-    opacity: 0.5;
-  }
-
-  .detail-div-list {
-    color: white;
-    width: 100%;
-  }
-  .detail-history {
-    font-size: 12px;
-    color: #ffffff;
-    opacity: 0.5;
-    margin-left: 5%;
-    margin-bottom: 20px;
-  }
-
-  .details {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding-left: 5%;
-    padding-right: 5%;
-    margin-top: 13px;
-    margin-bottom: 13px;
-  }
-  .details-circle {
-    margin-top: 3px;
-    font-size: 8px;
-  }
-  .details-circle.none {
-    color: transparent;
-  }
-
-  .details-circle.eco {
-    color: rgb(var(--green));
-  }
-
-  .details-circle.neco {
-    color: rgb(var(--mid-gray));
-  }
-
-  .details-detail-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-  .details-memo {
-    font-size: 15px;
-    line-height: 16px;
-    font-weight: 500;
-  }
-  .details-detail {
-    font-size: 11px;
-    line-height: 13px;
-    margin-top: 7px;
-    font-weight: 400;
-  }
-  .details-detail.eco {
-    color: rgb(var(--green));
-  }
-  .details-detail.neco {
-    color: rgb(var(--mid-gray));
-  }
-  .details-cost.eco {
-    color: rgb(var(--green));
-  }
-  .details-cost.neco {
-    color: rgb(var(--mid-gray));
-  }
-  .details-cost {
-    font-size: 15px;
-    font-weight: 400;
-    margin-left: auto;
-  }
-`;
