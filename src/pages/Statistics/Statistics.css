@@ -1,21 +1,18 @@
 .statistic-main {
   position: relative;
-  width: 100vw;
-  height: calc(100vh - 30px);
-  overflow: scroll;
+  width: 100%;
+  height: 100%;
 }
 
 .stat-main-contents {
   margin-top: 70px;
-}
-.stat-main-contents a {
-  text-decoration: none;
+  padding: 0 16px;
 }
 
 .month-box {
   position: relative;
   width: 100%;
-  background-color: #141b27;
+
   padding-top: 25px;
   padding-bottom: 6.87px;
   cursor: pointer;
@@ -29,7 +26,6 @@
 .month-box .month-breakdown p {
   display: inline;
   font-size: 16px;
-  margin-left: 21px;
   color: rgba(255, 255, 255, 0.4);
 }
 
@@ -37,10 +33,8 @@
   position: relative;
   display: inline;
   font-size: 25px;
-  margin-left: 21px;
-  color: #ffffff;
+  font-weight: 600;
   float: right;
-  margin: 0 32px;
   top: -3px;
 }
 
@@ -51,20 +45,15 @@
   width: 24px;
   height: 24px;
   float: right;
-  margin: 0 28px;
   top: -3px;
 }
 
 .line-box {
   background-color: #000b21;
-  width: 100%;
+  width: 100vw;
+  left: 0;
+  position: absolute;
   height: 12px;
-}
-
-.line-box2 {
-  background-color: #000b21;
-  width: 100%;
-  height: 1px;
 }
 
 .tag-graph-box {
@@ -76,21 +65,17 @@
 
 .tag-graph-box h1 {
   font-size: 18px;
-  margin-left: 24px;
-  margin-right: 6px;
   margin-bottom: 20px;
 }
 
 .tag-graph-box p {
   font-size: 15px;
-  margin-left: 24px;
   margin-bottom: 5px;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .tag-graph-box h2 {
   font-size: 15px;
-  margin-left: 24px;
   margin-bottom: 5px;
   color: #ffffff;
 }
@@ -113,20 +98,13 @@
 .chart-graph-box {
   position: relative;
   width: 100%;
-  background-color: #141b27;
-  padding-top: 28px;
+  padding-top: 42px;
   padding-bottom: 28px;
-}
-
-.chart-graph-box .donut-chart {
-  margin-top: 29px;
 }
 
 .chart-graph-box h1 {
   font-size: 18px;
-  margin-left: 27px;
-  margin-bottom: 28px;
-  color: #ffffff;
+  padding-bottom: 36px;
 }
 
 .chart-graph-box p {
@@ -144,6 +122,11 @@
   color: transparent;
 }
 
+.chart-graph-box .donut-chart {
+  margin-top: 28px;
+}
+
+/*어떤 지출을 했을까요*/
 .expend-box {
   position: relative;
   width: 100%;
@@ -152,12 +135,10 @@
   cursor: pointer;
 }
 
-.expend-box h1 {
+.expend-box .expend-box-title {
   position: relative;
   display: inline;
   font-size: 18px;
-  margin-left: 27px;
-  color: #ffffff;
 }
 
 .expend-box .box-icon {
@@ -167,15 +148,20 @@
   width: 24px;
   height: 24px;
   float: right;
-  margin: 0 28px;
   top: -3px;
+}
+
+.chart {
+  position: relative;
+  margin-bottom: 36px;
+  height: 20px;
 }
 
 /*세부내역 css*/
 
 .static-detail-container {
   margin-top: 70px;
-  width: 100vw;
+  width: 100%;
   background-color: rgb(var(--navy));
 }
 
@@ -419,11 +405,4 @@
   margin-left: 21px;
   margin-bottom: 18.5px;
   color: #ffffff;
-}
-
-.chart {
-  position: relative;
-  height: 90px;
-  padding-top: 10px;
-  margin: 0px 36px;
 }

@@ -35,33 +35,34 @@ function EcoExpend({ name }) {
       if (name === "eco") {
         for (let i = 0; i < ecoTagCounts.length - 1 && i < 4; i++) {
           renderExpendList.push(
-            <div>
+            <div className="expend-list-item">
               <div
                 className="day-breakdown-box-icon"
                 style={{ color: EcoExpendColor[i] }}
               >
-                ● {"  "}
-                {emoji[ecoTagCounts[i][0]]}
+                ●
               </div>
-              <h1>{ecoTagCounts[i][0]}</h1>
+              <h1>
+                {emoji[ecoTagCounts[i][0]]} {ecoTagCounts[i][0]}
+              </h1>
               <h2>{ecoTagCounts[i][1]}개</h2>
-              <p></p>
             </div>
           );
         }
       } else {
         for (let i = 0; i < noEcoTagCounts.length - 1 && i < 4; i++) {
           renderExpendList.push(
-            <div>
+            <div className="expend-list-item">
               <div
                 className="day-breakdown-box-icon"
                 style={{ color: NEcoExpendColor[i] }}
               >
-                ● {emoji[noEcoTagCounts[i][0]]}
+                ●
               </div>
-              <h1>{noEcoTagCounts[i][0]}</h1>
+              <h1>
+                {emoji[noEcoTagCounts[i][0]]} {noEcoTagCounts[i][0]}
+              </h1>
               <h2>{noEcoTagCounts[i][1]}개</h2>
-              <p></p>
             </div>
           );
         }
@@ -85,36 +86,37 @@ function EcoExpend({ name }) {
       </div>
     );
   return (
-    <div className="statistics-box">
-      <div className="day-box">
-        <div className="day-breakdown-box">
-          <p>
-            지출 카테고리 <span>태그개수</span>
-          </p>
-          {renderExpendList(name, message)}
-          <Link
-            to="/expendCategory"
-            state={{
-              name: name === "eco" ? "ecoG" : "ecoR",
-            }}
-          >
-            <div className="more">
-              <h1 style={{ color: "#C7D2E8" }}>●</h1>
-              <h1>더보기 {name === "eco" ? moreG : moreR}개</h1>
-              <h2>
-                {name === "eco"
-                  ? message.ecoTagCounts !== undefined &&
-                    message.ecoTagCounts[message.ecoTagCounts.length - 1][1]
-                  : message.noEcoTagCounts !== undefined &&
-                    message.noEcoTagCounts[
-                      message.noEcoTagCounts.length - 1
-                    ][1]}
-                개
-              </h2>
-            </div>
-          </Link>
-        </div>
+    <div
+      className="statistics-ecoexpend-box"
+      style={{ marginBottom: name === "eco" ? "32px" : "100px" }}
+    >
+      <div className="expend-list-detail-title">
+        <span>지출 카테고리</span>
+        <span>태그개수</span>
       </div>
+
+      {renderExpendList(name, message)}
+      <Link
+        to="/expendCategory"
+        state={{
+          name: name === "eco" ? "ecoG" : "ecoR",
+        }}
+      >
+        <div className="expend-list-item more">
+          <div className="day-breakdown-box-icon" style={{ color: "#C7D2E8" }}>
+            ●
+          </div>
+          <h1>더보기 {name === "eco" ? moreG : moreR}개</h1>
+          <h2>
+            {name === "eco"
+              ? message.ecoTagCounts !== undefined &&
+                message.ecoTagCounts[message.ecoTagCounts.length - 1][1]
+              : message.noEcoTagCounts !== undefined &&
+                message.noEcoTagCounts[message.noEcoTagCounts.length - 1][1]}
+            개
+          </h2>
+        </div>
+      </Link>
     </div>
   );
 }

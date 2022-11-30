@@ -18,7 +18,7 @@ import { useQueryClient, useQuery, useMutation } from "react-query";
 
 const containerStyle = {
   backgroundImage: "url(img/main_bg.png)",
-  width: "100vw",
+  width: "100%",
   height: "30%",
 };
 
@@ -141,7 +141,7 @@ function StatisticsMain() {
         </div>
         {/* </Link> */}
 
-        <div className="line-box"></div>
+        <div className="line-box" />
 
         <div className="tag-graph-box" style={containerStyle}>
           <h1>
@@ -209,7 +209,9 @@ function StatisticsMain() {
           }}
         >
           <div className="expend-box">
-            <h1>어떤 친환경 지출을 했을까요? 👍</h1>
+            <div className="expend-box-title">
+              어떤 친환경 지출을 했을까요? 👍
+            </div>
             <IoIosArrowForward className="box-icon" />
           </div>
         </Link>
@@ -218,18 +220,7 @@ function StatisticsMain() {
         </div>
         {ecoTagCounts.length < 2 ? (
           <div className="statistics-box">
-            <p
-              style={{
-                marginBottom: "60px",
-                marginTop: "0px",
-                fontFamily: "Pretendard",
-                height: "52px",
-                textAlign: "center",
-                color: "#939393",
-              }}
-            >
-              이번달 지출이 없습니다
-            </p>
+            <p style={blankStyle}>이번달 지출이 없습니다</p>
           </div>
         ) : (
           <Eco name="eco" />
@@ -245,7 +236,9 @@ function StatisticsMain() {
           }}
         >
           <div className="expend-box">
-            <h1>어떤 반환경 지출을 했을까요? 👎</h1>
+            <div className="expend-box-title">
+              어떤 반환경 지출을 했을까요? 👎
+            </div>
             <IoIosArrowForward className="box-icon" />
           </div>
         </Link>
@@ -254,18 +247,7 @@ function StatisticsMain() {
         </div>
         {noEcoTagCounts.length < 2 ? (
           <div className="statistics-box">
-            <p
-              style={{
-                marginBottom: "60px",
-                marginTop: "0px",
-                fontFamily: "Pretendard",
-                height: "52px",
-                textAlign: "center",
-                color: "#939393",
-              }}
-            >
-              이번달 지출이 없습니다
-            </p>
+            <p style={blankStyle}>이번달 지출이 없습니다</p>
           </div>
         ) : (
           <Eco name="neco" />
@@ -279,6 +261,14 @@ function StatisticsMain() {
 }
 
 export default StatisticsMain;
+
+const blankStyle = {
+  marginBottom: "60px",
+  marginTop: "0px",
+  height: "52px",
+  textAlign: "center",
+  color: "#939393",
+};
 
 const data = {
   userName: "사용자1",

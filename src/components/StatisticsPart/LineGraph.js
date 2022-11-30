@@ -103,7 +103,7 @@ export default function LineGraph({ dataset }) {
   return (
     <div
       style={{
-        width: "90%",
+        width: "100%",
         marginTop: "3%",
         margin: "0 auto",
         overflowY: "scroll",

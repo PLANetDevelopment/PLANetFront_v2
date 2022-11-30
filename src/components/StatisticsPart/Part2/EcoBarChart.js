@@ -75,19 +75,18 @@ function EcoBarChart({ barData, name }) {
     maintainAspectRatio: false,
   };
 
-  if (name === "eco") {
-    return (
-      <div>
-        <Bar data={data} options={config} width={300} />
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <Bar data={data} options={config} width={300} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Bar
+        data={data}
+        options={config}
+        style={{
+          width: "95vw",
+          height: "120px",
+        }}
+      />
+    </div>
+  );
 }
 
 export { EcoBarChart };

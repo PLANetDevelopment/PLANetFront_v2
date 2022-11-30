@@ -1,97 +1,32 @@
-.statistics-box {
-  position: relative;
-  width: 100%;
-  background-color: #141b27;
-  padding-bottom: 18px;
-}
-
-.statistics-box .drop-box {
-  margin-bottom: 32px;
-  margin-left: 18px;
-  margin-top: 18px;
-}
-
-.statistics-box .day-box {
+.statistics-ecoexpend-box {
   margin-bottom: 32px;
   margin-top: 17px;
 }
 
-.statistics-box .day-box p {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 16px;
-  margin-left: 21px;
-}
-
-.statistics-box .day-box .day-breakdown-box {
+.expend-list-item {
+  font-size: 15px;
+  height: 58px;
   width: 100%;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.statistics-box .day-box .day-breakdown-box h1 {
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  color: #ffffff;
-  padding-top: 15px;
-  margin-left: 5px;
-}
-
-.statistics-box .day-box .day-breakdown-box h2 {
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  color: #ffffff;
-  padding-top: 15px;
-  margin-right: 30px;
-  float: right;
-}
-
-.statistics-box .day-box .day-breakdown-box h2:nth-last-child(1) {
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  color: #ffffff;
-  padding-top: 5px;
+.expend-list-item .day-breakdown-box-icon {
   margin-right: 10px;
-  float: right;
 }
 
-.statistics-box .day-box .day-breakdown-box p:nth-child(1) {
-  font-size: 11px;
-  color: #566479;
-  margin-top: 3.12px;
-  margin-left: 30px;
-}
-
-.statistics-box .day-box .day-breakdown-box span {
-  font-size: 11px;
-  color: #566479;
-  margin-top: 3.12px;
-  margin-right: 30px;
-  float: right;
-}
-
-.statistics-box .day-box .day-breakdown-box .day-breakdown-box-icon {
-  position: relative;
-  display: inline;
-  font-size: 15px;
-  color: #434952;
-  margin-left: 30px;
-  line-height: 52px;
-  word-spacing: 5px;
+.expend-list-item h2 {
+  margin-left: auto;
 }
 
 /*Part 2*/
 
 .more {
-  position: relative;
-  height: 52px;
-  padding-top: 7px;
-  margin-bottom: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
   cursor: pointer;
-  margin: 0px 20px;
-  font-size: 20px;
-  color: #ffffff;
 }
 
 .more h1 {
