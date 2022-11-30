@@ -11,7 +11,7 @@ import DateHeader from "../../components/DateHeader";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 import { EcoBarChart } from "../../components/StatisticsPart/Part2/EcoBarChart";
-import { InfoModal } from "../../components/StatisticsPart/Part2/Modal2";
+import { InfoModal } from "../../components/Modal/Modal";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import { useQueryClient, useQuery, useMutation } from "react-query";
@@ -53,7 +53,6 @@ function StatisticsMain() {
   const [nowEcoCount, setNowEcoCount] = useState(0);
   const [nowNoneEcoCount, setNowNowEcoCount] = useState(0);
   const [percentage, setPrcentage] = useState(0);
-  const [loading, setloading] = useState(true);
 
   const nowMFormat = "M";
   const userId = window.localStorage.getItem("userId");
@@ -104,12 +103,6 @@ function StatisticsMain() {
     }
   }, [queryClient, results]);
   console.log(incomeTotal);
-
-  useEffect(() => {
-    if (results.status === "success") {
-      setloading(false);
-    }
-  }, [results.status]);
 
   if (results.status === "loading" || results.status === "error")
     return (
@@ -167,8 +160,9 @@ function StatisticsMain() {
               onClose={closeModal}
               maskClosable={true}
               visible={true}
-              children={true}
-            ></InfoModal>
+              type="statistics"
+              children={false}
+            />
           )}
           <p>지난달 이맘때보다</p>
           <h2>
@@ -182,9 +176,7 @@ function StatisticsMain() {
             {noEcoDifference >= 0 ? "늘었어요" : "줄었어요"}
           </h2>
 
-          {message.ecoCount !== undefined && (
-            <LineGraph dataset={message.ecoCount} />
-          )}
+          {ecoCount !== undefined && <LineGraph dataset={ecoCount} />}
         </div>
 
         <div className="line-box" />

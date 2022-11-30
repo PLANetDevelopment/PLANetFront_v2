@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useQueries, useQueryClient } from "react-query";
-import { format, isSameMonth, subMonths, addMonths, parseISO } from "date-fns";
+import { format, isSameMonth, subMonths, parseISO } from "date-fns";
 import Footer from "../../components/Footer/Footer";
 import DateHeader from "../../components/DateHeader";
 import Calendar from "../../components/CalendarPart/CalendarBody";
@@ -171,8 +171,9 @@ function CalendarPage() {
             onClose={closeModal}
             maskClosable={true}
             visible={true}
+            type="calendar"
             children={isMonthView}
-          ></InfoModal>
+          />
         )}
 
         {renderMiddleBar()}
