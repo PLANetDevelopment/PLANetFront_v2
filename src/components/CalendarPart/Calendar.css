@@ -38,8 +38,7 @@
 .calendarPage {
   display: block;
   position: relative;
-  color: white;
-  font-family: Pretendard;
+
   width: 100vw;
   height: calc(100vh - 150px);
   overflow: scroll;

@@ -123,7 +123,6 @@ EditName.defaultProps = {
 };
 
 const ModalWrapper = styled.div`
-  font-family: Pretendard;
   box-sizing: border-box;
   display: ${(props) => (props.visible ? "block" : "none")};
   position: fixed;

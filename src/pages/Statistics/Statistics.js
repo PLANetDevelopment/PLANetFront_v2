@@ -49,7 +49,6 @@ function StatisticsMain() {
   const [noEcoDifference, setNoEcoDifference] = useState(0);
   const [ecoTagCounts, setEcoTagCounts] = useState([]);
   const [noEcoTagCounts, setnoEcoTagCounts] = useState([]);
-  const [ecoCount, setEcoCount] = useState({});
   const [nowEcoCount, setNowEcoCount] = useState(0);
   const [nowNoneEcoCount, setNowNowEcoCount] = useState(0);
   const [percentage, setPrcentage] = useState(0);
@@ -96,7 +95,6 @@ function StatisticsMain() {
       setExpenditureTotal(messages.expenditureTotal);
       setEcoTagCounts(messages.ecoTagCounts);
       setnoEcoTagCounts(messages.noEcoTagCounts);
-      setEcoCount(messages.ecoCount);
       setNowEcoCount(messages.nowEcoCount);
       setNowNowEcoCount(messages.nowNoneEcoCount);
       setPrcentage(messages.percentage);
@@ -176,7 +174,9 @@ function StatisticsMain() {
             {noEcoDifference >= 0 ? "늘었어요" : "줄었어요"}
           </h2>
 
-          {ecoCount !== undefined && <LineGraph dataset={ecoCount} />}
+          {message.ecoCount !== undefined && (
+            <LineGraph dataset={message.ecoCount} />
+          )}
         </div>
 
         <div className="line-box" />
@@ -202,7 +202,7 @@ function StatisticsMain() {
         <div className="line-box" />
 
         <Link
-          to="/EcoCategory"
+          to="/expendCategory"
           state={{
             name: "ecoG",
             month: currentDate,
@@ -238,7 +238,7 @@ function StatisticsMain() {
         <div className="line-box" />
 
         <Link
-          to="/EcoCategory"
+          to="/expendCategory"
           state={{
             name: "ecoR",
             month: currentDate,

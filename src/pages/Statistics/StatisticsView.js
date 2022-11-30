@@ -493,7 +493,6 @@ const StyledDetailPageBlock = styled.div`
   background-color: rgb(var(--navy));
   width: 100vw;
   .detail-page {
-    font-family: Pretendard;
     padding-bottom: 70px;
     background-color: rgb(var(--navy));
   }

@@ -14,7 +14,6 @@
   width: 100vw;
   color: #ffffff;
   background-color: #141b27;
-  font-family: Pretendard;
 }
 
 /*이전 버튼*/
@@ -29,7 +28,6 @@
 .title {
   position: absolute;
   font-size: 18px;
-  font-family: Pretendard;
   width: 100%;
   text-align: center;
   margin-top: 10%;
@@ -42,19 +40,16 @@
   width: 100%;
   margin-top: 25%;
   margin-bottom: 10%;
-  font-family: Pretendard;
 }
 
 .name_box h1 {
   font-size: 18px;
-  font-family: Pretendard;
   margin-bottom: 8px;
   text-align: center;
 }
 
 .name_box p {
   font-size: 13px;
-  font-family: Pretendard;
   text-align: center;
   color: rgba(180, 182, 184, 1);
 }
@@ -68,7 +63,6 @@
   margin-bottom: 12px;
   border-radius: 13px;
   font-size: 12px;
-  font-family: Pretendard;
   background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -88,7 +82,6 @@
   padding-top: 24px;
   border-radius: 13px;
   font-size: 16px;
-  font-family: Pretendard;
   background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -109,7 +102,6 @@
   margin: 0 auto;
   padding-top: 24px;
   font-size: 14px;
-  font-family: Pretendard;
 }
 
 .logout_box p {
@@ -126,7 +118,6 @@
   padding-top: 24px;
   color: rgba(255, 255, 255, 0.2);
   font-size: 14px;
-  font-family: Pretendard;
   border-top: 0.5px solid rgba(255, 255, 255, 0.12);
 }
 

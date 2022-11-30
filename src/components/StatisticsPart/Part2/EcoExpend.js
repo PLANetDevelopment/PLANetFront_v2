@@ -7,7 +7,7 @@ import { emoji } from "../../../assets/emoji";
 const EcoExpendColor = ["#00C982", "#1466FE", "#083FA5", "#728EC6"];
 const NEcoExpendColor = ["#8593B1", "#667492", "#475572", "#303B51"];
 
-function EcoExpend(props) {
+function EcoExpend({ name }) {
   const queryClient = useQueryClient();
 
   const [message, setMessage] = useState([]);
@@ -28,11 +28,11 @@ function EcoExpend(props) {
     setloading(false);
   }, []);
 
-  const renderExpendList = (props, message) => {
+  const renderExpendList = (name, message) => {
     let renderExpendList = [];
 
     if (message.length !== 0) {
-      if (props.name === "eco") {
+      if (name === "eco") {
         for (let i = 0; i < ecoTagCounts.length - 1 && i < 4; i++) {
           renderExpendList.push(
             <div>
@@ -71,67 +71,52 @@ function EcoExpend(props) {
     return <div>{renderExpendList}</div>;
   };
 
-  if (props.name === "eco") {
+  if (loading)
     return (
-      <div className="statistics-box">
-        <div className="day-box">
-          <div className="day-breakdown-box">
-            <p>
-              지출 카테고리 <span>태그개수</span>
-            </p>
-            {renderExpendList(props, message)}
-            <Link
-              to="/EcoCategory"
-              state={{
-                name: "ecoG",
-              }}
-            >
-              <div className="more">
-                <h1 style={{ color: "#C7D2E8" }}>●</h1>
-                <h1>더보기 {moreG}개</h1>
-                <h2>
-                  {message.ecoTagCounts !== undefined &&
-                    message.ecoTagCounts[message.ecoTagCounts.length - 1][1]}
-                  개
-                </h2>
-              </div>
-            </Link>
-          </div>
-        </div>
+      <div
+        style={{
+          width: "100%",
+          color: "#636E75",
+          textAlign: "center",
+          marginTop: "40vh",
+        }}
+      >
+        로딩중...
       </div>
     );
-  } else {
-    return (
-      <div className="statistics-box">
-        <div className="day-box">
-          <div className="day-breakdown-box">
-            <p>
-              지출 카테고리 <span>태그개수</span>
-            </p>
-            {renderExpendList(props, message)}
-            <Link
-              to="/EcoCategory"
-              state={{
-                name: "ecoR",
-              }}
-            >
-              <div className="more">
-                <h1 style={{ color: "#C7D2E8" }}>●</h1>
-                <h1>더보기 {moreR}개</h1>
-                <h2>
-                  {message.noEcoTagCounts !== undefined &&
+  return (
+    <div className="statistics-box">
+      <div className="day-box">
+        <div className="day-breakdown-box">
+          <p>
+            지출 카테고리 <span>태그개수</span>
+          </p>
+          {renderExpendList(name, message)}
+          <Link
+            to="/expendCategory"
+            state={{
+              name: name === "eco" ? "ecoG" : "ecoR",
+            }}
+          >
+            <div className="more">
+              <h1 style={{ color: "#C7D2E8" }}>●</h1>
+              <h1>더보기 {name === "eco" ? moreG : moreR}개</h1>
+              <h2>
+                {name === "eco"
+                  ? message.ecoTagCounts !== undefined &&
+                    message.ecoTagCounts[message.ecoTagCounts.length - 1][1]
+                  : message.noEcoTagCounts !== undefined &&
                     message.noEcoTagCounts[
                       message.noEcoTagCounts.length - 1
                     ][1]}
-                  개
-                </h2>
-              </div>
-            </Link>
-          </div>
+                개
+              </h2>
+            </div>
+          </Link>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default EcoExpend;

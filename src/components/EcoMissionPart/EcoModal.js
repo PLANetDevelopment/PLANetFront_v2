@@ -70,7 +70,6 @@ Modal.propTypes = {
 };
 
 const ModalWrapper = styled.div`
-  font-family: Pretendard;
   box-sizing: border-box;
   position: fixed;
   top: 0;

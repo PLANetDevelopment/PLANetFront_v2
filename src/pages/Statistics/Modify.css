@@ -2,8 +2,6 @@
 .modify-container {
   width: 100vw;
   height: 100vh;
-  font-family: Pretendard;
-  color: white;
   position: relative;
   background-color: rgb(var(--navy));
 }
@@ -222,6 +220,6 @@
 }
 
 /*date price modal...*/
-#modal-root .modify-modal-date{
-margin-left: 10%;
+#modal-root .modify-modal-date {
+  margin-left: 10%;
 }

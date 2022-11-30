@@ -3,8 +3,6 @@
   width: 100vw;
   height: calc(100vh - 30px);
   overflow: scroll;
-  color: white;
-  font-family: Pretendard;
 }
 
 .stat-main-contents {
@@ -15,7 +13,6 @@
 }
 
 .month-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
   background-color: #141b27;
@@ -32,7 +29,6 @@
 .month-box .month-breakdown p {
   display: inline;
   font-size: 16px;
-  font-family: Pretendard;
   margin-left: 21px;
   color: rgba(255, 255, 255, 0.4);
 }
@@ -41,7 +37,6 @@
   position: relative;
   display: inline;
   font-size: 25px;
-  font-family: Pretendard;
   margin-left: 21px;
   color: #ffffff;
   float: right;
@@ -73,7 +68,6 @@
 }
 
 .tag-graph-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
   padding-top: 28px;
@@ -81,7 +75,6 @@
 }
 
 .tag-graph-box h1 {
-  font-family: Pretendard;
   font-size: 18px;
   margin-left: 24px;
   margin-right: 6px;
@@ -89,7 +82,6 @@
 }
 
 .tag-graph-box p {
-  font-family: Pretendard;
   font-size: 15px;
   margin-left: 24px;
   margin-bottom: 5px;
@@ -97,7 +89,6 @@
 }
 
 .tag-graph-box h2 {
-  font-family: Pretendard;
   font-size: 15px;
   margin-left: 24px;
   margin-bottom: 5px;
@@ -120,7 +111,6 @@
 }
 
 .chart-graph-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
   background-color: #141b27;
@@ -133,7 +123,6 @@
 }
 
 .chart-graph-box h1 {
-  font-family: Pretendard;
   font-size: 18px;
   margin-left: 27px;
   margin-bottom: 28px;
@@ -141,7 +130,6 @@
 }
 
 .chart-graph-box p {
-  font-family: Pretendard;
   font-size: 12px;
   display: inline;
   text-align: center;
@@ -157,7 +145,6 @@
 }
 
 .expend-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
   padding-top: 28px;
@@ -168,7 +155,6 @@
 .expend-box h1 {
   position: relative;
   display: inline;
-  font-family: Pretendard;
   font-size: 18px;
   margin-left: 27px;
   color: #ffffff;
@@ -194,7 +180,6 @@
 }
 
 .detail-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
   background-color: #141b27;
@@ -210,7 +195,6 @@
   border-radius: 13px;
   margin: 0 auto;
   padding-top: 16px;
-  font-family: Pretendard;
   margin-bottom: 12px;
   cursor: pointer;
 }
@@ -218,7 +202,6 @@
 .detail-box .income-box p {
   display: inline;
   font-size: 14px;
-  font-family: Pretendard;
   margin-left: 21px;
   color: #b4b6b8;
 }
@@ -227,7 +210,6 @@
   position: relative;
   display: inline;
   font-size: 16px;
-  font-family: Pretendard;
   color: #ffffff;
   float: right;
 }
@@ -270,7 +252,6 @@
 
 .detail-box .balloon p {
   font-size: 15px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 12.5px;
   color: rgba(255, 255, 255, 0.7);
@@ -278,14 +259,12 @@
 
 .detail-box .balloon h1 {
   font-size: 18px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 8px;
   color: #ffffff;
 }
 
 .statistics-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
   background-color: #141b27;
@@ -322,13 +301,11 @@
 
 /*StatisticsIncomeView.css*/
 .detail-box .income-detail-box {
-  font-family: Pretendard;
   width: 100%;
   background-color: #141b27;
 }
 
 .detail-box .income-detail-box p {
-  font-family: Pretendard;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.4);
   margin-left: 24px;
@@ -336,7 +313,6 @@
 }
 
 .detail-box .income-detail-box h1 {
-  font-family: Pretendard;
   font-size: 25px;
   color: #ffffff;
   margin-left: 24px;
@@ -369,7 +345,6 @@
 
 .detail-box .balloon2 p {
   font-size: 15px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 12.5px;
   color: rgba(255, 255, 255, 0.7);
@@ -377,7 +352,6 @@
 
 .detail-box .balloon2 h1 {
   font-size: 18px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 18.5px;
   color: #ffffff;
@@ -401,7 +375,6 @@
   width: 100%;
   height: 19px;
   flex-direction: row;
-  font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -436,7 +409,6 @@
 
 .detail-box .balloon3 p {
   font-size: 15px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 12.5px;
   color: rgba(255, 255, 255, 0.7);
@@ -444,7 +416,6 @@
 
 .detail-box .balloon3 h1 {
   font-size: 18px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 18.5px;
   color: #ffffff;
