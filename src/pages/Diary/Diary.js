@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import SearchBar from "../../components/DiaryPart/SearchBar";
+import SearchHistory from "../../components/DiaryPart/SearchHistory";
 import Post from "../../components/DiaryPart/Post";
 import Footer from "../../components/Footer/Footer";
 import DiaryStyle from "./diary.module.css";
@@ -42,19 +44,57 @@ function Diary() {
     setContent(e.target.value);
   };
 
+  //검색어 기능 설정
+  //string은 map을 사용 할 수 없기때문에 object 형태로 변환 시키기 위해 parsing을 해줘야함
+  const [keywords, setKeywords] = useState(
+    JSON.parse(localStorage.getItem('keywords') || '[]'),
+  )
+
+  //keyword에 변화가 일어날때만 랜더링
+  useEffect(() => {
+    //array 타입을 string형태로 바꾸기 위해 json.stringfy를 사용한다.
+    localStorage.setItem('keywords', JSON.stringify(keywords))
+  }, [keywords])
+
+  //state를 다루는 함수는 handle 보통 많이 붙인다.
+
+  //검색어 추가
+  const handleAddKeyword = (text) => {
+    console.log('text', text)
+    const newKeyword = {
+      id: Date.now(),
+      text: text,
+    }
+    setKeywords([newKeyword, ...keywords])
+  }
+
+  //검색어 삭제
+  const handleRemoveKeyword = (id) => {
+    const nextKeyword = keywords.filter((thisKeyword) => {
+      return thisKeyword.id != id
+    })
+    setKeywords(nextKeyword)
+  }
+
+  //검색어 전체 삭제
+  const handleClearKeywords = () => {
+    setKeywords([])
+  }
+
   return (
     <>
       <div className={DiaryStyle.container}>
 
       <div>
-      <Link to="/SearchPost">
-        <div className={DiaryStyle.topbar}>
-          <img src="img/search.png" alt="search"></img> 
-          <input type="text" placeholder="검색어를 입력해주세요" 
-            value={search} onChange={onChange} />
-        </div>
-      </Link>
-      <img className={DiaryStyle.profile} src="img/profile.png" alt="profile"></img>
+        <div>
+          <SearchBar onAddKeyword={handleAddKeyword}></SearchBar>
+          <SearchHistory
+            keywords={keywords}
+            onClearKeywords={handleClearKeywords}
+            onRemoveKeyword={handleRemoveKeyword}
+          />
+          {/* <img className={DiaryStyle.profile} src="img/profile.png" alt="profile"></img> */}
+      </div>
       </div>
 
         <div className={DiaryStyle.drop_box}>

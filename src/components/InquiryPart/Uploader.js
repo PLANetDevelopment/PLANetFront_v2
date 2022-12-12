@@ -15,7 +15,7 @@ const Uploader = (props) => {
     let imageUrlLists = [...showImages]; //showImages에 저장
 
     for (let i = 0; i < imageLists.length; i++){
-      const currentImageUrl = URL.createObjectURL(imageLists[i]);
+      const currentImageUrl = URL.createObjectURL(imageLists[i]); //미리보기 변수화
       imageUrlLists.push(currentImageUrl);
     }
 
@@ -32,10 +32,7 @@ const Uploader = (props) => {
   };
   
   const ref = useRef(null);
-
-  const userId = window.localStorage.getItem("userId");
-  
-  console.log(props);
+  let inputRef;
 
   const [image, setImage] = useState({
     image_file: "",
@@ -44,26 +41,7 @@ const Uploader = (props) => {
 
   const [loaded, setLoaded] = useState(false);
 
-  let inputRef;
-
   const saveImage = (e) => {
-    // e.preventDefault();
-    // const fileReader = new FileReader();
-    
-    // if(e.target.files[0]){
-    //   setLoaded("loading")
-    //   fileReader.readAsDataURL(e.target.files[0])
-    // }
-    // fileReader.onload = () => {
-    //   setImage(
-    //     {
-    //       image_file: e.target.files[0],
-    //       preview_URL: fileReader.result
-    //     }
-    //   )
-    //   setLoaded(true);
-    // }
-
     console.log(e.target.files);
     e.preventDefault();
     const fileReader = new FileReader();
@@ -97,12 +75,32 @@ const Uploader = (props) => {
   }
 
   //서버로 이미지 보내기
-  const sendImageToServer = async () => {
+  const userId = window.localStorage.getItem("userId");
+
+  const sendImageToServer = async (e) => {
+    e.preventDefault();
+    e.persist();
+
+    console.log("현재 target img : ", e.target.input_file.files);
+
+    const formFiles = e.target.input_file.files;
 
     const formData = new FormData();
-    formData.append('file', image.image_file);
+    for (let i = 0; i < formFiles.length; i++){
+      formData.append("file", formFiles[i]);
+      formData.append('text', "테스트!");
+    }
+
+    // FormData의 값-쌍 확인
+    for (let key of formData.keys()) {
+      console.log(key, "(키) : (값)", formData.get(key));
+    }
+
+    // // const formData = new FormData();
+    // // formData.append('file', image.image_file);
 
     console.log("이미지 : ", image);
+    console.log("formData : ", formData);
 
     axios({
       method: "POST",
@@ -110,10 +108,10 @@ const Uploader = (props) => {
       
       headers: {
         userId: userId,
-        'Content-Type': 'multipart/form-data', 
+        // "Content-Type": "multipart/form-data", 
       },
 
-      data: formData,
+      body: formData,
     })
     .then((response) => console.log(response))
     .catch((err) => console.log(err));
@@ -158,13 +156,14 @@ const Uploader = (props) => {
   };
 
   return (
+    <form onSubmit={(e) => sendImageToServer(e)} encType="multipart/form-data">
     <div className="uploader-wrapper">
       <div className="uploader-flex">
         {/* 실제 보여지는 파일 업로드 버튼 */}
-        <label for="input_file" onChange={saveImage}>
+        <label for="input_file" onChange={handleAddImages}>
           <div className="img-upload">
             <AiOutlinePlus />
-            <input onChange={handleAddImages}
+            <input onChange={saveImage}
               className="input-img" type="file" id="input_file" name="input_file" accept="image/*"
               onClick={(e)=>e.target.value = null}
               ref={refParam => inputRef = refParam}
@@ -192,12 +191,16 @@ const Uploader = (props) => {
       </div>
 
       <div className="upload-button">
-        <button color="success" variant="contained" onClick={sendImageToServer}>
+        {/* <button color="success" variant="contained" onClick={sendImageToServer}>
+          Upload
+        </button> */}
+        <button color="success" variant="contained" type="submit">
           Upload
         </button>
       </div>
 
     </div>
+    </form>
   );
 }
 
