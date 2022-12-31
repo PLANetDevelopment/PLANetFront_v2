@@ -223,7 +223,7 @@
     position: relative;
 }
 
-.post_box img{
+.post_box img {
     float: left;
 }
 
@@ -250,7 +250,7 @@
     margin: 2.5% 0%;
 }
 
-.img_box{
+.img_box {
     position: relative;
     margin: 0 auto;
     width: 88%;
@@ -266,7 +266,7 @@
     top: 45%
 }
 
-.text_box{
+.text_box {
     width: 88%;
     margin: 4% 6%;
     position: relative;
@@ -609,4 +609,31 @@
     left: 12.5px;
     color: white;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/*카테고리*/
+.category {
+    font-family: Pretendard;
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    background-color: transparent;
+}
+
+.category p {
+    font-family: Pretendard;
+    font-weight: 500;
+    font-size: 15px;
+    color: #fff;
+    line-height: 17.55px;
+    float: left;
+}
+
+.category_btn {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  float: right;
 }

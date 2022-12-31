@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ampproject/remapping": "2.2.0",
+    "@ant-design/icons": "4.0.0",
     "@iconify/react": "^3.2.0",
     "@splinetool/react-spline": "2.2.1",
     "@splinetool/runtime": "0.9.89",

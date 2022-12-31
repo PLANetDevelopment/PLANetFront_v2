@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import SearchBar from "../../components/DiaryPart/SearchBar";
 import SearchHistory from "../../components/DiaryPart/SearchHistory";
+import WritingPage from "./WritingPage";
+import WritingList from "../../components/DiaryPart/WritingList";
 import Post from "../../components/DiaryPart/Post";
 import Footer from "../../components/Footer/Footer";
 import DiaryStyle from "./diary.module.css";
@@ -30,7 +32,7 @@ const MAIN_DATA = [
   },
 ];
 
-function Diary() {
+const Diary = () => {
   const [search, setSearch] = useState(""); //검색창 변화 감지
 
   /*버튼마다 컴포넌트 변경하기*/
@@ -81,55 +83,93 @@ function Diary() {
     setKeywords([])
   }
 
+  //게시글 data 받아오기
+  const [data, setData] = useState([]);
+  const [form, setForm] = useState(false);
+
+  const dataId = useRef(0);
+
+  const onCreate = (title, content) => {
+    const created_date = new Date().getTime();
+    
+    console.log(created_date);
+
+    const newItem = {
+      title,
+      content,
+      created_date,
+      id: dataId.current,
+    };
+
+    dataId.current += 1;
+
+    setData([newItem, ...data]);
+    setForm(false);
+  };
+
   return (
     <>
       <div className={DiaryStyle.container}>
 
-      <div>
-        <div>
-          <SearchBar onAddKeyword={handleAddKeyword}></SearchBar>
-          <SearchHistory
-            keywords={keywords}
-            onClearKeywords={handleClearKeywords}
-            onRemoveKeyword={handleRemoveKeyword}
-          />
-          {/* <img className={DiaryStyle.profile} src="img/profile.png" alt="profile"></img> */}
-      </div>
-      </div>
-
-        <div className={DiaryStyle.drop_box}>
-          {MAIN_DATA.map((data) => {
-            return (
-              <button
-                className={`${
-                  data.id === content
-                    ? DiaryStyle.drop_box_selected
-                    : DiaryStyle.drop_box_dimm
-                }`}
-                onClick={btnValueSetting}
-                value={data.id}
-                name={data.name}
-                key={data.id}
-              >
-                {data.text}
-              </button>
-            );
-          })}
-        </div>
-
-        <div className={DiaryStyle.border_line}></div>
-        
-        <Post></Post>
-
-        <Link to="/WritingPage">
-          <div className={DiaryStyle.writing}>
-          <img className={DiaryStyle.pencil} src="img/pencil.png" alt="pencil"></img>
+      {!form &&<>
+          <div>
+            <div>
+              <SearchBar onAddKeyword={handleAddKeyword}></SearchBar>
+              <SearchHistory
+                keywords={keywords}
+                onClearKeywords={handleClearKeywords}
+                onRemoveKeyword={handleRemoveKeyword}
+              />
+              {/* <img className={DiaryStyle.profile} src="img/profile.png" alt="profile"></img> */}
+            </div>
           </div>
-        </Link>
+    
+            <div className={DiaryStyle.drop_box}>
+              {MAIN_DATA.map((data) => {
+                return (
+                  <button
+                    className={`${
+                      data.id === content
+                        ? DiaryStyle.drop_box_selected
+                        : DiaryStyle.drop_box_dimm
+                    }`}
+                    onClick={btnValueSetting}
+                    value={data.id}
+                    name={data.name}
+                    key={data.id}
+                  >
+                    {data.text}
+                  </button>
+                );
+              })}
+            </div>
+    
+            <div className={DiaryStyle.border_line}></div>
+            
+            {/* <Post></Post> */}
+            <div>
+                {data.length === 0 ? <h1>내역없음</h1> : <WritingList writingList={data} />}
+            </div>
+    
+            {/* <Link to="/WritingPage">
+              <div className={DiaryStyle.writing}>
+              <img className={DiaryStyle.pencil} src="img/pencil.png" alt="pencil"></img>
+              </div>
+            </Link> */}
 
-        <Footer activeMenu="diary">
-          <div>별별톡</div>
-        </Footer>
+
+              <div className={DiaryStyle.writing} onClick={() => setForm(true)}>
+                <img className={DiaryStyle.pencil} src="img/pencil.png" alt="pencil"></img>
+              </div>
+
+    
+            <Footer activeMenu="diary">
+              <div>별별톡</div>
+            </Footer>
+            </>
+      }
+
+      {form && <WritingPage onCreate={onCreate} />}
       </div>
     </>
   );

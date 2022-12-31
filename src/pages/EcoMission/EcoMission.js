@@ -60,7 +60,7 @@ const EcoMission = () => {
   };
 
   const fetchPostFunc = () => {
-    //백엔드로 데이터 보내기
+    //백으로 데이터 보내기
     fetch(
       `https://플랜잇.웹.한국:8080/api/mission/${todayMission.emoji}/${todayMission.name}`,
       {

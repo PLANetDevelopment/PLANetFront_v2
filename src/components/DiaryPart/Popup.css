@@ -1,0 +1,72 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .modal > section {
+    width: 85%;
+    max-width: 450px;
+    margin: 0 auto;
+    border-radius: 11.32px;
+    background-color: #141B27;
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: modal-show 0.3s;
+    overflow: hidden;
+  }
+  .modal > section > main {
+    padding: 15%;
+    font-size: 16px;
+    border-bottom: 1px solid #000000;
+  }
+  .modal > section > footer {
+    text-align: right;
+  }
+
+  .modal > section > footer button {
+    border-radius: 0px;
+    font-size: 18px;
+    width: 50%;
+    cursor: pointer;
+  }
+
+  .modal > section > footer .submitNo {
+    color: #B4B6B8;
+    background-color: #141B27;
+    border-right: 0.5px solid #000000;
+  }
+
+  .modal > section > footer .submitYes {
+    color: #00C982;
+    background-color: #141B27;
+    border-left: 0.5px solid #000000;
+  }
+
+  .modal.openModal {
+    display: flex;
+    align-items: center;
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: modal-bg-show 0.3s;
+  }
+  @keyframes modal-show {
+    from {
+      opacity: 0;
+      margin-top: -50px;
+    }
+    to {
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
+  @keyframes modal-bg-show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

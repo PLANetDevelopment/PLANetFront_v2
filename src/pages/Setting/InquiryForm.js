@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InquiryStyle from './Inquiry.module.css';
 import HistorySample from '../../components/History/HistoryBack';
 import Uploader from "../../components/InquiryPart/Uploader";
-import Popup from '../../components/InquiryPart/Popup';
+import Popup from '../../components/DiaryPart/Popup';
 
 const InquiryForm = ({ onCreate }) => {
   const [state, setState] = useState({

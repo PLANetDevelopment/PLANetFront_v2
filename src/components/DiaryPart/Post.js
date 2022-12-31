@@ -3,6 +3,8 @@ import React from "react";
 import DiaryStyle from "../../pages/Diary/diary.module.css";
 import { useNavigate } from "react-router-dom";
 
+import LikeButton from "./LikeButton";
+
 //게시글 컴포넌트
 function Post() {
   const navigate = useNavigate();
@@ -29,10 +31,11 @@ function Post() {
       </div>
 
       <div className={DiaryStyle.react_box}>
-        <img src="img/heart.png" alt="heart"></img>
+        <LikeButton></LikeButton>
+        {/* <img src="img/heart.png" alt="heart"></img>
         <h1>0</h1>
         <img src="img/comment.png" alt="comment"></img>
-        <h1>12</h1>
+        <h1>12</h1> */}
       </div>
 
       <div className={DiaryStyle.border_line}></div>
