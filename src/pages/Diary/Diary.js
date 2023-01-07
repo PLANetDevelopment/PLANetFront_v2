@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 import SearchBar from "../../components/DiaryPart/SearchBar";
@@ -8,6 +9,7 @@ import WritingList from "../../components/DiaryPart/WritingList";
 import Post from "../../components/DiaryPart/Post";
 import Footer from "../../components/Footer/Footer";
 import DiaryStyle from "./diary.module.css";
+import SearchPost from "./SearchPost.js"
 
 const MAIN_DATA = [
   {
@@ -107,6 +109,38 @@ const Diary = () => {
     setForm(false);
   };
 
+  //카테고리별 게시글 가져오기 api 테스트 => success
+  // const userId = window.localStorage.getItem("userId");
+  // const [loading, setloading] = useState(true);
+
+  // const [categoryPostArr, setCategoryPostArr] = useState([]);
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+  // const fetchData = async () => {
+  //   console.log("Trying to get category post info");
+
+  //   const response = await axios.get(
+  //     `https://플랜잇.웹.한국:8080/api/starTalk/myPost`,
+  //     {
+  //       headers: { userId: userId },
+  //     }
+  //   );
+  //   const data = await response.data;
+
+  //   setCategoryPostArr(data);
+
+  //   if (data && data.length > 0) {
+  //     console.log(data[0]);
+  //   }
+
+  //   setloading(false);
+  // };
+
+  // console.log(categoryPostArr);
+
   return (
     <>
       <div className={DiaryStyle.container}>
@@ -145,9 +179,11 @@ const Diary = () => {
             </div>
     
             <div className={DiaryStyle.border_line}></div>
+
+            {/* <SearchPost /> */}
             
             {/* <Post></Post> */}
-            <div>
+            <div className={DiaryStyle.post_container}>
                 {data.length === 0 ? <h1>내역없음</h1> : <WritingList writingList={data} />}
             </div>
     

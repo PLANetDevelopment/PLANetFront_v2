@@ -3,8 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import TestList from "./TestList.js"
-
 import DiaryStyle from "./diary.module.css";
 import HistorySample from '../../components/History/HistoryBack';
 import Uploader from "../../components/InquiryPart/Uploader";
@@ -89,69 +87,45 @@ const WritingPage = ({ onCreate }) => {
           });
       };
 
+      //게시글 조회 api test => success
       //게시글 정보 담아올 곳
-      const [postArr, setPostArr] = useState([]);
-      const [postCnt, setPostCnt] = useState(0);
+      // const [postArr, setPostArr] = useState([]);
+      // const [postCnt, setPostCnt] = useState(0);
 
-      const [loading, setloading] = useState(true);
+      // const [loading, setloading] = useState(true);
 
-  //     useEffect(() => {
-  //       const requestOptions = {
-  //         method: 'GET',
-  //       };
+      // useEffect(() => {
+      //   fetchData();
+      // }, []);
 
-  //       console.log("get 시도 확인");
-        
-  //       fetch(`https://플랜잇.웹.한국:8080/api/starTalk`, requestOptions)
-  //       .then((response) => response.json())
-  //       .then((result) => setPostArr(result))
-  //       .catch(error => console.log('error'. error))
-  //       console.log(postArr[0]);
-  // }, []);
+      // const fetchData = async () => {
+      //   console.log("게시글 조회 시도");
+      //   // 게시글 조회
+      //   const response = await axios.get(
+      //     `https://플랜잇.웹.한국:8080/api/starTalk`,
+      //     {
+      //       headers: { userId: userId },
+      //     }
+      //   )
+      //   const data = await response.data;
 
-  
+      //   setPostArr(data.postList);
+      //   //setPostCnt(data.postCount);
     
-        // setPostArr(data.postDtos);
-        // setPostCnt(data.postCount);
-    
-        // if (data && data.length > 0) {
-        //   console.log(data[0]);
-        // }
-        // setloading(false);
+      //   if (data && data.length > 0) {
+      //     console.log(data[0]);
+      //   }
+      //   setloading(false);
+      // };
 
-
-      useEffect(() => {
-        fetchData();
-      }, []);
-
-      const fetchData = async () => {
-        console.log("게시글 조회 시도");
-        // 게시글 조회
-        const response = await axios.get(
-          `https://플랜잇.웹.한국:8080/api/starTalk`,
-          {
-            headers: { userId: userId },
-          }
-        )
-        const data = await response.data;
-
-        setPostArr(data.postList);
-        //setPostCnt(data.postCount);
-    
-        if (data && data.length > 0) {
-          console.log(data[0]);
-        }
-        setloading(false);
-      };
-
-      console.log(postArr[0]);
+      // console.log(postArr[0]);
 
   return (
     <>
     <div className={ DiaryStyle.container }>
 
 
-      게시글 조회 테스트 : <p>{postArr[0]}</p>
+      {/* 게시글 조회 테스트 : <p>{postArr[0]}</p> */}
       {/* <TestList test={postArr[0]} /> */}
 
         <div className={ DiaryStyle.backBtn }>
@@ -210,7 +184,7 @@ const WritingPage = ({ onCreate }) => {
               />
           </div>
 
-          <div>
+          <div className={ DiaryStyle.upload_box }>
               <h1>사진</h1>
               <Uploader />
           </div>

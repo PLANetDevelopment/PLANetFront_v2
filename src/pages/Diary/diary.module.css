@@ -216,24 +216,40 @@
     height: 8px;
 }
 
-/*게시글*/
-.post_box {
-    width: 100%;
+/*게시글 박스*/
+.post_container {
+    width: 90%;
     margin: 4% 6%;
     position: relative;
 }
 
-.post_box img {
+.post_container h1{ 
+    /*내역없음*/
+    font-family: Pretendard;
+    font-size: 15px;
+    font-weight: 400;
+    color: #AEAEAE;
+    text-align: center;
+    position: relative;
+    transform: translateY(100%);
+};
+
+/*게시글*/
+.post_container .post_box {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.post_container .post_box img {
     float: left;
 }
 
-.post_box .star_img{
+.post_container .post_box .star_img{
     float: right;
     margin-top: 1%;
-    margin-right: 12%;
 }
 
-.post_box h1{
+.post_container .post_box h2{
     float: left;
     font-family: Pretendard;
     font-size: 14px;
@@ -241,7 +257,7 @@
     margin: 2%;
 }
 
-.post_box p{
+.post_container .post_box p{
     float: left;
     font-family: Pretendard;
     font-size: 11px;
@@ -266,27 +282,29 @@
     top: 45%
 }
 
-.text_box {
+.post_container .text_box {
     width: 88%;
-    margin: 4% 6%;
+    padding-top: 4%;
+    margin-bottom: 4%;
     position: relative;
     font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
     line-height: 20.54px;
+    overflow: hidden;
 }
 
-.react_box {
+.post_container .react_box {
     width: 100%;
-    margin: 0% 6%;
+    margin-bottom: 4%;
     position: relative;
 }
 
-.react_box img{
+.post_container .react_box img{
     float: left;
 }
 
-.react_box h1{
+.post_container .react_box h1{
     float: left;
     font-family: Pretendard;
     color: #AEAEAE;
@@ -393,6 +411,22 @@
   width: 100%;
   height: 8px;
   margin: 5% 0%;
+}
+
+.upload_box {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 10%;
+    padding-bottom: 16px;
+}
+
+.upload_box h1 {
+    font-size: 14px;
+    font-family: Pretendard;
+    font-weight: 600;
+    margin-bottom: 4%;
+    opacity: 60%;
 }
 
 .inquiry_submit_btn {
@@ -636,4 +670,84 @@
   outline: 0;
   cursor: pointer;
   float: right;
+}
+
+/* 게시글 상세보기 */
+.post_view_box {
+    position: relative;
+    top: 15%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.post_view_box h1{ 
+    /*게시글 제목*/
+    font-family: Pretendard;
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.post_view_box .post_view_box_2 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.post_view_box .post_view_box_2 img {
+    float: left;
+}
+
+.post_view_box .post_view_box_2 .star_img{
+    float: right;
+    margin-top: 1%;
+}
+
+.post_view_box .post_view_box_2 h2{
+    float: left;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 2%;
+}
+
+.post_view_box .post_view_box_2 p{
+    float: left;
+    font-family: Pretendard;
+    font-size: 11px;
+    font-weight: 400;
+    color: #AEAEAE;
+    margin: 2.5% 0%;
+}
+
+.post_view_box .text_box {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 4%;
+    margin-bottom: 4%;
+    position: relative;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.54px;
+    overflow: hidden;
+}
+
+.post_view_box .react_box {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 4%;
+    position: relative;
+}
+
+.post_view_box .react_box img{
+    float: left;
+}
+
+.post_view_box .react_box h1{
+    float: left;
+    font-family: Pretendard;
+    color: #AEAEAE;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0% 4.5% 4% 2.5%;
 }
