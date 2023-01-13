@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
+import axios from "axios";
 import { Link } from 'react-router-dom'
 
 const horizontalCenter = css`
@@ -101,13 +102,14 @@ function SearchBar({ onAddKeyword }) {
   const [keyword, setKeyword] = useState('')
 
   const handleKeyword = (e) => {
-    setKeyword(e.target.value)
+    setKeyword(e.target.value);
   }
   const handleEnter = (e) => {
     if (keyword && e.keyCode === 13) {
       //엔터일때 부모의 addkeyword에 전달
-      onAddKeyword(keyword)
-      setKeyword('')
+      onAddKeyword(keyword);
+      setKeyword('');
+      fetchData();
     }
   }
 
@@ -121,6 +123,65 @@ function SearchBar({ onAddKeyword }) {
     //keyword가 있으면 true, 없으면 false가 리턴이 되는 것을 확인 할 수 있습니다
     console.log(!!keyword)
   }
+
+  //검색어 api test
+  const [filesData, setFilesData] = useState();   //조회 결과 저장
+  const [loading, setloading] = useState(true);
+
+  const userId = window.localStorage.getItem("userId");
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+  const fetchData = async () => {
+    console.log("검색어 api 테스트 시도");
+
+    const response = await axios.get(
+      `https://플랜잇.웹.한국:8080/api/starTalk/retrieve?query=${keyword}`,
+      {
+        headers: { userId: userId },
+      }
+    );
+    const data = await response.data;
+
+    setFilesData(data);
+
+    if (data && data.length > 0) {
+      console.log(data[0]);
+    }
+
+    setloading(false);
+  };
+
+  // const userId = window.localStorage.getItem("userId");
+  // const fetchPostFunc = () => {
+  //   console.log("get 시도 확인");
+  //   //백으로 데이터 보내기
+  //   fetch(
+  //     `https://플랜잇.웹.한국:8080/api/starTalk/retrieve?query=${keyword}`,
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Accept: "application/json",
+  //         userId: userId,
+  //       },
+  //       body: JSON.stringify({
+  //       }),
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       setFilesData(response.data);
+  //       if (response.token) {
+  //         localStorage.setItem("wtw-token", response.token);
+  //       }
+  //     });
+  // };
+
+  console.log("get 시도! keyword > ", keyword);
+  console.log("get 해온 data", filesData);
 
   return (
     <Container>

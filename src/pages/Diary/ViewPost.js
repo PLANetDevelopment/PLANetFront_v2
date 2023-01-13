@@ -40,6 +40,9 @@ const ViewPost = () => {
     }
 
     const createComment = (e) => {
+      //댓글 등록
+      fetchPostFunc();
+
       e.preventDefault();
       e.stopPropagation();
       if (comment === '') {
@@ -49,6 +52,33 @@ const ViewPost = () => {
       setCommentList([...commentList, comment]);
       setComment('');
     };
+
+    //댓글 보내기
+    const userId = window.localStorage.getItem("userId");
+    const fetchPostFunc = () => {
+    console.log("post 시도 확인");
+    //백으로 데이터 보내기
+    fetch(
+    `https://플랜잇.웹.한국:8080/api/starTalk/newComment/1`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        userId: userId,
+      },
+      body: JSON.stringify({
+        comment: comment,
+      }),
+    }
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.token) {
+        localStorage.setItem("wtw-token", response.token);
+      }
+    });
+};
  
   return (
     <>

@@ -6,7 +6,6 @@ import SearchBar from "../../components/DiaryPart/SearchBar";
 import SearchHistory from "../../components/DiaryPart/SearchHistory";
 import WritingPage from "./WritingPage";
 import WritingList from "../../components/DiaryPart/WritingList";
-import Post from "../../components/DiaryPart/Post";
 import Footer from "../../components/Footer/Footer";
 import DiaryStyle from "./diary.module.css";
 import SearchPost from "./SearchPost.js"
