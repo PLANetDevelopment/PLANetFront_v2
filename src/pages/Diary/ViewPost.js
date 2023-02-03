@@ -6,6 +6,8 @@ import HistorySample from '../../components/History/HistoryBack';
 import LikeButton from "../../components/DiaryPart/LikeButton.js"
 
 import CommentAdd from "../../components/DiaryPart/CommentAdd.js"
+import ScrapButton from '../../components/DiaryPart/ScrapButton';
+// import ReplyComment from "../../components/DiaryPart/ReplyComment.js"
 
 const ViewPost = () => {
 
@@ -92,10 +94,10 @@ const ViewPost = () => {
         <h1>{title}</h1>
 
         <div className={DiaryStyle.post_view_box_2}>
-          <img src="img/profile.png" alt="profile"></img>
+          {/* <img src="img/profile.png" alt="profile"></img> */}
           <h2>닉네임</h2>
           <p>∙  {new Date(created_date).toLocaleString()}</p>
-          <img className={DiaryStyle.star_img} src="img/favorite.png" alt="favorite"></img>
+          {/* <img className={DiaryStyle.star_img} src="img/favorite.png" alt="favorite"></img> */}
         </div>
 
         <div className={DiaryStyle.text_box}>
@@ -104,17 +106,20 @@ const ViewPost = () => {
 
         <div className={DiaryStyle.react_box}>
           <LikeButton></LikeButton>
+          <ScrapButton />
         </div>
 
         {/* 댓글 구현 */}
         <div>
           {commentList.map((comment, index) => (
+            <>
             <CommentAdd
-              key = {`${index}${comment}`}
-              comment = {comment}
-              index = {index}
-              editCommentList={editCommentList}
-            />
+              key={`${index}${comment}`}
+              comment={comment}
+              index={index}
+              editCommentList={editCommentList} />
+            {/* <ReplyComment commentList={commentList} /> */}
+            </>
           ))}
 
           <div>

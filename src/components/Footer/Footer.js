@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiHomeLine } from "react-icons/ri";
 import { FiCalendar, FiTrendingUp, FiGift } from "react-icons/fi";
+import { HiOutlinePlus } from "react-icons/hi";
 import styles from "../Footer/Footer.module.css";
 
 function Footer({ activeMenu }) {
@@ -27,6 +28,11 @@ function Footer({ activeMenu }) {
           캘린더
         </p>
       </Link>
+      <Link to="/FloatingPage">
+            <div className={styles.floating}>
+              <HiOutlinePlus className={styles.plus} />
+            </div>
+          </Link>
       <Link
         to="/statistics"
         replace={true}
@@ -49,7 +55,7 @@ function Footer({ activeMenu }) {
           별별톡
         </p>
       </Link>
-      <Link
+      {/* <Link
         to="/news"
         replace={true}
         style={activeMenu === "news" ? { pointerEvents: "none" } : null}
@@ -59,7 +65,7 @@ function Footer({ activeMenu }) {
         <p className={activeMenu === "news" ? styles.text : styles.text2}>
           소식
         </p>
-      </Link>
+      </Link> */}
     </div>
   );
 }

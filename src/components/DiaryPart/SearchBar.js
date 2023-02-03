@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
+import { FiSearch } from "react-icons/fi";
+import { HiOutlinePencil } from "react-icons/hi";
+
 import axios from "axios";
 import { Link } from 'react-router-dom'
 
@@ -13,31 +16,33 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   background-color: #141b27;
-  padding: 20px 20px 20px 50px;
+  padding: 20px 18px 30px 18px;
   box-sizing: border-box;
+
+  margin-bottom: 40px;
 `
 
 //Link태그의 스타일
 //horizontalCenter 스타일 컴포넌트를 믹스인하여 속성값 전달
-const ArrowIcon = styled(Link)`
-  ${horizontalCenter}
-  left: 18px;
-  display: block;
-  width: 21px;
-  height: 18px;
-  background-position: -164px -343px;
-  vertical-align: top;
-  background-image: url(https://s.pstatic.net/static/www/m/uit/2020/sp_search.623c21.png);
-  background-size: 467px 442px;
-  background-repeat: no-repeat;
-`
+// const ArrowIcon = styled(Link)`
+//   ${horizontalCenter}
+//   left: 18px;
+//   display: block;
+//   width: 21px;
+//   height: 18px;
+//   background-position: -164px -343px;
+//   vertical-align: top;
+//   background-image: url(https://s.pstatic.net/static/www/m/uit/2020/sp_search.623c21.png);
+//   background-size: 467px 442px;
+//   background-repeat: no-repeat;
+// `
 
 // const SearchIcon = styled.span`
 //   ${horizontalCenter}
 //   right: 18px;
 //   width: 24px;
 //   height: 24px;
-//   background-position: -356px -260px;
+//   background-position: -356px -260px;ddd
 //   display: inline-block;
 //   overflow: hidden;
 //   color: transparent;
@@ -65,21 +70,30 @@ const RemoveIcon = styled.span`
 
 const InputContainer = styled.div`
   position: relative;
+  width: 90%;
+  background: #26272E;
+  outline: none;
+  border: 0;
+  border-radius: 36px;
+
+  padding: 3% 4%;
+  float: left;
 `
 
 const Input = styled.input`
   font-family: 'pretendard';
-  width: 100%;
+  width: 88%;
+  margin-left: 8%;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
   color: #fff;
-  padding: 4% 5%;
-  border-radius: 8px;
+  border-radius: 36px;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.1);
+  background: #26272E;
   outline: none;
   border: 0;
+  padding: 2%;
 
   &::placeholder{
     color: #ffffff;
@@ -92,6 +106,24 @@ const Input = styled.input`
     padding-right: 25px; 
   `}
 `
+
+const SearchIcon = styled(FiSearch)`
+  width: 18px;
+  height: 18px;
+  color: rgba(136, 136, 136, 1);
+  position: absolute;
+  margin-top: 1.5%;
+`;
+
+// const PencilIcon = styled(HiOutlinePencil)`
+//   position: relative;
+//   width: 18px;
+//   height: 18px;
+//   color: #fff;
+//   float: right;
+
+//   margin-top: 4%;
+// `;
 
 function SearchBar({ onAddKeyword }) {
   // 1. 검색어를 state 로 다루도록 변경
@@ -185,10 +217,11 @@ function SearchBar({ onAddKeyword }) {
 
   return (
     <Container>
-      <ArrowIcon to="/" />
+      {/* <ArrowIcon to="/" /> */}
       <InputContainer>
+      <SearchIcon />
         <Input
-          placeholder="검색어를 입력해주세요"
+          placeholder="#에코 미션 챌린지"
           active={hasKeyword}
           value={keyword}
           onChange={handleKeyword}
@@ -197,7 +230,7 @@ function SearchBar({ onAddKeyword }) {
 
         {keyword && <RemoveIcon onClick={handleClearKeyword} />}
       </InputContainer>
-      {/* <SearchIcon /> */}
+      {/* <PencilIcon /> */}
     </Container>
   )
 }

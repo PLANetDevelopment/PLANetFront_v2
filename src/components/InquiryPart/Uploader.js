@@ -108,7 +108,7 @@ const Uploader = (props) => {
       
       headers: {
         userId: userId,
-        // "Content-Type": "multipart/form-data", 
+        "Content-Type": "multipart/form-data", 
       },
 
       body: formData,

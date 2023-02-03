@@ -23,6 +23,7 @@ import InformationPage from "./pages/Setting/InformationPage";
 import Inquiry from "./pages/Setting/Inquiry";
 import InquiryForm from "./pages/Setting/InquiryForm";
 import InquiryList from "./pages/Setting/InquiryList";
+import MyPost from "./pages/Setting/MyPost";
 import Coupon from "./pages/Coupon/Coupon";
 import CouponJoin from "./pages/Coupon/CouponJoin";
 import EcoMission from "./pages/EcoMission/EcoMission";
@@ -80,6 +81,7 @@ function App() {
         <Route path="/couponJoin" element={<CouponJoin />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/inquiry" element={<Inquiry />} />
+        <Route path="/myPost" element={<MyPost />} />
         <Route path="/inquiryForm" element={<InquiryForm />} />
         <Route path="/inquiryList" element={<InquiryList />} />
 

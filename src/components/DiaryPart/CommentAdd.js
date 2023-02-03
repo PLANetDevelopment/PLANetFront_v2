@@ -18,6 +18,10 @@ const CommentAdd = ({ comment, index, editCommentList }) => {
         return e.target.parentElement.parentElement.parentElement.remove();
     }
 
+    const onClickReply = (e) => {
+      return e.target.parentElement.parentElement.parentElement.remove();
+    }
+
     const onSubmit = (index, editCommentValue) => (e) => {
         e.preventDefault();
         setEditing(true);
@@ -91,6 +95,9 @@ const CommentAdd = ({ comment, index, editCommentList }) => {
                         <div>
                             <button onClick={onClickEdit} type="button">
                                 edit
+                            </button>
+                            <button onClick={onClickReply} type="button">
+                                답변달기
                             </button>
                             <button onClick={onClickDelete} type="button">
                                 x

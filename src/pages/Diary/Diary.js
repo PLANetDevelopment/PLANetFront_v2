@@ -8,27 +8,29 @@ import WritingPage from "./WritingPage";
 import WritingList from "../../components/DiaryPart/WritingList";
 import Footer from "../../components/Footer/Footer";
 import DiaryStyle from "./diary.module.css";
+import { HiOutlinePencil } from "react-icons/hi";
+
 import SearchPost from "./SearchPost.js"
 
 const MAIN_DATA = [
   {
     id: "1",
-    text: "전체",
+    text: "전체글",
     name: "first",
   },
   {
     id: "2",
-    text: "나의 플랜잇",
+    text: "인기글",
     name: "second",
   },
   {
     id: "3",
-    text: "나의 친환경 이야기",
+    text: "환경 소식",
     name: "third",
   },
   {
     id: "4",
-    text: "Q&A",
+    text: "스크랩",
     name: "fourth",
   },
 ];
@@ -194,7 +196,7 @@ const Diary = () => {
 
 
               <div className={DiaryStyle.writing} onClick={() => setForm(true)}>
-                <img className={DiaryStyle.pencil} src="img/pencil.png" alt="pencil"></img>
+                <HiOutlinePencil className={DiaryStyle.pencil} />
               </div>
 
     

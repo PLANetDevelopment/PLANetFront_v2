@@ -134,13 +134,13 @@ const WritingPage = ({ onCreate }) => {
         </div>
 
         <div className={ DiaryStyle.title }>
-            게시글 쓰기
+            글 쓰기
         </div>
 
         <div className={ DiaryStyle.inquiry }>
 
           <div className={ DiaryStyle.category }>
-            <p>카테고리 선택</p>
+            <p>챌린지 참여</p>
 
             {isModalOpen && (
             <Modal
@@ -164,7 +164,7 @@ const WritingPage = ({ onCreate }) => {
           <div className={ DiaryStyle.line_box }></div>
 
           <div className={ DiaryStyle.time_info_box }>
-              <h1>제목</h1>
+              {/* <h1>제목</h1>
               <input
                 ref={titleInput}
                 type="text"
@@ -172,16 +172,18 @@ const WritingPage = ({ onCreate }) => {
                 value={state.title}
                 placeholder='제목을 입력하세요'
                 onChange={handleChangeState}
-              />
-              <h1>내용</h1>
+              /> */}
+
+              {/* <h1>내용</h1> */}
               <textarea
                 ref={contentTextarea}
                 type="text"
                 name="content"
                 value={state.content}
-                placeholder='내용을 입력하세요 (0/1000)'
+                placeholder='나누고 싶은 이야기가 있으신가요?'
                 onChange={handleChangeState}
               />
+
           </div>
 
           <div className={ DiaryStyle.upload_box }>

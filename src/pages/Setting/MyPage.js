@@ -91,6 +91,12 @@ function MyPage() {
           </div>
         </Link>
 
+        <Link to="/MyPost" style={{ textDecoration : "none", color : "white" }}>
+          <div className={ MypageStyle.logout_box }>
+              <p>내가 쓴 글</p>
+          </div>
+        </Link>
+
         <div className={ MypageStyle.logout_box } onClick={()=>{
               window.localStorage.removeItem('token');
               window.localStorage.removeItem('userId');
