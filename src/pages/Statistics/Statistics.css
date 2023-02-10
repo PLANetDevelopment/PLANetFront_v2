@@ -213,7 +213,7 @@
 .detail-box .balloon {
   position: relative;
   margin: 0 auto;
-  width: 333px;
+  width: 100%;
   height: 112px;
   background: #061023;
   border-radius: 13px;

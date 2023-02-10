@@ -192,11 +192,7 @@ function Home({ activeHome }) {
         </section>
         <section className={homeStyle.monthly}>
           <div className={homeStyle.month}>
-            <div className="header row flex-middle">
-              <div className="col col-center">
-                <span>{format(currentDate, "M월")}</span>
-              </div>
-            </div>
+            <span>{format(currentDate, "M월")}</span>
           </div>
           {/* <Link to="/StatisticsView" className={activeHome}> */}
           <IoIosArrowForward className={homeStyle.history}></IoIosArrowForward>
