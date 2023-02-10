@@ -5,57 +5,27 @@ import "./Statistics.css";
 import DateHeader from "../../components/DateHeader";
 
 import InExItem from "../../components/StatisticsPart/InExItem";
+import { getStatisticsWays } from "../../api/statistics.api";
 
 function StatisticsWays() {
   const { way, year, month } = useParams();
   const income = way === "income" ? true : false;
-  const nowMFormat = "M";
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [message, setMessage] = useState(0);
   const [detailDtoList, setDetailDtoList] = useState([]);
-  const [detailDtoList2, setDetailDtoList2] = useState([]);
 
   const fetchData = async () => {
-    const response = await fetch(
-      `/statistics/${way}/${format(currentMonth, "yyyy")}/${format(
-        currentMonth,
-        "M"
-      )}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setMessage(data);
-        setDetailDtoList(data.detailDtoList);
-      })
-      .catch((error) => {
-        console.log("error!");
-        console.log(error);
-      });
-    const data = await response.json();
+    const data = await getStatisticsWays(way, currentMonth);
     setMessage(data);
     setDetailDtoList(data.detailDtoList);
   };
+
   useEffect(() => {
     if (year !== null || month !== null)
       setCurrentMonth(new Date(year, month - 1, 1));
     fetchData();
-    // setMessage(tempData);
-    // setDetailDtoList(tempData.detailDtoList);
-    // setMessage2(tempData2);
-    // setDetailDtoList2(tempData2.detailDtoList);
   }, [year, month]);
-
-  console.log(detailDtoList);
 
   return (
     <div className="static-detail-container">
@@ -67,7 +37,7 @@ function StatisticsWays() {
       <div className="detail-box">
         <div className="income-detail-box">
           <p>
-            {format(currentMonth, nowMFormat)}월 {income ? "수입" : "지출"} 총액
+            {format(currentMonth, "M")}월 {income ? "수입" : "지출"} 총액
           </p>
           <h1>
             {income

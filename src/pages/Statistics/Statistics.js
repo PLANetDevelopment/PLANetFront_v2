@@ -13,8 +13,9 @@ import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { EcoBarChart } from "../../components/StatisticsPart/EcoBarChart";
 import { InfoModal } from "../../components/Modal/Modal";
 import Footer from "../../components/Footer/Footer";
-import axios from "axios";
+
 import { useQueryClient, useQuery, useMutation } from "react-query";
+import { getStatisticsMain } from "../../api/statistics.api";
 
 const containerStyle = {
   backgroundImage: "url(img/main_bg.png)",
@@ -22,18 +23,12 @@ const containerStyle = {
   height: "30%",
 };
 
-const fetchData = async (userId, currentDate) => {
-  // let date = isSameMonth(currentDate, new Date())
-  //   ? currentDate
-  //   : endOfMonth(currentDate);
-  // const response = await axios.get(
-  //   `https://xn--lj2bx51av9j.xn--yq5b.xn--3e0b707e:8080/api/statistics/${format(
-  //     date,
-  //     "yyyy"
-  //   )}/${format(date, "M")}/${format(date, "d")}`,
-  //   { headers: { userId: userId } }
-  // );
-  // const data = await response.data;
+const fetchData = async (currentDate) => {
+  let date = isSameMonth(currentDate, new Date())
+    ? currentDate
+    : endOfMonth(currentDate);
+  const data = await getStatisticsMain(date);
+
   return data;
 };
 
@@ -53,22 +48,19 @@ function StatisticsMain() {
   const [nowNoneEcoCount, setNowNowEcoCount] = useState(0);
   const [percentage, setPrcentage] = useState(0);
 
-  const nowMFormat = "M";
-  const userId = window.localStorage.getItem("userId");
   const queryClient = useQueryClient();
 
   const results = useQuery({
-    queryKey: "statisticsData",
-    queryFn: () => fetchData(userId, currentDate),
-    enabled: !!userId,
+    queryKey: "statisticsMainData",
+    queryFn: () => fetchData(currentDate),
     staleTime: 1000 * 5 * 60, // 5분
     cacheTime: Infinity, // 제한 없음
   });
 
   const fetchStat = useMutation({
     mutationFn: () => {},
-    onSuccess: () => queryClient.invalidateQueries("statisticsData"),
-    onError: (error) => console.error(),
+    onSuccess: () => queryClient.invalidateQueries("statisticsMainData"),
+    onError: (error) => console.error(error),
   });
 
   const onchangeDate = (date) => {
@@ -85,7 +77,7 @@ function StatisticsMain() {
 
   useEffect(() => {
     if (results.status === "success") {
-      const messages = queryClient.getQueryData("statisticsData");
+      const messages = queryClient.getQueryData("statisticsMainData");
 
       setMessage(messages);
       setUserName(messages.userName === null ? "" : messages.userName);
@@ -100,7 +92,6 @@ function StatisticsMain() {
       setPrcentage(messages.percentage);
     }
   }, [queryClient, results]);
-  console.log(incomeTotal);
 
   if (results.status === "loading" || results.status === "error")
     return (
@@ -125,7 +116,7 @@ function StatisticsMain() {
         <Link to="/StatisticsView">
           <div className="month-box">
             <div className="month-breakdown">
-              <p>{format(currentDate, nowMFormat)}월 내역</p>
+              <p>{format(currentDate, "M")}월 내역</p>
               <IoIosArrowForward className="box-icon" />
             </div>
 
@@ -270,34 +261,34 @@ const blankStyle = {
   color: "#939393",
 };
 
-const data = {
-  userName: "사용자1",
-  incomeTotal: 102000,
-  expenditureTotal: 549000,
-  ecoDifference: -6,
-  noEcoDifference: 3,
-  ecoCount: {
-    3: 5,
-    4: 12,
-    5: 22,
-    6: 34,
-    7: 46,
-    8: 55,
-  },
-  nowEcoCount: 12,
-  nowNoneEcoCount: 4,
-  percentage: 0.0,
-  ecoTagCounts: [
-    ["식비", 6],
-    ["급여", 2],
-    ["기타", 2],
-    ["생필품", 2],
-    ["더보기", 3],
-  ],
-  noEcoTagCounts: [
-    ["식비", 3],
-    ["더보기", 0],
-  ],
-  more_G_category: 5,
-  more_R_category: 10,
-};
+// const data = {
+//   userName: "사용자1",
+//   incomeTotal: 102000,
+//   expenditureTotal: 549000,
+//   ecoDifference: -6,
+//   noEcoDifference: 3,
+//   ecoCount: {
+//     3: 5,
+//     4: 12,
+//     5: 22,
+//     6: 34,
+//     7: 46,
+//     8: 55,
+//   },
+//   nowEcoCount: 12,
+//   nowNoneEcoCount: 4,
+//   percentage: 0.0,
+//   ecoTagCounts: [
+//     ["식비", 6],
+//     ["급여", 2],
+//     ["기타", 2],
+//     ["생필품", 2],
+//     ["더보기", 3],
+//   ],
+//   noEcoTagCounts: [
+//     ["식비", 3],
+//     ["더보기", 0],
+//   ],
+//   more_G_category: 5,
+//   more_R_category: 10,
+// };

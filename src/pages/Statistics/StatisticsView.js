@@ -7,9 +7,10 @@ import { IoIosArrowForward } from "react-icons/io";
 import DateHeader from "../../components/DateHeader";
 import "../../components/StatisticsPart/Dropbox.module.css";
 
-import axios from "axios";
 import { useQueryClient, useQuery, useMutation } from "react-query";
 import InExItem from "../../components/StatisticsPart/InExItem";
+import { isSameMonth, endOfMonth } from "date-fns";
+import { getStatisticsView } from "../../api/statistics.api";
 
 const OPTIONS = [
   { value: "all", name: "전체" },
@@ -17,18 +18,11 @@ const OPTIONS = [
   { value: "expend", name: "지출" },
 ];
 
-const fetchData = async (userId, currentMonth) => {
-  // let date = isSameMonth(currentMonth, new Date())
-  //   ? currentMonth
-  //   : endOfMonth(currentMonth);
-  // const response = await axios.get(
-  //   `https://xn--lj2bx51av9j.xn--yq5b.xn--3e0b707e:8080/api/statistics/total/${format(
-  //     date,
-  //     "yyyy"
-  //   )}/${format(date, "M")}`,
-  //   { headers: { userId: userId } }
-  // );
-  // const data = await response.data;
+const fetchData = async (currentMonth) => {
+  let date = isSameMonth(currentMonth, new Date())
+    ? currentMonth
+    : endOfMonth(currentMonth);
+  const data = await getStatisticsView(date);
   return data;
 };
 
@@ -45,14 +39,11 @@ function StatisticsView() {
   const [detailDtoList, setDetailDtoList] = useState([]);
   const [selectOption, setSelectOptions] = useState("all");
 
-  const userId = window.localStorage.getItem("userId");
-
   const queryClient = useQueryClient();
 
   const results = useQuery({
     queryKey: "statisticsViewData",
-    queryFn: () => fetchData(userId, currentMonth),
-    enabled: !!userId,
+    queryFn: () => fetchData(currentMonth),
     staleTime: 1000 * 5 * 60, // 5분
     cacheTime: Infinity, // 제한 없음
   });
@@ -213,104 +204,104 @@ const errorStyle = {
   textAlign: "center",
   marginTop: "40vh",
 };
-const data = {
-  totalMonthIncome: 884,
-  totalMonthExpenditure: 92000,
-  inMore: true,
-  exMore: true,
-  inDif: 880,
-  exDif: 92000,
-  detailDtoList: [
-    {
-      date: "2022-04-26",
-      detailDtoList: [
-        {
-          id: 1,
-          way: "현금",
-          type: "경조사/회비",
-          cost: 92503,
-          memo: "여기는 수입이구요",
-          ecoList: null,
-          income: true,
-        },
-        {
-          id: 2,
-          way: "은행",
-          type: "월급",
-          cost: 1726000,
-          memo: null,
-          ecoList: null,
-          income: true,
-        },
-        {
-          id: 13,
-          way: "카드",
-          type: "생필품",
-          cost: 4990,
-          memo: "비누",
-          ecoList: [
-            {
-              eco: "G",
-              ecoDetail: "친환경 제품 구매",
-              etcMemo: null,
-            },
-            {
-              eco: "N",
-              ecoDetail: "기타",
-              etcMemo: "평생 쓰는 물건 잃어버려서 재구매",
-            },
-            {
-              eco: "G",
-              ecoDetail: "비건식당 방문",
-              etcMemo: null,
-            },
-          ],
-          income: false,
-        },
-        {
-          id: 14,
-          way: "카드",
-          type: "가전",
-          cost: 50000,
-          memo: "가스레인지",
-          ecoList: null,
-          income: false,
-        },
-      ],
-    },
-    {
-      date: "2022-04-27",
-      detailDtoList: [
-        {
-          id: 15,
-          way: "은행",
-          type: "생필품",
-          cost: 92503,
-          memo: "텀블러",
-          ecoList: [
-            {
-              eco: "R",
-              ecoDetail: "친환경 제품 구매",
-              etcMemo: null,
-            },
-            {
-              eco: "N",
-              ecoDetail: "기타",
-              etcMemo: "평생 쓰는 물건 잃어버려서 재구매",
-            },
-          ],
-          income: false,
-        },
-        // {
-        //   id: 16,
-        //   way: "카드",
-        //   type: "식비",
-        //   cost: 92503,
-        //   memo: "학식",
-        //   ecoList: null,
-        //   income: true,
-        // },
-      ],
-    },
-  ],
-};
+// const data = {
+//   totalMonthIncome: 884,
+//   totalMonthExpenditure: 92000,
+//   inMore: true,
+//   exMore: true,
+//   inDif: 880,
+//   exDif: 92000,
+//   detailDtoList: [
+//     {
+//       date: "2022-04-26",
+//       detailDtoList: [
+//         {
+//           id: 1,
+//           way: "현금",
+//           type: "경조사/회비",
+//           cost: 92503,
+//           memo: "여기는 수입이구요",
+//           ecoList: null,
+//           income: true,
+//         },
+//         {
+//           id: 2,
+//           way: "은행",
+//           type: "월급",
+//           cost: 1726000,
+//           memo: null,
+//           ecoList: null,
+//           income: true,
+//         },
+//         {
+//           id: 13,
+//           way: "카드",
+//           type: "생필품",
+//           cost: 4990,
+//           memo: "비누",
+//           ecoList: [
+//             {
+//               eco: "G",
+//               ecoDetail: "친환경 제품 구매",
+//               etcMemo: null,
+//             },
+//             {
+//               eco: "N",
+//               ecoDetail: "기타",
+//               etcMemo: "평생 쓰는 물건 잃어버려서 재구매",
+//             },
+//             {
+//               eco: "G",
+//               ecoDetail: "비건식당 방문",
+//               etcMemo: null,
+//             },
+//           ],
+//           income: false,
+//         },
+//         {
+//           id: 14,
+//           way: "카드",
+//           type: "가전",
+//           cost: 50000,
+//           memo: "가스레인지",
+//           ecoList: null,
+//           income: false,
+//         },
+//       ],
+//     },
+//     {
+//       date: "2022-04-27",
+//       detailDtoList: [
+//         {
+//           id: 15,
+//           way: "은행",
+//           type: "생필품",
+//           cost: 92503,
+//           memo: "텀블러",
+//           ecoList: [
+//             {
+//               eco: "R",
+//               ecoDetail: "친환경 제품 구매",
+//               etcMemo: null,
+//             },
+//             {
+//               eco: "N",
+//               ecoDetail: "기타",
+//               etcMemo: "평생 쓰는 물건 잃어버려서 재구매",
+//             },
+//           ],
+//           income: false,
+//         },
+//         // {
+//         //   id: 16,
+//         //   way: "카드",
+//         //   type: "식비",
+//         //   cost: 92503,
+//         //   memo: "학식",
+//         //   ecoList: null,
+//         //   income: true,
+//         // },
+//       ],
+//     },
+//   ],
+// };
