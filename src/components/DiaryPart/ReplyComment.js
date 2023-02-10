@@ -1,26 +1,49 @@
-// import React from 'react';
-// import CommentAdd from './CommentAdd';
+import React, { useState, useEffect } from "react";
 
-// function ReplyComment({commentList}) {
+import SingleComment from "./SingleComment";
 
-//     const renderReplyComment = () => {
-//         commentList.map((comment, index) => (
-//             <div>
-//             <CommentAdd
-//               key={`${index}${comment}`}
-//               comment={comment}
-//               index={index}
-//               editCommentList={editCommentList} />
-//             <ReplyComment commentList={commentList} />
-//             </div>
-//         ))
-//     }
+function ReplyComment(props) {
+  const [childCommentNum, setChildCommentNum] = useState(0);
 
-//     return (
-//         <div>
-//             <p style={{ fontSize: '14px', margin: '0', color: 'gray'}}>View 1 more comment(s)</p>
-//         </div>
-//     )
-// }
+  useEffect(() => {
+    let commentNumber = 0;
 
-// export default ReplyComment;
+    props.commentLists.map((comment) => {
+      if (comment.responseTo === props.parentCommentId) {
+        commentNumber++;
+      }
+    });
+
+    setChildCommentNum(commentNumber);
+  }, []);
+
+  const renderReplyComment = (parentCommentId) => {
+    props.commentList.map((comment, index) => (
+      <>
+        {comment.responseTo === parentCommentId && (
+          <div>
+            <SingleComment
+              refreshFunction={props.refreshFunction}
+              comment={comment}
+            />
+            <ReplyComment commentLists={props.commentLists} />
+          </div>
+        )}
+      </>
+    ));
+  };
+
+  return (
+    <div>
+      {childCommentNum > 0 && (
+        <p style={{ fontSize: "14px", margin: "0", color: "gray" }} onClick>
+          View {childCommentNum} more comment(s)
+        </p>
+      )}
+
+      {renderReplyComment(props.parentCommentId)}
+    </div>
+  );
+}
+
+export default ReplyComment;

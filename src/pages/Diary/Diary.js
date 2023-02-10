@@ -10,7 +10,7 @@ import Footer from "../../components/Footer/Footer";
 import DiaryStyle from "./diary.module.css";
 import { HiOutlinePencil } from "react-icons/hi";
 
-import SearchPost from "./SearchPost.js"
+import SearchPost from "./SearchPost.js";
 
 const MAIN_DATA = [
   {
@@ -41,9 +41,10 @@ const Diary = () => {
   /*버튼마다 컴포넌트 변경하기*/
   const [content, setContent] = useState("1");
 
-  const onChange = (e) => { //value값 변경
-    setSearch(e.target.value)
-  }
+  const onChange = (e) => {
+    //value값 변경
+    setSearch(e.target.value);
+  };
 
   const btnValueSetting = (e) => {
     setContent(e.target.value);
@@ -52,39 +53,39 @@ const Diary = () => {
   //검색어 기능 설정
   //string은 map을 사용 할 수 없기때문에 object 형태로 변환 시키기 위해 parsing을 해줘야함
   const [keywords, setKeywords] = useState(
-    JSON.parse(localStorage.getItem('keywords') || '[]'),
-  )
+    JSON.parse(localStorage.getItem("keywords") || "[]")
+  );
 
   //keyword에 변화가 일어날때만 랜더링
   useEffect(() => {
     //array 타입을 string형태로 바꾸기 위해 json.stringfy를 사용한다.
-    localStorage.setItem('keywords', JSON.stringify(keywords))
-  }, [keywords])
+    localStorage.setItem("keywords", JSON.stringify(keywords));
+  }, [keywords]);
 
   //state를 다루는 함수는 handle 보통 많이 붙인다.
 
   //검색어 추가
   const handleAddKeyword = (text) => {
-    console.log('text', text)
+    console.log("text", text);
     const newKeyword = {
       id: Date.now(),
       text: text,
-    }
-    setKeywords([newKeyword, ...keywords])
-  }
+    };
+    setKeywords([newKeyword, ...keywords]);
+  };
 
   //검색어 삭제
   const handleRemoveKeyword = (id) => {
     const nextKeyword = keywords.filter((thisKeyword) => {
-      return thisKeyword.id != id
-    })
-    setKeywords(nextKeyword)
-  }
+      return thisKeyword.id != id;
+    });
+    setKeywords(nextKeyword);
+  };
 
   //검색어 전체 삭제
   const handleClearKeywords = () => {
-    setKeywords([])
-  }
+    setKeywords([]);
+  };
 
   //게시글 data 받아오기
   const [data, setData] = useState([]);
@@ -94,7 +95,7 @@ const Diary = () => {
 
   const onCreate = (title, content) => {
     const created_date = new Date().getTime();
-    
+
     console.log(created_date);
 
     const newItem = {
@@ -108,6 +109,40 @@ const Diary = () => {
 
     setData([newItem, ...data]);
     setForm(false);
+  };
+
+  //에코챌린지
+  const userId = window.localStorage.getItem("userId");
+  // const isFocused = useIsFocused();
+  const [loading, setloading] = useState(true);
+
+  const [comments, setComments] = useState([]);
+
+  //필요할 때만 가져오기
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    console.log("Trying to get 에코미션 info!!");
+
+    const response = await axios.get(
+      `https://플랜잇.웹.한국:8080/api/starTalk/ecoMission`,
+      {
+        headers: { userId: userId },
+      }
+    );
+    const data = await response.data;
+
+    setComments(data);
+
+    if (data && data.length > 0) {
+      console.log(data[0]);
+    }
+
+    console.log(data);
+
+    setloading(false);
   };
 
   //카테고리별 게시글 가져오기 api 테스트 => success
@@ -145,20 +180,20 @@ const Diary = () => {
   return (
     <>
       <div className={DiaryStyle.container}>
-
-      {!form &&<>
-          <div>
+        {!form && (
+          <>
             <div>
-              <SearchBar onAddKeyword={handleAddKeyword}></SearchBar>
-              <SearchHistory
-                keywords={keywords}
-                onClearKeywords={handleClearKeywords}
-                onRemoveKeyword={handleRemoveKeyword}
-              />
-              {/* <img className={DiaryStyle.profile} src="img/profile.png" alt="profile"></img> */}
+              <div>
+                <SearchBar onAddKeyword={handleAddKeyword}></SearchBar>
+                <SearchHistory
+                  keywords={keywords}
+                  onClearKeywords={handleClearKeywords}
+                  onRemoveKeyword={handleRemoveKeyword}
+                />
+                {/* <img className={DiaryStyle.profile} src="img/profile.png" alt="profile"></img> */}
+              </div>
             </div>
-          </div>
-    
+
             <div className={DiaryStyle.drop_box}>
               {MAIN_DATA.map((data) => {
                 return (
@@ -178,38 +213,40 @@ const Diary = () => {
                 );
               })}
             </div>
-    
+
             <div className={DiaryStyle.border_line}></div>
 
             {/* <SearchPost /> */}
-            
+
             {/* <Post></Post> */}
             <div className={DiaryStyle.post_container}>
-                {data.length === 0 ? <h1>내역없음</h1> : <WritingList writingList={data} />}
+              {data.length === 0 ? (
+                <h1>내역없음</h1>
+              ) : (
+                <WritingList writingList={data} />
+              )}
             </div>
-    
+
             {/* <Link to="/WritingPage">
               <div className={DiaryStyle.writing}>
               <img className={DiaryStyle.pencil} src="img/pencil.png" alt="pencil"></img>
               </div>
             </Link> */}
 
+            <div className={DiaryStyle.writing} onClick={() => setForm(true)}>
+              <HiOutlinePencil className={DiaryStyle.pencil} />
+            </div>
 
-              <div className={DiaryStyle.writing} onClick={() => setForm(true)}>
-                <HiOutlinePencil className={DiaryStyle.pencil} />
-              </div>
-
-    
             <Footer activeMenu="diary">
               <div>별별톡</div>
             </Footer>
-            </>
-      }
+          </>
+        )}
 
-      {form && <WritingPage onCreate={onCreate} />}
+        {form && <WritingPage onCreate={onCreate} />}
       </div>
     </>
   );
-}
+};
 
 export default Diary;
