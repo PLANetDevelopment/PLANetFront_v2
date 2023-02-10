@@ -11,14 +11,12 @@ import Calendar from "../../components/CalendarPart/CalendarBody";
 import { Modal } from "../../components/Modal/Modal";
 import SelectType from "../../components/FloatingPart/SelectType";
 import SelectEco from "../../components/FloatingPart/SelectEco";
-import { SelectButton } from "../../components/FloatingPart/SelectEco";
 import axios from "axios";
 
 function StatisticsModify() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mode, setmode] = useState("");
   const data = useLocation().state;
-  console.log(data);
 
   const [mdate, setMDate] = useState(new Date());
   const [date, setDate] = useState(new Date());
@@ -73,7 +71,6 @@ function StatisticsModify() {
   };
 
   useEffect(() => {
-    console.log(data);
     if (data !== null) {
       const item = data.item;
 
@@ -186,7 +183,6 @@ function StatisticsModify() {
     setUserEcoTag(tempUserEcoTag);
     setDisabled(false);
   };
-  console.log(ecoTag, userTag, userEcoTag);
 
   const openModal = (stype) => {
     setmode(stype);

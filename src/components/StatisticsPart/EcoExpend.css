@@ -1,0 +1,34 @@
+.statistics-ecoexpend-box {
+  margin-bottom: 32px;
+  margin-top: 17px;
+}
+
+.expend-list-item {
+  font-size: 15px;
+  height: 58px;
+  width: 100%;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.expend-list-item .day-breakdown-box-icon {
+  margin-right: 10px;
+}
+
+.expend-list-item h2 {
+  margin-left: auto;
+}
+
+/*Part 2*/
+
+.more {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
+  cursor: pointer;
+}
+
+.more h1 {
+  padding-left: 5px;
+}

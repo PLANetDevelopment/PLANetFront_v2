@@ -14,64 +14,63 @@
   width: 100vw;
   color: #ffffff;
   background-color: #141b27;
-  font-family: Pretendard;
 }
 
 /*이전 버튼*/
 .backBtn {
-    position: absolute;
-    margin-top: 10%;
-    margin-left: 7%;
-    margin-bottom: 0;
-    z-index: 1;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 7%;
+  margin-bottom: 0;
+  z-index: 1;
 }
 
 .title {
-    position: absolute;
-    font-size: 18px;
-    font-family: Pretendard;
-    width: 100%;
-    text-align: center;
-    margin-top: 10%;
-    margin-bottom: 0;
+  position: absolute;
+  font-size: 18px;
+
+  width: 100%;
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 0;
 }
 
 /*운영 시간 안내*/
 .inquiry {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    top: 15%;
-    bottom: 15%;
-    position: fixed;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 15%;
+  bottom: 15%;
+  position: fixed;
+  width: 100%;
 }
 
 .time_info_box {
-    position: relative;
-    width: 90%;
-    margin: 0 auto;
-    padding-bottom: 16px;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 16px;
 }
 
 .time_info_box h1 {
-    font-size: 16px;
-    font-family: Pretendard;
-    font-weight: 700;
-    margin-bottom: 16px;
+  font-size: 16px;
+
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
 .time_info_box p {
-    font-size: 14px;
-    font-family: Pretendard;
-    line-height: 20px;
+  font-size: 14px;
+
+  line-height: 20px;
 }
 
 .time_info_box h4 {
-    font-size: 12px;
-    font-family: Pretendard;
-    line-height: 18px;
-    color: #566479;
+  font-size: 12px;
+
+  line-height: 18px;
+  color: #566479;
 }
 
 .line_box {
@@ -82,310 +81,302 @@
 
 /*문의 내역*/
 .inquiry_list_box {
-    position: relative;
-    width: 100%;
-    min-height: 330px;
-    max-height: 100vh;
-    margin: 0 auto;
-    padding-bottom: 16px;
+  position: relative;
+  width: 100%;
+  min-height: 330px;
+  max-height: 100vh;
+  margin: 0 auto;
+  padding-bottom: 16px;
 }
 
 .inquiry_list_box h1 {
-    font-family: Pretendard;
-    font-size: 16px;
-    color: #8B8B8B;
-    text-align: center;
-    line-height: 330px;
+  font-size: 16px;
+  color: #8b8b8b;
+  text-align: center;
+  line-height: 330px;
 }
 
 /* 문의 리스트 */
 .inquiry_list {
-    width: 100%;
-    padding: 2.5% 5% 2.5% 5%;
-    font-family: Pretendard;
+  width: 100%;
+  padding: 2.5% 5% 2.5% 5%;
 }
 
 .inquiry_list p {
-    font-size: 12px;
-    color: #939393;
-    margin-bottom: 2%;
+  font-size: 12px;
+  color: #939393;
+  margin-bottom: 2%;
 }
 
 .inquiry_list h2 {
-    font-size: 14px;
-    color: #ffffff;
-    margin-bottom: 4%;
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 4%;
 }
 
 .inquiry_list h4 {
-    font-size: 14px;
-    color: #00C982;
+  font-size: 14px;
+  color: #00c982;
 }
 
 /*문의 답변*/
 .inquiry_qna {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(242, 244, 245, 0.1);
-    font-family: Pretendard;
-    padding: 5% 7% 5% 7%;
-    font-size: 14px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(242, 244, 245, 0.1);
+
+  padding: 5% 7% 5% 7%;
+  font-size: 14px;
 }
 
 .inquiry_qna p {
-    font-size: 16px;
-    color: #ffffff;
-    margin: 2.5% 0px 2.5% 0px;
+  font-size: 16px;
+  color: #ffffff;
+  margin: 2.5% 0px 2.5% 0px;
 }
 
 .inquiry_qna h1 {
-    font-size: 16px;
-    color: #141B27;
+  font-size: 16px;
+  color: #141b27;
 }
 
 /*문의, 등록 버튼*/
 .inquiry_btn {
-    width: 100%;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    left: 0;
-    bottom: 3%;
+  width: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  left: 0;
+  bottom: 3%;
 }
 
 .inquiry_btn button {
-    font-family: Pretendard;
-    font-size: 16px;
-    width: 90%;
-    height: 52px;
-    border-radius: 30px;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-    border: 0;
-    background-color: #00C982;
-    color: white;
-    cursor: pointer;
+  font-size: 16px;
+  width: 90%;
+  height: 52px;
+  border-radius: 30px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  border: 0;
+  background-color: #00c982;
+  color: white;
+  cursor: pointer;
 }
 
 .inquiry_submit_btn {
-    width: 100%;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    left: 0;
-    bottom: 3%;
+  width: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  left: 0;
+  bottom: 3%;
 }
 
 .inquiry_submit_btn button {
-    font-family: Pretendard;
-    font-size: 16px;
-    width: 90%;
-    height: 52px;
-    border-radius: 30px;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-    border: 0;
-    color: #141B27;
-    cursor: pointer;
+  font-size: 16px;
+  width: 90%;
+  height: 52px;
+  border-radius: 30px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  border: 0;
+  color: #141b27;
+  cursor: pointer;
 }
 
 /* 문의 등록 폼 */
 .inquiry_form {
-    position: relative;
-    width: 90%;
-    margin: 0 auto;
-    padding-top: 24px;
-    padding-bottom: 24px;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
 .inquiry_form h1 {
-    font-size: 16px;
-    font-family: Pretendard;
-    font-weight: 700;
-    margin-bottom: 16px;
+  font-size: 16px;
+
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
 .inquiry_form p {
-    font-size: 14px;
-    font-family: Pretendard;
-    line-height: 20px;
+  font-size: 14px;
+
+  line-height: 20px;
 }
 
 .inquiry_form h4 {
-    font-size: 12px;
-    font-family: Pretendard;
-    line-height: 18px;
-    color: #566479;
+  font-size: 12px;
+
+  line-height: 18px;
+  color: #566479;
 }
 
 .time_info_box input {
-    position: relative;
-    width: 100%;
-    height: 49px;
-    margin: 0 auto;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: Pretendard;
-    background-color: #2a313c;
-    border: 0;
-    outline: 0;
-    padding-left: 14px;
-    color: white;
+  position: relative;
+  width: 100%;
+  height: 49px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+
+  background-color: #2a313c;
+  border: 0;
+  outline: 0;
+  padding-left: 14px;
+  color: white;
 }
 
 .time_info_box textarea {
-    position: relative;
-    width: 100%;
-    height: 157px;
-    margin: 0 auto;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: Pretendard;
-    background-color: #2a313c;
-    border: 0;
-    outline: 0;
-    padding-top: 14px;
-    padding-left: 14px;
-    color: white;
-    resize: none;
+  position: relative;
+  width: 100%;
+  height: 157px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+
+  background-color: #2a313c;
+  border: 0;
+  outline: 0;
+  padding-top: 14px;
+  padding-left: 14px;
+  color: white;
+  resize: none;
 }
 
 .time_info_box input::placeholder textarea::placeholder {
-    /*글자색 안바뀜 왜?*/
-    fill: #ffffff;
-    color: #ffffff;
-    font-family: Pretendard;
-    font-size: 14px;
+  /*글자색 안바뀜 왜?*/
+  fill: #ffffff;
+  color: #ffffff;
+
+  font-size: 14px;
 }
 
 .time_info_box ::-ms-input-placeholder ::-ms-textarea-placeholder {
-    /*글자색 안바뀜 왜?*/
-    fill: #ffffff;
-    color: #ffffff;
-    font-family: Pretendard;
-    font-size: 14px;
+  /*글자색 안바뀜 왜?*/
+  fill: #ffffff;
+  color: #ffffff;
+
+  font-size: 14px;
 }
 
 .coupon_box {
-    position: relative;
-    width: 90%;
-    height: 62px;
-    top: 120px;
-    margin: 0 auto;
-    margin-bottom: 8px;
-    padding-left: 18px;
-    padding-top: 24px;
-    border-radius: 13px;
-    font-size: 16px;
-    font-family: Pretendard;
-    background-color: rgba(255, 255, 255, 0.05);
+  position: relative;
+  width: 90%;
+  height: 62px;
+  top: 120px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  padding-left: 18px;
+  padding-top: 24px;
+  border-radius: 13px;
+  font-size: 16px;
+
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .info_icon {
-    position: relative;
-    width: 24px;
-    color: #676B73;
-    cursor: pointer;
-    float: right;
-    margin-right: 5%;
+  position: relative;
+  width: 24px;
+  color: #676b73;
+  cursor: pointer;
+  float: right;
+  margin-right: 5%;
 }
 
 .coupon_input_box {
-    position: relative;
-    top: 120px;
+  position: relative;
+  top: 120px;
 }
 
 .coupon_input_box h1 {
-    font-family: Pretendard;
-    font-size: 16px;
-    color: #ffffff;
-    margin-left: 6%;
-    margin-bottom: 14px;
+  font-size: 16px;
+  color: #ffffff;
+  margin-left: 6%;
+  margin-bottom: 14px;
 }
 
-
 .coupon_btn {
-    width: 100%;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    left: 0;
-    bottom: 10%;
+  width: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  left: 0;
+  bottom: 10%;
 }
 
 .coupon_btn button {
-    font-family: Pretendard;
-    font-size: 16px;
-    width: 90%;
-    height: 52px;
-    border-radius: 30px;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-    border: 0;
-    color: #141B27;
-    cursor: pointer;
+  font-size: 16px;
+  width: 90%;
+  height: 52px;
+  border-radius: 30px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  border: 0;
+  color: #141b27;
+  cursor: pointer;
 }
 
 .drop_box {
-    position: relative;
+  position: relative;
 }
 
 .drop_box .dropbox {
-    position: relative;
-    float: right;
-    display: inline;
-    margin-top: 14px;
+  position: relative;
+  float: right;
+  display: inline;
+  margin-top: 14px;
 }
 
 .drop_box p {
-    position: absolute;
-    display: inline;
-    color: #B4B6B8;
-    font-size: 14px;
-    font-family: Pretendard;
-    margin-top: 14px;
+  position: absolute;
+  display: inline;
+  color: #b4b6b8;
+  font-size: 14px;
+
+  margin-top: 14px;
 }
 
 .coupon_use_box {
-    position: relative;
-    width: 100%;
-    top: 150px;
-    margin: 0 auto;
-    text-align: center;
+  position: relative;
+  width: 100%;
+  top: 150px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .coupon_available {
-    display: inline-block;
-    width: 44%;
-    height: 190px;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 13px;
-    font-family: Pretendard;
-    text-align: center;
-    margin: 1.5%;
+  display: inline-block;
+  width: 44%;
+  height: 190px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 13px;
+
+  text-align: center;
+  margin: 1.5%;
 }
 
 .coupon_expiration {
-    display: inline-block;
-    width: 44%;
-    height: 190px;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 13px;
-    font-family: Pretendard;
-    text-align: center;
-    margin: 1.5%;
-    opacity : 0.6;
-    filter: alpha(opacity=60);
-    -moz-opacity: 0.6;
-    -khtml-opacity: 0.6;
-}
+  display: inline-block;
+  width: 44%;
+  height: 190px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 13px;
 
+  text-align: center;
+  margin: 1.5%;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  -moz-opacity: 0.6;
+  -khtml-opacity: 0.6;
+}

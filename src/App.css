@@ -154,6 +154,13 @@ body {
   background-repeat: repeat;
   background-color: #141b27;
   /* background-image: url("./main_bg.png"); */
+  font-family: "Pretendard";
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 ol,
 ul {

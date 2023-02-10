@@ -1,24 +1,18 @@
 .statistic-main {
   position: relative;
-  width: 100vw;
-  height: calc(100vh - 30px);
-  overflow: scroll;
-  color: white;
-  font-family: Pretendard;
+  width: 100%;
+  height: 100%;
 }
 
 .stat-main-contents {
   margin-top: 70px;
-}
-.stat-main-contents a {
-  text-decoration: none;
+  padding: 0 16px;
 }
 
 .month-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
-  background-color: #141b27;
+
   padding-top: 25px;
   padding-bottom: 6.87px;
   cursor: pointer;
@@ -32,8 +26,6 @@
 .month-box .month-breakdown p {
   display: inline;
   font-size: 16px;
-  font-family: Pretendard;
-  margin-left: 21px;
   color: rgba(255, 255, 255, 0.4);
 }
 
@@ -41,11 +33,8 @@
   position: relative;
   display: inline;
   font-size: 25px;
-  font-family: Pretendard;
-  margin-left: 21px;
-  color: #ffffff;
+  font-weight: 600;
   float: right;
-  margin: 0 32px;
   top: -3px;
 }
 
@@ -56,24 +45,18 @@
   width: 24px;
   height: 24px;
   float: right;
-  margin: 0 28px;
   top: -3px;
 }
 
 .line-box {
   background-color: #000b21;
-  width: 100%;
+  width: 100vw;
+  left: 0;
+  position: absolute;
   height: 12px;
 }
 
-.line-box2 {
-  background-color: #000b21;
-  width: 100%;
-  height: 1px;
-}
-
 .tag-graph-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
   padding-top: 28px;
@@ -81,25 +64,18 @@
 }
 
 .tag-graph-box h1 {
-  font-family: Pretendard;
   font-size: 18px;
-  margin-left: 24px;
-  margin-right: 6px;
   margin-bottom: 20px;
 }
 
 .tag-graph-box p {
-  font-family: Pretendard;
   font-size: 15px;
-  margin-left: 24px;
   margin-bottom: 5px;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .tag-graph-box h2 {
-  font-family: Pretendard;
   font-size: 15px;
-  margin-left: 24px;
   margin-bottom: 5px;
   color: #ffffff;
 }
@@ -120,28 +96,18 @@
 }
 
 .chart-graph-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
-  background-color: #141b27;
-  padding-top: 28px;
+  padding-top: 42px;
   padding-bottom: 28px;
 }
 
-.chart-graph-box .donut-chart {
-  margin-top: 29px;
-}
-
 .chart-graph-box h1 {
-  font-family: Pretendard;
   font-size: 18px;
-  margin-left: 27px;
-  margin-bottom: 28px;
-  color: #ffffff;
+  padding-bottom: 36px;
 }
 
 .chart-graph-box p {
-  font-family: Pretendard;
   font-size: 12px;
   display: inline;
   text-align: center;
@@ -156,8 +122,12 @@
   color: transparent;
 }
 
+.chart-graph-box .donut-chart {
+  margin-top: 28px;
+}
+
+/*어떤 지출을 했을까요*/
 .expend-box {
-  font-family: Pretendard;
   position: relative;
   width: 100%;
   padding-top: 28px;
@@ -165,13 +135,10 @@
   cursor: pointer;
 }
 
-.expend-box h1 {
+.expend-box .expend-box-title {
   position: relative;
   display: inline;
-  font-family: Pretendard;
   font-size: 18px;
-  margin-left: 27px;
-  color: #ffffff;
 }
 
 .expend-box .box-icon {
@@ -181,58 +148,56 @@
   width: 24px;
   height: 24px;
   float: right;
-  margin: 0 28px;
   top: -3px;
+}
+
+.chart {
+  position: relative;
+  margin-bottom: 36px;
+  height: 20px;
 }
 
 /*세부내역 css*/
 
 .static-detail-container {
-  margin-top: 70px;
-  width: 100vw;
-  background-color: rgb(var(--navy));
+  width: 100%;
 }
 
 .detail-box {
-  font-family: Pretendard;
   position: relative;
+  margin-top: 70px;
   width: 100%;
-  background-color: #141b27;
-  padding-top: 24px;
-  padding-bottom: 23.5px;
+
+  padding: 24px 16px;
 }
 
-.detail-box .income-box {
+.detail-box .inex-box {
   position: relative;
   background-color: rgba(255, 255, 255, 0.05);
-  width: 80%;
-  height: 49px;
+
+  height: 58px;
   border-radius: 13px;
-  margin: 0 auto;
-  padding-top: 16px;
-  font-family: Pretendard;
-  margin-bottom: 12px;
+  padding: 20px;
+  margin-bottom: 8px;
   cursor: pointer;
 }
 
-.detail-box .income-box p {
+.detail-box .inex-box p {
   display: inline;
   font-size: 14px;
-  font-family: Pretendard;
-  margin-left: 21px;
+
   color: #b4b6b8;
 }
 
-.detail-box .income-box h1 {
+.detail-box .inex-box h1 {
   position: relative;
   display: inline;
   font-size: 16px;
-  font-family: Pretendard;
   color: #ffffff;
   float: right;
 }
 
-.detail-box .income-box .detail-icon {
+.detail-box .inex-box .detail-icon {
   position: relative;
   display: inline;
   color: rgba(255, 255, 255, 0.4);
@@ -240,7 +205,7 @@
   height: 20px;
   float: right;
   margin-left: 5px;
-  margin-right: 20px;
+
   top: -3px;
   cursor: pointer;
 }
@@ -248,7 +213,7 @@
 .detail-box .balloon {
   position: relative;
   margin: 0 auto;
-  width: 333px;
+  width: 100%;
   height: 112px;
   background: #061023;
   border-radius: 13px;
@@ -270,7 +235,6 @@
 
 .detail-box .balloon p {
   font-size: 15px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 12.5px;
   color: rgba(255, 255, 255, 0.7);
@@ -278,14 +242,22 @@
 
 .detail-box .balloon h1 {
   font-size: 18px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 8px;
   color: #ffffff;
 }
 
-.statistics-box {
-  font-family: Pretendard;
+/*여기서부터 옵션 컨테이너*/
+.statistics-option-box {
+  width: 100%;
+  padding: 24px 16px;
+}
+
+.statistics-option-box .selectBoxWrapper {
+  padding: 14px 0;
+}
+
+/* .statistics-box {
   position: relative;
   width: 100%;
   background-color: #141b27;
@@ -318,17 +290,15 @@
 
 .statistics-box .stat-detail-money {
   margin-left: auto;
-}
+} */
 
 /*StatisticsIncomeView.css*/
 .detail-box .income-detail-box {
-  font-family: Pretendard;
   width: 100%;
   background-color: #141b27;
 }
 
 .detail-box .income-detail-box p {
-  font-family: Pretendard;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.4);
   margin-left: 24px;
@@ -336,7 +306,6 @@
 }
 
 .detail-box .income-detail-box h1 {
-  font-family: Pretendard;
   font-size: 25px;
   color: #ffffff;
   margin-left: 24px;
@@ -369,7 +338,6 @@
 
 .detail-box .balloon2 p {
   font-size: 15px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 12.5px;
   color: rgba(255, 255, 255, 0.7);
@@ -377,7 +345,6 @@
 
 .detail-box .balloon2 h1 {
   font-size: 18px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 18.5px;
   color: #ffffff;
@@ -401,7 +368,6 @@
   width: 100%;
   height: 19px;
   flex-direction: row;
-  font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -436,7 +402,6 @@
 
 .detail-box .balloon3 p {
   font-size: 15px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 12.5px;
   color: rgba(255, 255, 255, 0.7);
@@ -444,15 +409,7 @@
 
 .detail-box .balloon3 h1 {
   font-size: 18px;
-  font-family: Pretendard;
   margin-left: 21px;
   margin-bottom: 18.5px;
   color: #ffffff;
-}
-
-.chart {
-  position: relative;
-  height: 90px;
-  padding-top: 10px;
-  margin: 0px 36px;
 }

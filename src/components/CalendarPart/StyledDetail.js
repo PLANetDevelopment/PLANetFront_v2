@@ -21,7 +21,6 @@ const StyledDetail = styled.div`
     margin-left: auto;
   }
   .item-list {
-    font-family: Pretendard;
     bottom: 70px;
   }
 
@@ -123,7 +122,6 @@ const StyledDetailPage = styled.div`
   width: 100vw;
   height: 100vh;
   .detail-page {
-    font-family: Pretendard;
     padding-bottom: 70px;
     background-color: rgb(var(--navy));
   }

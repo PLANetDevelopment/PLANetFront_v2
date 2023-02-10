@@ -76,7 +76,6 @@ function Home({ activeHome }) {
       setEcoPercentage(message.ecoPercentage);
     }
   }, [queryClient, results]);
-  console.log(message);
 
   useEffect(() => {
     if (results.status === "success") {
@@ -108,7 +107,7 @@ function Home({ activeHome }) {
   } else {
     lottieOptions.animationData = high;
   }
-  // if (results.status === "loading") return <div>loading...</div>;
+
   return (
     <>
       <div className={homeStyle.contents}>
@@ -193,11 +192,7 @@ function Home({ activeHome }) {
         </section>
         <section className={homeStyle.monthly}>
           <div className={homeStyle.month}>
-            <div className="header row flex-middle">
-              <div className="col col-center">
-                <span>{format(currentDate, "M월")}</span>
-              </div>
-            </div>
+            <span>{format(currentDate, "M월")}</span>
           </div>
           {/* <Link to="/StatisticsView" className={activeHome}> */}
           <IoIosArrowForward className={homeStyle.history}></IoIosArrowForward>

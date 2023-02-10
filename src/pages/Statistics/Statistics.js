@@ -5,40 +5,35 @@ import "./Statistics.css";
 import { IoIosArrowForward } from "react-icons/io";
 import DonutChart from "../../components/StatisticsPart/DonutChart";
 import LineGraph from "../../components/StatisticsPart/LineGraph";
-import Eco from "../../components/StatisticsPart/Part2/EcoExpend";
+import Eco from "../../components/StatisticsPart/EcoExpend";
 
 import DateHeader from "../../components/DateHeader";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 
-import { EcoBarChart } from "../../components/StatisticsPart/Part2/EcoBarChart";
-import { InfoModal } from "../../components/StatisticsPart/Part2/Modal2";
+import { EcoBarChart } from "../../components/StatisticsPart/EcoBarChart";
+import { InfoModal } from "../../components/Modal/Modal";
 import Footer from "../../components/Footer/Footer";
-import axios from "axios";
+
 import { useQueryClient, useQuery, useMutation } from "react-query";
+import { getStatisticsMain } from "../../api/statistics.api";
 
 const containerStyle = {
   backgroundImage: "url(img/main_bg.png)",
-  width: "100vw",
+  width: "100%",
   height: "30%",
 };
 
-const fetchData = async (userId, currentMonth) => {
-  let date = isSameMonth(currentMonth, new Date())
-    ? currentMonth
-    : endOfMonth(currentMonth);
-  const response = await axios.get(
-    `https://xn--lj2bx51av9j.xn--yq5b.xn--3e0b707e:8080/api/statistics/${format(
-      date,
-      "yyyy"
-    )}/${format(date, "M")}/${format(date, "d")}`,
-    { headers: { userId: userId } }
-  );
-  const data = await response.data;
+const fetchData = async (currentDate) => {
+  let date = isSameMonth(currentDate, new Date())
+    ? currentDate
+    : endOfMonth(currentDate);
+  const data = await getStatisticsMain(date);
+
   return data;
 };
 
 function StatisticsMain() {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [position, setposition] = useState(0);
   const [message, setMessage] = useState(0);
@@ -49,32 +44,27 @@ function StatisticsMain() {
   const [noEcoDifference, setNoEcoDifference] = useState(0);
   const [ecoTagCounts, setEcoTagCounts] = useState([]);
   const [noEcoTagCounts, setnoEcoTagCounts] = useState([]);
-  const [ecoCount, setEcoCount] = useState({});
   const [nowEcoCount, setNowEcoCount] = useState(0);
   const [nowNoneEcoCount, setNowNowEcoCount] = useState(0);
   const [percentage, setPrcentage] = useState(0);
-  const [loading, setloading] = useState(true);
 
-  const nowMFormat = "M";
-  const userId = window.localStorage.getItem("userId");
   const queryClient = useQueryClient();
 
   const results = useQuery({
-    queryKey: "statisticsData",
-    queryFn: () => fetchData(userId, currentMonth),
-    enabled: !!userId,
+    queryKey: "statisticsMainData",
+    queryFn: () => fetchData(currentDate),
     staleTime: 1000 * 5 * 60, // 5분
     cacheTime: Infinity, // 제한 없음
   });
 
   const fetchStat = useMutation({
     mutationFn: () => {},
-    onSuccess: () => queryClient.invalidateQueries("statisticsData"),
-    onError: (error) => console.error(),
+    onSuccess: () => queryClient.invalidateQueries("statisticsMainData"),
+    onError: (error) => console.error(error),
   });
 
   const onchangeDate = (date) => {
-    setCurrentMonth(date);
+    setCurrentDate(date);
     fetchStat.mutate(date);
   };
   const openModal = (e) => {
@@ -87,7 +77,7 @@ function StatisticsMain() {
 
   useEffect(() => {
     if (results.status === "success") {
-      const messages = queryClient.getQueryData("statisticsData");
+      const messages = queryClient.getQueryData("statisticsMainData");
 
       setMessage(messages);
       setUserName(messages.userName === null ? "" : messages.userName);
@@ -97,21 +87,13 @@ function StatisticsMain() {
       setExpenditureTotal(messages.expenditureTotal);
       setEcoTagCounts(messages.ecoTagCounts);
       setnoEcoTagCounts(messages.noEcoTagCounts);
-      setEcoCount(messages.ecoCount);
       setNowEcoCount(messages.nowEcoCount);
       setNowNowEcoCount(messages.nowNoneEcoCount);
       setPrcentage(messages.percentage);
     }
   }, [queryClient, results]);
-  console.log(incomeTotal);
 
-  useEffect(() => {
-    if (results.status === "success") {
-      setloading(false);
-    }
-  }, [results.status]);
-
-  if (results.status === "loading")
+  if (results.status === "loading" || results.status === "error")
     return (
       <div
         style={{
@@ -121,47 +103,36 @@ function StatisticsMain() {
           marginTop: "40vh",
         }}
       >
-        로딩중...
-      </div>
-    );
-  if (results.status === "error")
-    return (
-      <div
-        style={{
-          width: "100vw",
-          color: "#636E75",
-          textAlign: "center",
-          marginTop: "40vh",
-        }}
-      >
-        문제가 발생했습니다. 잠시 후에 다시 시도해주세요.
+        {results.status === "loading"
+          ? "로딩중..."
+          : "문제가 발생했습니다. 잠시 후에 다시 시도해주세요."}
       </div>
     );
 
   return (
     <div className="statistic-main">
-      <DateHeader getDate={currentMonth} sendDate={onchangeDate} />
+      <DateHeader getDate={currentDate} sendDate={onchangeDate} />
       <div className="stat-main-contents">
-        {/* <Link to="/StatisticsView"> */}
-        <div className="month-box">
-          <div className="month-breakdown">
-            <p>{format(currentMonth, nowMFormat)}월 내역</p>
-            <IoIosArrowForward className="box-icon" />
-          </div>
+        <Link to="/StatisticsView">
+          <div className="month-box">
+            <div className="month-breakdown">
+              <p>{format(currentDate, "M")}월 내역</p>
+              <IoIosArrowForward className="box-icon" />
+            </div>
 
-          <div className="month-breakdown">
-            <p>수입</p>
-            <h1>{incomeTotal.toLocaleString()}원</h1>
-          </div>
+            <div className="month-breakdown">
+              <p>수입</p>
+              <h1>{incomeTotal.toLocaleString()}원</h1>
+            </div>
 
-          <div className="month-breakdown">
-            <p>지출</p>
-            <h1>{expenditureTotal.toLocaleString()}원</h1>
+            <div className="month-breakdown">
+              <p>지출</p>
+              <h1>{expenditureTotal.toLocaleString()}원</h1>
+            </div>
           </div>
-        </div>
-        {/* </Link> */}
+        </Link>
 
-        <div className="line-box"></div>
+        <div className="line-box" />
 
         <div className="tag-graph-box" style={containerStyle}>
           <h1>
@@ -178,8 +149,9 @@ function StatisticsMain() {
               onClose={closeModal}
               maskClosable={true}
               visible={true}
-              children={true}
-            ></InfoModal>
+              type="statistics"
+              children={false}
+            />
           )}
           <p>지난달 이맘때보다</p>
           <h2>
@@ -194,11 +166,11 @@ function StatisticsMain() {
           </h2>
 
           {message.ecoCount !== undefined && (
-            <LineGraph dataset={message.ecoCount}></LineGraph>
+            <LineGraph dataset={message.ecoCount} />
           )}
         </div>
 
-        <div className="line-box"></div>
+        <div className="line-box" />
 
         <div className="chart-graph-box">
           <h1>{userName}님의 지출은 건강한가요?</h1>
@@ -218,74 +190,58 @@ function StatisticsMain() {
             />
           </div>
         </div>
-        <div className="line-box"></div>
+        <div className="line-box" />
 
         <Link
-          to="/EcoCategory"
+          to="/expendCategory"
           state={{
-            name: "eco",
+            name: "ecoG",
+            month: currentDate,
           }}
         >
           <div className="expend-box">
-            <h1>어떤 친환경 지출을 했을까요? 👍</h1>
+            <div className="expend-box-title">
+              어떤 친환경 지출을 했을까요? 👍
+            </div>
             <IoIosArrowForward className="box-icon" />
           </div>
         </Link>
         <div className="chart">
-          <EcoBarChart barData={ecoTagCounts} name="eco"></EcoBarChart>
+          <EcoBarChart barData={ecoTagCounts} name="eco" />
         </div>
         {ecoTagCounts.length < 2 ? (
           <div className="statistics-box">
-            <p
-              style={{
-                marginBottom: "60px",
-                marginTop: "0px",
-                fontFamily: "Pretendard",
-                height: "52px",
-                textAlign: "center",
-                color: "#939393",
-              }}
-            >
-              이번달 지출이 없습니다
-            </p>
+            <p style={blankStyle}>이번달 지출이 없습니다</p>
           </div>
         ) : (
-          <Eco name="eco"></Eco>
+          <Eco name="eco" />
         )}
 
-        <div className="line-box"></div>
+        <div className="line-box" />
 
         <Link
-          to="/EcoCategory"
+          to="/expendCategory"
           state={{
-            name: "neco",
+            name: "ecoR",
+            month: currentDate,
           }}
         >
           <div className="expend-box">
-            <h1>어떤 반환경 지출을 했을까요? 👎</h1>
+            <div className="expend-box-title">
+              어떤 반환경 지출을 했을까요? 👎
+            </div>
             <IoIosArrowForward className="box-icon" />
           </div>
         </Link>
         <div className="chart">
-          <EcoBarChart barData={noEcoTagCounts} name="neco"></EcoBarChart>
+          <EcoBarChart barData={noEcoTagCounts} name="neco" />
         </div>
         {noEcoTagCounts.length < 2 ? (
           <div className="statistics-box">
-            <p
-              style={{
-                marginBottom: "60px",
-                marginTop: "0px",
-                fontFamily: "Pretendard",
-                height: "52px",
-                textAlign: "center",
-                color: "#939393",
-              }}
-            >
-              이번달 지출이 없습니다
-            </p>
+            <p style={blankStyle}>이번달 지출이 없습니다</p>
           </div>
         ) : (
-          <Eco name="neco"></Eco>
+          <Eco name="neco" />
         )}
       </div>
       <Footer activeMenu="statistics">
@@ -297,34 +253,42 @@ function StatisticsMain() {
 
 export default StatisticsMain;
 
-const data = {
-  userName: "사용자1",
-  incomeTotal: 102000,
-  expenditureTotal: 549000,
-  ecoDifference: -6,
-  noEcoDifference: 3,
-  ecoCount: {
-    3: 5,
-    4: 12,
-    5: 22,
-    6: 34,
-    7: 46,
-    8: 55,
-  },
-  nowEcoCount: 12,
-  nowNoneEcoCount: 4,
-  percentage: 0.0,
-  ecoTagCounts: [
-    ["식비", 6],
-    ["급여", 2],
-    ["기타", 2],
-    ["생필품", 2],
-    ["더보기", 3],
-  ],
-  noEcoTagCounts: [
-    ["식비", 3],
-    ["더보기", 0],
-  ],
-  more_G_category: 5,
-  more_R_category: 10,
+const blankStyle = {
+  marginBottom: "60px",
+  marginTop: "0px",
+  height: "52px",
+  textAlign: "center",
+  color: "#939393",
 };
+
+// const data = {
+//   userName: "사용자1",
+//   incomeTotal: 102000,
+//   expenditureTotal: 549000,
+//   ecoDifference: -6,
+//   noEcoDifference: 3,
+//   ecoCount: {
+//     3: 5,
+//     4: 12,
+//     5: 22,
+//     6: 34,
+//     7: 46,
+//     8: 55,
+//   },
+//   nowEcoCount: 12,
+//   nowNoneEcoCount: 4,
+//   percentage: 0.0,
+//   ecoTagCounts: [
+//     ["식비", 6],
+//     ["급여", 2],
+//     ["기타", 2],
+//     ["생필품", 2],
+//     ["더보기", 3],
+//   ],
+//   noEcoTagCounts: [
+//     ["식비", 3],
+//     ["더보기", 0],
+//   ],
+//   more_G_category: 5,
+//   more_R_category: 10,
+// };

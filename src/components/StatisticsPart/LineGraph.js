@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Chart from "chart.js/auto";
-import { withTheme } from "styled-components";
 
 let LineChart;
 
@@ -35,8 +34,6 @@ export default function LineGraph({ dataset }) {
     else pointColor[i] = "#00C982";
   }
 
-  console.log(getValues);
-  const labels = ["3월", "4월", "5월", "6월", "7월", "8월"];
   const buildChart = () => {
     var ctx = document.getElementById("LineChart").getContext("2d");
 
@@ -106,7 +103,7 @@ export default function LineGraph({ dataset }) {
   return (
     <div
       style={{
-        width: "90%",
+        width: "100%",
         marginTop: "3%",
         margin: "0 auto",
         overflowY: "scroll",
@@ -122,24 +119,17 @@ export default function LineGraph({ dataset }) {
   );
 }
 
-
-// import React, {useEffect} from 'react'
-// import Chart from 'chart.js/auto'
-// import { withTheme } from 'styled-components';
-
 let LineChart2;
 
 Chart.defaults.font.size = 12;
-Chart.defaults.font.family = 'Pretendard';
+Chart.defaults.font.family = "Pretendard";
 
 export function LineGraph2() {
   useEffect(() => {
     buildChart();
   }, []);
 
-
-  const data2 = [55, 13, 40, 91, 52, 72];
-
+  const data2 = [36, 48, 15, 29, 37, 66];
 
   const buildChart = () => {
     var ctx = document.getElementById("LineChart2").getContext("2d");
@@ -147,46 +137,50 @@ export function LineGraph2() {
     if (typeof LineChart2 !== "undefined") LineChart2.destroy();
 
     LineChart2 = new Chart(ctx, {
-      type: 'line',
+      type: "line",
       data: {
-        labels: ['7월', '8월', '9월', '10월', '11월', '12월'],
-        datasets: [{
-          data: data2,
-          fill: false,
-          borderColor: 'rgba(255, 255, 255, 0.1)',
-          borderWidth: 0.8,
-          pointBackgroundColor: [
-            "#04A670",
-            "#0E4F42",
-            "#08835E",
-            "#04A670",
-            "#00C982",
-            "#04A670",
-          ], //포인트 채우기 컬러
-          pointBorderColor: [
-            "#04A670",
-            "#0E4F42",
-            "#08835E",
-            "#04A670",
-            "#00C982",
-            "#04A670",
-          ], //포인트 테두리 컬러
-          pointBorderWidth: 1, //포인트 테두리 두께
-          pointRadius: 8,
-          tension: 0.1, //직선
-        }]
+        // labels: ["7월", "8월", "9월", "10월", "11월", "12월"],
+        labels: ["", "", "", "", "", ""],
+        datasets: [
+          {
+            data: data2,
+            fill: false,
+            borderColor: "rgba(255, 255, 255, 0.1)",
+            borderWidth: 0.8,
+            pointBackgroundColor: [
+              "#04A670",
+              "#0E4F42",
+              "#08835E",
+              "#04A670",
+              "#00C982",
+              "#04A670",
+            ], //포인트 채우기 컬러
+            pointBorderColor: [
+              "#04A670",
+              "#0E4F42",
+              "#08835E",
+              "#04A670",
+              "#00C982",
+              "#04A670",
+            ], //포인트 테두리 컬러
+            pointBorderWidth: 1, //포인트 테두리 두께
+            pointRadius: 7,
+            pointHoverRadius: 7,
+            tension: 0.1, //직선
+          },
+        ],
       },
       options: {
-        indexAxis: 'x',
+        indexAxis: "x",
         scales: {
           y: {
             display: false,
             beginAtZero: true,
           },
           xAxes: {
-            fontColor: 'rgba(255, 255, 255)',
-            fontSize: 14
-          }
+            fontColor: "rgba(255, 255, 255)",
+            fontSize: 14,
+          },
         },
         responsive: true,
         plugins: {
@@ -195,22 +189,21 @@ export function LineGraph2() {
             display: false,
             labels: {
               font: {
-                size: 14
-              }
-            }
+                size: 14,
+              },
+            },
           },
         },
         animation: {
           duration: 600,
         },
-      }
+      },
     });
-  }
+  };
 
   return (
     <div style={{ width: "90%", marginTop: "3%", margin: "0 auto" }}>
       <canvas id="LineChart2" width="375px" height="210px" />
     </div>
-  )
+  );
 }
-

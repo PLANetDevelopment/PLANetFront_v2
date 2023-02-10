@@ -14,7 +14,6 @@
   width: 100vw;
   color: #ffffff;
   background-color: #141b27;
-  font-family: Pretendard;
 }
 
 /*이전 버튼*/
@@ -29,7 +28,6 @@
 .title {
   position: absolute;
   font-size: 18px;
-  font-family: Pretendard;
   width: 100%;
   text-align: center;
   margin-top: 10%;
@@ -61,17 +59,14 @@
   position: relative;
   top: 16%;
   margin-left: 10%;
-  font-family: Pretendard;
 }
 
 .sub_title h1 {
   font-size: 18px;
-  font-family: Pretendard;
 }
 
 .sub_title p {
   font-size: 14px;
-  font-family: Pretendard;
   margin-top: 8px;
   color: rgba(172, 173, 173, 0.65);
 }
@@ -84,20 +79,17 @@
   border-radius: 20px;
   padding-top: 5%;
   padding-bottom: 5%;
-  font-family: Pretendard;
   background-color: rgba(255, 255, 255, 0.05);
   margin: 0 auto;
 }
 
 .mission_box p {
-  font-family: Pretendard;
   font-size: 14px;
   text-align: center;
   color: rgba(180, 182, 184, 1);
 }
 
 .mission_box h1 {
-  font-family: Pretendard;
   font-size: 18px;
   margin-top: 6px;
   text-align: center;
@@ -105,7 +97,6 @@
 }
 
 .mission_box h2 {
-  font-family: Pretendard;
   font-size: 15px;
   text-align: center;
   margin-top: 14px;
@@ -123,7 +114,6 @@
   border: 0;
   outline: 0;
   background-color: transparent;
-  font-family: Pretendard;
   font-size: 15px;
   text-align: center;
   margin-top: 14px;
@@ -139,7 +129,6 @@
 }
 
 .mission_box .mission_btn {
-  font-family: Pretendard;
   display: block;
   margin: 0 auto;
   padding: 9px 15px;
@@ -170,7 +159,6 @@
   border-radius: 13px;
   margin-bottom: 12px;
   font-size: 15px;
-  font-family: Pretendard;
   background-color: rgba(255, 255, 255, 0.05);
   padding-top: 3.6%;
   padding-bottom: 3.6%;

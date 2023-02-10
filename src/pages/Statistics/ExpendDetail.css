@@ -1,0 +1,71 @@
+.header {
+  position: fixed;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 36px;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: rgb(var(--navy));
+  z-index: 3;
+}
+
+.gobackarrow {
+  position: fixed;
+  transform: rotate(180deg);
+  margin-left: -1%;
+  width: 20px;
+}
+
+.cateGory {
+  display: inline;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  margin: 0;
+
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.detailType {
+  position: relative;
+  padding: 60px 16px 0 16px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 16px;
+}
+
+.detailType .detailTypeRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailCellContainer {
+  padding: 0 16px;
+  border-bottom: 1px solid #212937;
+  padding-bottom: 14px;
+}
+
+.detailCellDate {
+  padding: 14px 0;
+  padding-left: 4px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.detailCellDetail {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  line-height: 17px;
+}
