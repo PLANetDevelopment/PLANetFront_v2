@@ -11,6 +11,7 @@ import Home from "./pages/Home/Home";
 import Profile from "./components/LoginPart/Profile";
 
 import FloatingPage from "./pages/Floating/FloatingPage";
+import InputFlowPage from "./pages/Floating/InputFlowPage";
 
 import CalendarPage from "./pages/Calendar/CalendarPage";
 import DetailCategory from "./components/CalendarPart/DetailCategory";
@@ -69,7 +70,7 @@ function App() {
         <Route path="/termsOfUse" element={<TermsOfUse />} />
         <Route path="/ecoMission" element={<EcoMission />} />
 
-        <Route path="/floatingpage" element={<FloatingPage />} />
+        <Route path="/floatingpage" element={<InputFlowPage />} />
         <Route path="/expendCategory" element={<ExpendCategory />} />
         <Route path="/usePage" element={<UsePage />} />
         <Route path="/informationPage" element={<InformationPage />} />
