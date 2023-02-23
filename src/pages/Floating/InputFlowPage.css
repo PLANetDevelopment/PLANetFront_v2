@@ -1,0 +1,79 @@
+.input-flow-input-box {
+  margin-bottom: 30px;
+}
+
+.input-flow-name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+
+  letter-spacing: 0.01em;
+
+  color: rgb(var(--gray300));
+  margin-bottom: 12px;
+}
+
+.input-flow-input-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-flow-input {
+  gap: 12px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  border: 0;
+  outline: 0;
+  padding-bottom: 12px;
+  border-bottom: solid 1px rgb(var(--gray750));
+}
+
+.input-flow-input::placeholder {
+  color: rgb(var(--gray600));
+  opacity: 1;
+}
+
+.input-flow-input:focus {
+  caret-color: #00c982;
+  border-bottom: solid 1px #00c982;
+}
+
+.input-flow-clear {
+  position: absolute;
+  right: 32px;
+}
+
+.category-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.category-container .type-box {
+  background-color: rgb(var(--gray900));
+  border-radius: 13px;
+  color: rgb(var(--gray300));
+  border: 0;
+  width: 19vw;
+  height: 19vw;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.type-box-emoji {
+  font-size: 26px;
+  margin-bottom: 8px;
+  top: 13px;
+}
+
+.type-box.type-box-clicked {
+  background-color: rgb(var(--gray50));
+  color: rgb(var(--black));
+}
