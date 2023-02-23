@@ -10,7 +10,6 @@ import Oauth from "./components/LoginPart/Oauth";
 import Home from "./pages/Home/Home";
 import Profile from "./components/LoginPart/Profile";
 
-import FloatingPage from "./pages/Floating/FloatingPage";
 import InputFlowPage from "./pages/Floating/InputFlowPage";
 
 import CalendarPage from "./pages/Calendar/CalendarPage";

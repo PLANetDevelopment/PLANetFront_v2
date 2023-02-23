@@ -157,6 +157,10 @@ body {
   font-family: "Pretendard";
   color: white;
 }
+input {
+  background-color: transparent;
+  font-family: "Pretendard";
+}
 
 a {
   text-decoration: none;

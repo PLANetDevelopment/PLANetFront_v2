@@ -225,7 +225,7 @@ function Home({ activeHome }) {
           </div>
         </section>
         <section>
-          <Link to="/FloatingPage" className={activeHome}>
+          <Link to="/floatingPage" className={activeHome}>
             <div className={homeStyle.floating}>
               <HiOutlinePlus className={homeStyle.plus} />
             </div>
