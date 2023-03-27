@@ -4,12 +4,9 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
   .quote-container{
-    background-color:#141b27;
-    padding-bottom:20px;
+    margin-bottom:20px;
   }
   .quote-box {
-    margin-left:13px;
-    margin-right:13px;
     left: 16px;
     top: 115px;
     color: white;

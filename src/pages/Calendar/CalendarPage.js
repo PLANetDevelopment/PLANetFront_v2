@@ -10,6 +10,7 @@ import Quote from "../../components/CalendarPart/Quote";
 import EcoDay from "../../components/CalendarPart/EcoDay";
 import { InfoModal } from "../../components/Modal/Modal";
 import "../../components/CalendarPart/Calendar.css";
+import PageStyle from "../../assets/pageStyle.module.css";
 
 import { IoIosArrowForward } from "react-icons/io";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
@@ -137,12 +138,20 @@ function CalendarPage() {
   };
 
   return (
-    <div className="calendarPage" style={{ marginBottom: "100px" }}>
+    <div className={PageStyle.page_style} style={{ marginBottom: "100px" }}>
       <DateHeader
-        getDate={currentDate}
-        sendDate={(date) => setCurrentDate(date)}
-      />
-      <div className={`cald ${!isMonthView ? "move" : ""}`}>
+        // getDate={currentDate}
+        // sendDate={(date) => setCurrentDate(date)}
+        goBack={true}
+      >
+        어저구저저구
+      </DateHeader>
+
+      <div
+        className={`cald ${!isMonthView ? "move" : ""} ${
+          PageStyle.content_style
+        }`}
+      >
         <Quote
           value={
             results[1].status === "error"
@@ -200,15 +209,37 @@ function CalendarPage() {
           details.length !== 0 &&
           details[0].status === "success" && <DetailList value={selectedDate} />
         ) : (
-          <div
-            style={{
-              fontSize: "12px",
-              color: "#8B8B8B",
-              textAlign: "center",
-              padding: "30px 0",
-            }}
-          >
-            내역 없음
+          <div>
+            <div
+              style={{
+                fontSize: "12px",
+                color: "#8B8B8B",
+                textAlign: "center",
+                padding: "30px 0",
+              }}
+            >
+              내역 없음
+            </div>
+            <div
+              style={{
+                fontSize: "12px",
+                color: "#8B8B8B",
+                textAlign: "center",
+                padding: "30px 0",
+              }}
+            >
+              내역 없음
+            </div>
+            <div
+              style={{
+                fontSize: "12px",
+                color: "#8B8B8B",
+                textAlign: "center",
+                padding: "30px 0",
+              }}
+            >
+              내역 없음
+            </div>
           </div>
         )}
       </div>
