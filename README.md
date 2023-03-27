@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# 플랜잇
+
+### 컴포넌트 정리
+https://www.notion.so/shhh/93a5d183e5c240389d98e31b5f8dc26e
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
