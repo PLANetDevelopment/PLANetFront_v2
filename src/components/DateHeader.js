@@ -9,7 +9,7 @@ function DateHeader({ goBack, close, children }) {
 
   return (
     <StyledDateHeader>
-      <div className="header">
+      <div className="dateheaderDiv">
         {goBack ? (
           <Arrow
             onClick={() => {
@@ -41,6 +41,9 @@ DateHeader.defaultProps = {
 };
 
 const StyledDateHeader = styled.div`
+  position: fixed;
+  width: calc(100% - 32px);
+  z-index: 30;
   .emptyIcon {
     width: 24px;
     height: 24px;
@@ -58,16 +61,17 @@ const StyledDateHeader = styled.div`
     align-items: center;
   }
 
-  .header {
-    /* background-color: #9a9a9a; */
+  .dateheaderDiv {
+    display: flex;
+    flex-direction: row;
+    padding: 11px 0;
     font-weight: 600;
     font-size: 16px;
     width: 100%;
     top: 0;
     left: 0;
     right: 0;
-    background-color: #141b27;
-    z-index: 3;
+    background-color: rgb(var(--navy));
   }
 `;
 
