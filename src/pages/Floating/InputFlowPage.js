@@ -104,7 +104,7 @@ const InputComponent = ({ name, placeholder, value, onChange }) => {
           className="input-flow-input"
           placeholder={placeholder}
           type={name === "사용처" ? "text" : "number"}
-          value={value}
+          value={text}
           onChange={(e) => setText(e.target.value)}
           onBlur={() => {
             setTimeout(() => {
