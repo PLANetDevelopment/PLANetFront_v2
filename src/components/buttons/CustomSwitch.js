@@ -2,17 +2,7 @@ import React, { useState } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 
 //토글 스위치
-const CustomSwitch = ({
-  width,
-  height,
-  selectionMode,
-  option1,
-  option2,
-  onSelectSwitch,
-  selectionColor,
-  backgroundColor1,
-  backgroundColor2,
-}) => {
+const CustomSwitch = ({ selectionMode, onSelectSwitch }) => {
   const [getSelectionMode, setSelectionMode] = useState(selectionMode);
 
   const updatedSwitchData = (val) => {
@@ -20,35 +10,18 @@ const CustomSwitch = ({
     onSelectSwitch(val);
   };
   const setBackgroundColor = (index) =>
-    getSelectionMode === index ? selectionColor : `backgroundColor${index}`;
-
-  const setTextColor = (index) =>
-    getSelectionMode === index ? "white" : selectionColor;
-
-  const defaultStyle = {
-    flex: 1,
-    borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
-  };
+    getSelectionMode === index ? "#424956" : "transparent";
 
   return (
-    <View>
-      <View
-        style={{
-          width: width,
-          height: height,
-          backgroundColor:
-            getSelectionMode === 1 ? backgroundColor1 : backgroundColor2,
-          borderRadius: 25,
-          borderWidth: 1,
-          borderColor: "#1E2A35",
-          flexDirection: "row",
-          justifyContent: "center",
-          padding: 2,
-          color: "#B4B6B8",
-        }}
-      >
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <View style={backgroundStyle}>
         <TouchableOpacity
           activeOpacity={1}
           onPress={() => updatedSwitchData(1)}
@@ -59,10 +32,10 @@ const CustomSwitch = ({
         >
           <Text
             style={{
-              color: setTextColor(1),
+              color: "#ffffff",
             }}
           >
-            {option1}
+            수입
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -76,11 +49,10 @@ const CustomSwitch = ({
         >
           <Text
             style={{
-              fontColor: "#B4B6B8",
-              color: setTextColor(2),
+              color: "#ffffff",
             }}
           >
-            {option2}
+            지출
           </Text>
         </TouchableOpacity>
       </View>
@@ -88,13 +60,22 @@ const CustomSwitch = ({
   );
 };
 
-CustomSwitch.defaultProps = {
-  width: 145,
-  height: 42,
-  option1: "",
-  option2: "",
-  backgroundColor1: "#1E2A35",
-  backgroundColor2: "#1E2A35",
-};
-
 export default CustomSwitch;
+
+const defaultStyle = {
+  flex: 1,
+  borderRadius: 25,
+  justifyContent: "center",
+  alignItems: "center",
+};
+const backgroundStyle = {
+  width: 177,
+  height: 42,
+  backgroundColor: "#282D36",
+  borderRadius: 42,
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  padding: 2,
+  marginBottom: 36,
+};

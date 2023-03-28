@@ -1,55 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { format, subMonths, addMonths } from "date-fns";
-import { IoIosArrowForward } from "react-icons/io";
+import { ReactComponent as Arrow } from "../assets/arrow.svg";
+import { ReactComponent as Close } from "../assets/closeIcon.svg";
 import styled from "styled-components";
 
-function DateHeader({ goBack, getDate, sendDate }) {
+function DateHeader({ goBack, close, children }) {
   const navigate = useNavigate();
-  const [currentMonth, setCurrentMonth] = useState(getDate);
-  useEffect(() => {
-    setCurrentMonth(getDate);
-  }, [getDate]);
-
-  const yNmFormat = "yyyy년 M월";
-
-  const changeMonthHandle = (btnType) => {
-    if (btnType === "prev") {
-      setCurrentMonth(subMonths(currentMonth, 1));
-      sendDate(subMonths(currentMonth, 1));
-    }
-    if (btnType === "next") {
-      setCurrentMonth(addMonths(currentMonth, 1));
-      sendDate(addMonths(currentMonth, 1));
-    }
-  };
 
   return (
     <StyledDateHeader>
-      <div className="header row flex-middle">
-        {goBack && (
-          <IoIosArrowForward
-            className="gobackarrow"
+      <div className="dateheaderDiv">
+        {goBack ? (
+          <Arrow
             onClick={() => {
               navigate(-1);
             }}
           />
+        ) : (
+          <div className="emptyIcon" />
         )}
-        <div className="col col-start">
-          <IoIosArrowForward
-            className="icon"
-            onClick={() => changeMonthHandle("prev")}
+
+        <div className="col col-center">{children}</div>
+        {close ? (
+          <Close
+            onClick={() => {
+              navigate(-1);
+            }}
           />
-        </div>
-        <div className="col col-center">
-          <span>{format(currentMonth, yNmFormat)}</span>
-        </div>
-        <div className="col col-end">
-          <IoIosArrowForward
-            className="icon"
-            onClick={() => changeMonthHandle("next")}
-          />
-        </div>
+        ) : (
+          <div className="emptyIcon" />
+        )}
       </div>
     </StyledDateHeader>
   );
@@ -57,72 +37,41 @@ function DateHeader({ goBack, getDate, sendDate }) {
 
 DateHeader.defaultProps = {
   goBack: false,
+  close: false,
 };
 
 const StyledDateHeader = styled.div`
-  .gobackarrow {
-    position: fixed;
-    transform: rotate(180deg);
-    margin-left: 3%;
-    width: 20px;
+  position: fixed;
+  width: calc(100% - 32px);
+  z-index: 30;
+  .emptyIcon {
+    width: 24px;
+    height: 24px;
   }
-  .row {
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    width: 96%;
-    margin-left: 2%;
-    margin-right: 2%;
-  }
+
   .col {
     margin: 0;
+    display: flex;
+    flex-direction: row;
     flex-grow: 1;
     flex-basis: 0;
     max-width: 100%;
-  }
-
-  .col-start {
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .col-center {
     justify-content: center;
     text-align: center;
+    align-items: center;
   }
 
-  .col-end {
-    justify-content: flex-end;
-    text-align: right;
-  }
-  .header {
-    position: absolute;
-    font-weight: 700;
-    font-size: 115%;
-    width: 96%;
-    padding: 30px 0 23px 0;
-    position: fixed;
+  .dateheaderDiv {
+    display: flex;
+    flex-direction: row;
+    padding: 11px 0;
+    font-weight: 600;
+    font-size: 16px;
+    width: 100%;
     top: 0;
     left: 0;
     right: 0;
-    background-color: #141b27;
-    z-index: 3;
-  }
-
-  .header .icon {
-    color: #9a9a9a;
-    width: 15px;
-    cursor: pointer;
-    margin: 0 2em;
-  }
-
-  .header .col-start .icon {
-    margin-left: 2.5em;
-    transform: rotate(180deg);
-  }
-
-  .header .col-end .icon {
-    margin-right: 2.5em;
+    background-color: rgb(var(--navy));
   }
 `;
 

@@ -35,23 +35,6 @@
 
 /* Calendar */
 
-.calendarPage {
-  display: block;
-  position: relative;
-
-  width: 100vw;
-  height: calc(100vh - 150px);
-  overflow: scroll;
-  margin-top: 70px;
-  background-color: rgba(var(--navy));
-  -ms-overflow-style: none; /* IE and Edge 스크롤바 숨기기*/
-  scrollbar-width: none; /* Firefox */
-}
-
-.calendarPage::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
-}
-
 .calendars .days {
   font-size: 11px;
   padding: 0.75em 0;
@@ -184,7 +167,9 @@
 }
 
 .calendar-toggle {
+  position: relative;
   margin-left: auto;
+  z-index: 10;
 }
 .calendar-toggle-icon {
   color: #9a9a9a;
@@ -255,7 +240,7 @@
 }
 
 .move {
-  transform: translatey(-140px);
+  transform: translateY(-140px);
 }
 
 /*예시 모달 스타일링 ( 페이지에 직접 영향 x )*/
